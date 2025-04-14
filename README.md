@@ -1,11 +1,11 @@
-# HiveMindAndroidTemplate
+# HiveMindMobileGameTemplate
 
 ## Features
 
 ## Getting Started
 Clone the repository
 ```bash
-git clone https://github.com/Emre-Emiroglu/HiveMindAndroidTemplate.git
+git clone https://github.com/Emre-Emiroglu/HiveMindMobileGameTemplate.git
 ```
 This project is developed using Unity version 2022.3.37f1.
 
