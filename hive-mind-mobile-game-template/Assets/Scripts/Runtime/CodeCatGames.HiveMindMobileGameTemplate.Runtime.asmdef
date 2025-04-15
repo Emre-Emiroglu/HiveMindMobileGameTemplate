@@ -1,0 +1,25 @@
+{
+    "name": "CodeCatGames.HiveMindMobileGameTemplate.Runtime",
+    "rootNamespace": "CodeCatGames.HiveMindMobileGameTemplate.Runtime",
+    "references": [
+        "GUID:cc89ab7c7fcc40d4893c84b0b1136dce",
+        "GUID:15bff83618aabf84295cbe327916f6a6",
+        "GUID:42ae9d6ab35ad7c43a2c75a2216dbc68",
+        "GUID:96f5cfa96ff15e049b5c1e6d54fee6aa",
+        "GUID:0bd6c72e94562b34bbc1f0a613e28296",
+        "GUID:067ce487f2d5cc240b22c8dadbb21c4d",
+        "GUID:041b19db3e061a8428b32b4169b71274",
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

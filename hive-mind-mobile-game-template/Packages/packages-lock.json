@@ -1,5 +1,63 @@
 {
   "dependencies": {
+    "com.codecatgames.hmhelpers": {
+      "version": "https://github.com/Emre-Emiroglu/HMHelpers.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "5b7cbc347481cd50207516a745b870cb89b11392"
+    },
+    "com.codecatgames.hmmodelviewcontroller": {
+      "version": "https://github.com/Emre-Emiroglu/HMModelViewController.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "cfb5433cc7889b87d00c5b3e47d1c23bf9576f2b"
+    },
+    "com.codecatgames.hmpool": {
+      "version": "https://github.com/Emre-Emiroglu/HMPool.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "634263fb9a7ccf73e305f989cdf6134f0678e930"
+    },
+    "com.codecatgames.hmprodebug": {
+      "version": "https://github.com/Emre-Emiroglu/HMProDebug.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "373c1a22e897d65bb9b2ba6aa3e296e641066583"
+    },
+    "com.codecatgames.hmsignalbus": {
+      "version": "https://github.com/Emre-Emiroglu/HMSignalBus.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "8a1aa023859fa04a0fd7b37ebd5a021cc94a0349"
+    },
+    "com.codecatgames.hmspersistentdata": {
+      "version": "https://github.com/Emre-Emiroglu/HMPersistentData.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "b89c118c28a191d01ee1d3761bd90a07d93efbcb"
+    },
+    "com.codecatgames.hmutilities": {
+      "version": "https://github.com/Emre-Emiroglu/HMUtilities.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "b4f1f00a3566c28997db5f2a8730370aaf29f11d"
+    },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "06067cd4c83e372310d6f79d1c625f6870ff7a2a"
+    },
     "com.unity.ext.nunit": {
       "version": "2.0.5",
       "depth": 1,
@@ -16,6 +74,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.test-framework": {
       "version": "1.4.6",
       "depth": 0,
@@ -26,6 +91,34 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.unity.timeline": {
+      "version": "1.8.8",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.director": "1.0.0",
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.particlesystem": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.ugui": {
+      "version": "2.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0"
+      }
+    },
+    "jp.hadashikick.vcontainer": {
+      "version": "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.16.8",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "5e6f5cc14b6dc8b94251bf6c0d6c37025a6ecf77"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
