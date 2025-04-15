@@ -72,3 +72,4 @@ crashlytics-build.properties
 # Packed Addressables
 /hive-mind-mobile-game-template/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
+/hive-mind-mobile-game-template/.idea
