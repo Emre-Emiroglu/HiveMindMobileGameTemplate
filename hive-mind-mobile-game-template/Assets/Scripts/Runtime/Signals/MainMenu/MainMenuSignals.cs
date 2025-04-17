@@ -1,4 +1,4 @@
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.MainMenu
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.MainMenu
 {
     public readonly struct InitializeMainMenuSignal { } // Has Command
 }

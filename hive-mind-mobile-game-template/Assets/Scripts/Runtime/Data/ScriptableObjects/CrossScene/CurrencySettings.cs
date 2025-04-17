@@ -1,22 +1,21 @@
-using System.Collections.Generic;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Enums.CrossScene;
-using Sirenix.OdinInspector;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities;
 using UnityEngine;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ScriptableObjects.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene
 {
-    [CreateAssetMenu(fileName = "CurrencySettings", menuName = "CodeCatGames/HiveMind/Samples/SampleGame/CrossScene/CurrencySettings")]
-    public sealed class CurrencySettings : SerializedScriptableObject
+    [CreateAssetMenu(fileName = "CurrencySettings", menuName = "CodeCatGames.HiveMindMobileGameTemplate/CrossScene/CurrencySettings")]
+    public sealed class CurrencySettings : ScriptableObject
     {
         #region Fields
         [Header("Currency Settings Fields")]
-        [SerializeField] private Dictionary<CurrencyTypes, int> _defaultCurrencyValues;
-        [SerializeField] private Dictionary<CurrencyTypes, Sprite> _currencyIcons;
+        [SerializeField] private SerializableDictionary<CurrencyTypes, int> defaultCurrencyValues;
+        [SerializeField] private SerializableDictionary<CurrencyTypes, Sprite> currencyIcons;
         #endregion
 
         #region Getters
-        public Dictionary<CurrencyTypes, int> DefaultCurrencyValues => _defaultCurrencyValues;
-        public Dictionary<CurrencyTypes, Sprite> CurrencyIcons => _currencyIcons;
+        public SerializableDictionary<CurrencyTypes, int> DefaultCurrencyValues => defaultCurrencyValues;
+        public SerializableDictionary<CurrencyTypes, Sprite> CurrencyIcons => currencyIcons;
         #endregion
     }
 }

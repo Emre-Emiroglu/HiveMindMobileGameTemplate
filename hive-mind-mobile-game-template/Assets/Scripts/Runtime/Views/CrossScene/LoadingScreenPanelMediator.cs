@@ -1,12 +1,9 @@
 using System;
-using CodeCatGames.HiveMind.Core.Runtime.MVC.View;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Utilities.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Zenject;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Views.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
     public sealed class LoadingScreenPanelMediator : Mediator<LoadingScreenPanelView>
     {

@@ -1,9 +1,7 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.Installers;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Views.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Views.MainMenu;
-using Zenject;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Installers.MainMenu
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Installers.MainMenu
 {
     public sealed class MainMenuMediationInstaller : Installer
     {
@@ -17,7 +15,7 @@ namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Installers.MainMenu
             Container.BindInterfacesAndSelfTo<ShopPanelMediator>().AsSingle().NonLazy();
 
             Container.Install<ViewMediatorInstaller<CurrencyView, CurrencyMediator>>();
-            Container.Install<ViewMediatorInstaller<SettingsButtonView, SettingsButtonMediator>>();
+            Container.Install<ViewMediatorInstaller<SettingsView, SettingsMediator>>();
         }
         #endregion
     }

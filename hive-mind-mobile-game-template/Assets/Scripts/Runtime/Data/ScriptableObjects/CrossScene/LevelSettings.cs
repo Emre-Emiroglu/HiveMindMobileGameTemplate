@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ScriptableObjects.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene
 {
-    [CreateAssetMenu(fileName = "LevelSettings", menuName = "CodeCatGames/HiveMind/Samples/SampleGame/CrossScene/LevelSettings")]
+    [CreateAssetMenu(fileName = "LevelSettings", menuName = "CodeCatGames.HiveMindMobileGameTemplate/CrossScene/LevelSettings")]
     public sealed class LevelSettings : ScriptableObject
     {
     }

@@ -1,7 +1,6 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.Model;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ScriptableObjects.MainMenu;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.MainMenu
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu
 {
     public sealed class MainMenuModel : Model<MainMenuSettings>
     {

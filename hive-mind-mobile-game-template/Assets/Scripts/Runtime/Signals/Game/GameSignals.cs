@@ -1,4 +1,4 @@
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.Game
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game
 {
     public readonly struct InitializeGameSignal { } // Has Command
     public readonly struct PlayGameSignal { } // Has Command

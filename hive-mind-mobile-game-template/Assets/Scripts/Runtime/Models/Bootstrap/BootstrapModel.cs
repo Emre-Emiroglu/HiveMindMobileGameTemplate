@@ -1,20 +1,17 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.Model;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ScriptableObjects.Bootstrap;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
+using CodeCatGames.HMModelViewController.Runtime;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.Bootstrap
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap
 {
     public sealed class BootstrapModel : Model<BootstrapSettings>
     {
-        #region Constants
-        private const string ResourcePath = "Samples/SampleGame/Bootstrap/BootstrapSettings";
-        #endregion
-
         #region Constructor
-        public BootstrapModel() : base(ResourcePath) { }
+        public BootstrapModel(BootstrapSettings settings) : base(settings) { }
         #endregion
 
-        #region PostConstruct
-        public override void PostConstruct() { }
+        #region Executes
+        public override void LoadData() { }
+        public override void SaveData() { }
         #endregion
     }
 }

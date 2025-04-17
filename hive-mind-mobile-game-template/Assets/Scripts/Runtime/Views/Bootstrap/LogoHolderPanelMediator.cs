@@ -1,34 +1,30 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.View;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.Bootstrap;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Utilities.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
+using CodeCatGames.HMModelViewController.Runtime;
+using VContainer.Unity;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Views.Bootstrap
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap
 {
-    public sealed class LogoHolderPanelMediator : Mediator<LogoHolderPanelView>
+    public sealed class LogoHolderPanelMediator : Mediator<BootstrapModel, BootstrapSettings, LogoHolderPanelView>,
+        IInitializable
     {
-        #region ReadonlyFields
-        private readonly BootstrapModel _bootstrapModel;
-        #endregion
-
         #region Constructor
-        public LogoHolderPanelMediator(LogoHolderPanelView view, BootstrapModel bootstrapModel) : base(view) =>
-            _bootstrapModel = bootstrapModel;
+        public LogoHolderPanelMediator(BootstrapModel model, LogoHolderPanelView view) : base(model, view) { }
         #endregion
-
-        #region PostConstruct
-        public override void PostConstruct() { }
-        #endregion
-
+        
         #region Core
-        public override void Initialize()
+        public new void Initialize()
         {
-            GetView.LogoImage.sprite = _bootstrapModel.GetSettings.LogoSprite;
-            GetView.LogoImage.preserveAspect = true;
+            base.Initialize();
+        
+            View.LogoImage.sprite = Model.Settings.LogoSprite;
+            View.LogoImage.preserveAspect = true;
 
-            GetView.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(true);
-            GetView.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(true);
+            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(true);
+            View.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(true);
         }
-        public override void Dispose() { }
+        public override void SetSubscriptions(bool isSubscribed) { }
         #endregion
     }
 }

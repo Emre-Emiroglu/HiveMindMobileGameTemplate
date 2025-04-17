@@ -1,8 +1,7 @@
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Controllers.Game;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.Game;
-using Zenject;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Game;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Installers.Game
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Installers.Game
 {
     public sealed class GameSignalInstaller : Installer
     {

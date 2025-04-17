@@ -1,7 +1,6 @@
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.Game;
-using Zenject;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Installers.Game
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Installers.Game
 {
     public sealed class GameModelInstaller : Installer
     {

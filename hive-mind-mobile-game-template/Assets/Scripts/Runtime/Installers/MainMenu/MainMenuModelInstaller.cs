@@ -1,7 +1,6 @@
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.MainMenu;
-using Zenject;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Installers.MainMenu
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Installers.MainMenu
 {
     public sealed class MainMenuModelInstaller : Installer
     {

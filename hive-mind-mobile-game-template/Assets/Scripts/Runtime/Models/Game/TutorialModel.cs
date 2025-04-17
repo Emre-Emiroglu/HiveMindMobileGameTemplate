@@ -1,7 +1,6 @@
-﻿using CodeCatGames.HiveMind.Core.Runtime.MVC.Model;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ScriptableObjects.Game;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.Game
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game
 {
     public sealed class TutorialModel : Model<TutorialSettings>
     {

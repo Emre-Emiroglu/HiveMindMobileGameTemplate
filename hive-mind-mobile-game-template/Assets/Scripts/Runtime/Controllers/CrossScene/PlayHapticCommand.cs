@@ -1,9 +1,6 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.Controller;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.CrossScene;
-using Lofelt.NiceVibrations;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Controllers.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
 {
     public sealed class PlayHapticCommand : Command<PlayHapticSignal>
     {

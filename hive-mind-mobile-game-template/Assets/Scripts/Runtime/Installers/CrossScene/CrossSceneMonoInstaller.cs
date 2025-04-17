@@ -1,11 +1,10 @@
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ValueObjects.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Factories.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Handlers.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Views.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Factories.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene;
 using UnityEngine;
-using Zenject;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Installers.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Installers.CrossScene
 {
     public sealed class CrossSceneMonoInstaller : MonoInstaller
     {

@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using CodeCatGames.HiveMind.Core.Runtime.MVC.Model;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ScriptableObjects.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Enums.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
 {
     public sealed class CurrencyModel : Model<CurrencySettings>
     {

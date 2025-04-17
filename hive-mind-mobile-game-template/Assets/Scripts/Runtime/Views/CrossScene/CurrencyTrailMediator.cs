@@ -1,11 +1,9 @@
-﻿using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ValueObjects.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.CrossScene;
-using PrimeTween;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 using UnityEngine;
-using Zenject;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Views.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
     public sealed class CurrencyTrailMediator : MonoBehaviour, IPoolable<CurrencyTrailData, IMemoryPool>
     {

@@ -1,6 +1,4 @@
-using Zenject;
-
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Installers.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Installers.CrossScene
 {
     public sealed class CurrencyTrailInstaller : Installer<CurrencyTrailInstaller>
     {

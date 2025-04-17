@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ScriptableObjects.Application
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Application
 {
-    [CreateAssetMenu(fileName = "ApplicationSettings", menuName = "CodeCatGames/HiveMind/Samples/SampleGame/Application/ApplicationSettings")]
+    [CreateAssetMenu(fileName = "ApplicationSettings", menuName = "HiveMindMobileGameTemplate/Application/ApplicationSettings")]
     public sealed class ApplicationSettings : ScriptableObject
     {
         #region Fields

@@ -1,10 +1,8 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.Controller;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Zenject;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Controllers.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
 {
     public sealed class LoadSceneCommand : Command<LoadSceneSignal>
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Views.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
     public sealed class CurrencyTrailView : MonoBehaviour
     {

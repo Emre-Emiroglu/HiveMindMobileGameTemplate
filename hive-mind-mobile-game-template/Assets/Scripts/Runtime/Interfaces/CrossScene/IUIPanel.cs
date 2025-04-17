@@ -1,6 +1,6 @@
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ValueObjects.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Interfaces.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Interfaces.CrossScene
 {
     public interface IUIPanel
     {

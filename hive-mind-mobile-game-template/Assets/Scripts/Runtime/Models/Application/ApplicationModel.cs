@@ -1,20 +1,17 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.Model;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ScriptableObjects.Application;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Application;
+using CodeCatGames.HMModelViewController.Runtime;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.Application
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Application
 {
     public sealed class ApplicationModel : Model<ApplicationSettings>
     {
-        #region Constants
-        private const string ResourcePath = "Samples/SampleGame/Application/ApplicationSettings";
-        #endregion
-
         #region Constructor
-        public ApplicationModel() : base(ResourcePath) { }
+        public ApplicationModel(ApplicationSettings settings) : base(settings) { }
         #endregion
-
-        #region PostConstruct
-        public override void PostConstruct() { }
+        
+        #region Executes
+        public override void LoadData() { }
+        public override void SaveData() { }
         #endregion
     }
 }

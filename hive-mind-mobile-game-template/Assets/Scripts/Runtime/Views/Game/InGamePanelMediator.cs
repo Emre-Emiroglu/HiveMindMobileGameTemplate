@@ -1,15 +1,10 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.View;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ValueObjects.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Enums.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.Game;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Utilities.CrossScene;
-using Lofelt.NiceVibrations;
-using PrimeTween;
-using Zenject;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Views.Game
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
 {
     public sealed class InGamePanelMediator : Mediator<InGamePanelView>
     {

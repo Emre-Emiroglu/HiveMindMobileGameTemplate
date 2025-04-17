@@ -1,4 +1,4 @@
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.Bootstrap
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Bootstrap
 {
-    public readonly struct InitializeBootstrapSignal { } // Has Command
+    public readonly struct InitBootstrapSignal { }
 }

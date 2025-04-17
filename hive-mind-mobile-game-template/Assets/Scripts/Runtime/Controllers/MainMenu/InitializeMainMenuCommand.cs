@@ -1,10 +1,8 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.Controller;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Enums.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.MainMenu;
-using Zenject;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.MainMenu;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Controllers.MainMenu
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu
 {
     public sealed class InitializeMainMenuCommand : Command<InitializeMainMenuSignal>
     {

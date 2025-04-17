@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ScriptableObjects.Game
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game
 {
     [CreateAssetMenu(fileName = "GameSettings", menuName = "CodeCatGames/HiveMind/Samples/SampleGame/Game/GameSettings")]
     public sealed class GameSettings : ScriptableObject

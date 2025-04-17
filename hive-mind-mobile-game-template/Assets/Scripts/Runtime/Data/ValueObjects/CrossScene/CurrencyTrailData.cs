@@ -1,8 +1,7 @@
-﻿using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Enums.CrossScene;
-using PrimeTween;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using UnityEngine;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ValueObjects.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene
 {
     public readonly struct CurrencyTrailData
     {

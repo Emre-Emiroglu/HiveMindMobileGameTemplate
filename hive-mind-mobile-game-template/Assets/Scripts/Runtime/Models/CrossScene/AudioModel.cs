@@ -1,14 +1,12 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.Model;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ScriptableObjects.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
 using UnityEngine.Audio;
-using Zenject;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
 {
-    public sealed class AudioModel : Model<AudioSettings>, IInitializable
+    public sealed class AudioModel : Model<AudioSettings>
     {
         #region Constants
-        private const string ResourcePath = "Samples/SampleGame/CrossScene/AudioSettings";
         private const string AudioPath = "AUDIO_PATH";
         private const string MusicParam = "MUSIC_PARAM";
         private const string SoundParam = "SOUND_PARAM";
@@ -24,29 +22,25 @@ namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.CrossScene
         #endregion
 
         #region Getters
+        
         public bool IsSoundMuted => _isSoundMuted;
         public bool IsMusicMuted => _isMusicMuted;
         #endregion
 
         #region Constructor
-        public AudioModel() : base(ResourcePath)
+        public AudioModel(AudioSettings settings) : base(settings)
         {
-            _audioMixer = GetSettings.AudioMixer;
+            _audioMixer = Settings.AudioMixer;
+            
+            LoadData();
+            SetMusic(_isMusicMuted);
+            SetSound(_isSoundMuted);
+        }
+
+        {
 
             _isMusicMuted = ES3.Load(nameof(_isMusicMuted), AudioPath, false);
             _isSoundMuted = ES3.Load(nameof(_isSoundMuted), AudioPath, false);
-        }
-        #endregion
-
-        #region PostConstruct
-        public override void PostConstruct() { }
-        #endregion
-
-        #region Core
-        public void Initialize()
-        {
-            SetMusic(_isMusicMuted);
-            SetSound(_isSoundMuted);
         }
         #endregion
 
@@ -71,5 +65,13 @@ namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.CrossScene
             ES3.Save(nameof(_isSoundMuted), _isSoundMuted, AudioPath);
         }
         #endregion
+
+        public override void LoadData()
+        {
+            
+        }
+        public override void SaveData()
+        {
+        }
     }
 }

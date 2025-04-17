@@ -1,7 +1,6 @@
-﻿using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.CrossScene;
-using Zenject;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Installers.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Installers.CrossScene
 {
     public sealed class CrossSceneModelInstaller: Installer
     {

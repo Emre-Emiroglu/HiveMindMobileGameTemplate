@@ -1,10 +1,10 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.View;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Data.ValueObjects.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Interfaces.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Interfaces.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Views.Bootstrap
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap
 {
     [RequireComponent(typeof(CanvasGroup))]
     public sealed class LogoHolderPanelView : View, IUIPanel

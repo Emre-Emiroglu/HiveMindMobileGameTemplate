@@ -1,10 +1,8 @@
-using CodeCatGames.HiveMind.Core.Runtime.MVC.Controller;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Enums.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Models.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.CrossScene;
-using Zenject;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Controllers.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
 {
     public sealed class SettingsButtonPressedCommand : Command<SettingsButtonPressedSignal>
     {

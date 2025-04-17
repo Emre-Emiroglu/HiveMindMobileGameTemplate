@@ -1,8 +1,7 @@
-﻿using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Controllers.CrossScene;
-using CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Signals.CrossScene;
-using Zenject;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 
-namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Installers.CrossScene
+namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Installers.CrossScene
 {
     public sealed class CrossSceneSignalInstaller: Installer
     {
@@ -12,7 +11,6 @@ namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Installers.CrossScene
             Container.DeclareSignal<ChangeLoadingScreenActivationSignal>();
             Container.DeclareSignal<LoadSceneSignal>();
             Container.DeclareSignal<PlayAudioSignal>();
-            Container.DeclareSignal<PlayHapticSignal>();
             Container.DeclareSignal<ChangeCurrencySignal>();
             Container.DeclareSignal<SpawnCurrencyTrailSignal>();
             Container.DeclareSignal<RefreshCurrencyVisualSignal>();
@@ -20,12 +18,12 @@ namespace CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Installers.CrossScene
             Container.DeclareSignal<SettingsButtonRefreshSignal>();
             Container.DeclareSignal<ChangeUIPanelSignal>();
 
-            Container.BindInterfacesAndSelfTo<ChangeCurrencyCommand>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<CurrencyController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<LoadSceneCommand>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<PlayHapticCommand>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<SettingsButtonPressedCommand>().AsSingle().NonLazy();
 
-            Container.BindSignal<ChangeCurrencySignal>().ToMethod<ChangeCurrencyCommand>((x, s) => x.Execute(s))
+            Container.BindSignal<ChangeCurrencySignal>().ToMethod<CurrencyController>((x, s) => x.Execute(s))
                 .FromResolve();
             Container.BindSignal<LoadSceneSignal>().ToMethod<LoadSceneCommand>((x, s) => x.Execute(s)).FromResolve();
             Container.BindSignal<PlayHapticSignal>().ToMethod<PlayHapticCommand>((x, s) => x.Execute(s)).FromResolve();
