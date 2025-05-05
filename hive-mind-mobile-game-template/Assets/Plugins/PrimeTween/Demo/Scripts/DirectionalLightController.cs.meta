@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: db622a6d0e0fa4b68852ef1a7fc60dba
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252960
+  packageName: "PrimeTween \xB7 High-Performance Animations and Sequences"
+  packageVersion: 1.2.2
+  assetPath: Assets/Plugins/PrimeTween/Demo/Scripts/DirectionalLightController.cs
+  uploadId: 745996

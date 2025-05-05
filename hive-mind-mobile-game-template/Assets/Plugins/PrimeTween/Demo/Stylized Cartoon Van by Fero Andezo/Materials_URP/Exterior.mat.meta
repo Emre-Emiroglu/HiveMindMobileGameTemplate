@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4664d12bb5ac04e998b3008d8f2803dc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252960
+  packageName: "PrimeTween \xB7 High-Performance Animations and Sequences"
+  packageVersion: 1.2.2
+  assetPath: Assets/Plugins/PrimeTween/Demo/Stylized Cartoon Van by Fero Andezo/Materials_URP/Exterior.mat
+  uploadId: 745996

@@ -1,5 +1,5 @@
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Application
 {
-    public readonly struct InitAppSignal { }
-    public readonly struct QuitAppSignal { }
+    public readonly struct InitializeApplicationSignal { }
+    public readonly struct QuitApplicationSignal { }
 }

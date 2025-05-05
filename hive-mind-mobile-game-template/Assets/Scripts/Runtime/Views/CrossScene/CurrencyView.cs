@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using AYellowpaper.SerializedCollections;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,13 +11,13 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
     {
         #region Fields
         [Header("Currency View Fields")]
-        [SerializeField] private Dictionary<CurrencyTypes, TextMeshProUGUI> _currencyTexts;
-        [SerializeField] private Dictionary<CurrencyTypes, Button> _currencyButtons;
+        [SerializeField] private SerializedDictionary<CurrencyTypes, TextMeshProUGUI> currencyTexts;
+        [SerializeField] private SerializedDictionary<CurrencyTypes, Button> currencyButtons;
         #endregion
 
         #region Getters
-        public Dictionary<CurrencyTypes, TextMeshProUGUI> CurrencyTexts => _currencyTexts;
-        public Dictionary<CurrencyTypes, Button> CurrencyButtons => _currencyButtons;
+        public SerializedDictionary<CurrencyTypes, TextMeshProUGUI> CurrencyTexts => currencyTexts;
+        public SerializedDictionary<CurrencyTypes, Button> CurrencyButtons => currencyButtons;
         #endregion
     }
 }

@@ -2,7 +2,7 @@
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game
 {
-    [CreateAssetMenu(fileName = "TutorialSettings", menuName = "CodeCatGames/HiveMind/Samples/SampleGame/Game/TutorialSettings")]
+    [CreateAssetMenu(fileName = "TutorialSettings", menuName = "CodeCatGames/HiveMindMobileGameTemplate/Game/TutorialSettings")]
     public sealed class TutorialSettings : ScriptableObject
     {
     }

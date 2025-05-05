@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 900e84e1426b4fc8a386a58aaee3b4ba
+timeCreated: 1685260544
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252960
+  packageName: "PrimeTween \xB7 High-Performance Animations and Sequences"
+  packageVersion: 1.2.2
+  assetPath: Assets/Plugins/PrimeTween/Demo/Scripts/CameraProjectionMatrixAnimation.cs
+  uploadId: 745996

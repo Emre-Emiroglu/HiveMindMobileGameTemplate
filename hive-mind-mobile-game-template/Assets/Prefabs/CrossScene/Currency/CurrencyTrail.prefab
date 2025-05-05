@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1380271440027144455}
-  - component: {fileID: 988555849175397540}
-  - component: {fileID: 8022606517294371923}
-  - component: {fileID: 103929317106778522}
+  - component: {fileID: 3500460832374549215}
+  - component: {fileID: 1871829699687298733}
   m_Layer: 5
   m_Name: CurrencyTrail
   m_TagString: Untagged
@@ -40,7 +39,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 128, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &988555849175397540
+--- !u!114 &3500460832374549215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,42 +48,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 6219064857540798425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e38e9bd0be194e3d9959fe95ac004750, type: 3}
+  m_Script: {fileID: 11500000, guid: 641a42b1e4d941c2a05600c430294055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentReference:
+    TypeName: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene.CrossSceneScope
+  autoRun: 1
+  autoInjectGameObjects: []
+  currencyTrailView: {fileID: 1871829699687298733}
+--- !u!114 &1871829699687298733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219064857540798425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef70041bd3440bc821db4c516b8105e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   iconImage: {fileID: 3870064628640687769}
   amountText: {fileID: 5291923730897335795}
---- !u!114 &8022606517294371923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6219064857540798425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a4039f5b2b34029bc8566cee090ba88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &103929317106778522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6219064857540798425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _components:
-  - {fileID: 8022606517294371923}
-  - {fileID: 988555849175397540}
-  _identifier: 
-  _useSceneContext: 0
-  _context: {fileID: 0}
-  _bindType: 2
 --- !u!1 &7732993624386957397
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,15 +253,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0

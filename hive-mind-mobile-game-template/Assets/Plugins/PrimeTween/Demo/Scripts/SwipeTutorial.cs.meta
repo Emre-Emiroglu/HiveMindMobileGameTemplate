@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: d20b7aac1e6a4f1dbdbe52c7ca1ad4b4
+timeCreated: 1685344395
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252960
+  packageName: "PrimeTween \xB7 High-Performance Animations and Sequences"
+  packageVersion: 1.2.2
+  assetPath: Assets/Plugins/PrimeTween/Demo/Scripts/SwipeTutorial.cs
+  uploadId: 745996

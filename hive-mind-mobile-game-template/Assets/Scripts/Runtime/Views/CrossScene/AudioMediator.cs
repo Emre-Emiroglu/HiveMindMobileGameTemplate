@@ -1,53 +1,42 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
+using CodeCatGames.HMSignalBus.Runtime;
+using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
-    public sealed class AudioMediator : Mediator<AudioView>
+    public sealed class AudioMediator : Mediator<SettingsModel, Settings, AudioView>, IInitializable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
-        private readonly AudioModel _audioModel;
+        private readonly AudioController _controller;
         #endregion
-
+        
         #region Constructor
-        public AudioMediator(AudioView view, SignalBus signalBus, AudioModel audioModel) : base(view)
+        public AudioMediator(SettingsModel model, AudioView view, SignalBus signalBus,
+            AudioController controller) : base(model, view)
         {
             _signalBus = signalBus;
-            _audioModel = audioModel;
+            _controller = controller;
         }
-        #endregion
-
-        #region PostConstruct
-        public override void PostConstruct() { }
         #endregion
 
         #region Core
-        public override void Initialize() => _signalBus.Subscribe<PlayAudioSignal>(OnPlayAudio);
-        public override void Dispose() => _signalBus.Unsubscribe<PlayAudioSignal>(OnPlayAudio);
+        public override void SetSubscriptions(bool isSubscribed)
+        {
+            if (isSubscribed)
+                _signalBus.Subscribe<PlayAudioSignal>(OnPlayAudioSignal);
+            else
+                _signalBus.Unsubscribe<PlayAudioSignal>(OnPlayAudioSignal);
+        }
         #endregion
 
         #region SignalReceivers
-        private void OnPlayAudio(PlayAudioSignal signal) =>
-            PlayAudioProcess(signal.AudioType, signal.MusicType, signal.SoundType);
-        #endregion
-
-        #region Executes
-        private void PlayAudioProcess(AudioTypes audioType, MusicTypes musicType, SoundTypes soundType)
-        {
-            switch (audioType)
-            {
-                case AudioTypes.Music:
-                    GetView.AudioSources[audioType].clip = _audioModel.GetSettings.Musics[musicType];
-                    GetView.AudioSources[audioType].loop = true;
-                    GetView.AudioSources[audioType].Play();
-                    break;
-                case AudioTypes.Sound:
-                    GetView.AudioSources[audioType].PlayOneShot(_audioModel.GetSettings.Sounds[soundType]);
-                    break;
-            }
-        }
+        private void OnPlayAudioSignal(PlayAudioSignal signal) =>
+            _controller.Execute(signal.AudioType, signal.MusicType, signal.SoundType);
         #endregion
     }
 }

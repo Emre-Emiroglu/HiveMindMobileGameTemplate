@@ -1,65 +1,66 @@
+﻿using System.Collections.Generic;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
+using CodeCatGames.HMModelViewController.Runtime;
+using CodeCatGames.HMSignalBus.Runtime;
+using UnityEngine;
+using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
 {
-    public sealed class GameOverPanelMediator : Mediator<GameOverPanelView>
+    public sealed class GameOverPanelMediator : Mediator<GameModel, GameSettings, GameOverPanelView>, IInitializable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
         #endregion
 
         #region Constructor
-        public GameOverPanelMediator(GameOverPanelView view, SignalBus signalBus) : base(view) =>
-            _signalBus = signalBus;
-        #endregion
-
-        #region PostConstruct
-        public override void PostConstruct() { }
+        public GameOverPanelMediator(GameModel model, GameOverPanelView view, SignalBus signalBus) :
+            base(model, view) => _signalBus = signalBus;
         #endregion
 
         #region Core
-        public override void Initialize() => SetCycleSubscriptions(true);
-        public override void Dispose() => SetCycleSubscriptions(false);
-        #endregion
-
-        #region Subscriptions
-        private void SetCycleSubscriptions(bool isSub)
+        void IInitializable.Initialize() => base.Initialize();
+        public override void SetSubscriptions(bool isSubscribed)
         {
-            if (isSub)
+            if (isSubscribed)
             {
                 _signalBus.Subscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
                 _signalBus.Subscribe<SetupGameOverPanelSignal>(OnSetupGameOverPanelSignal);
 
-                GetView.FailHomeButton.onClick.AddListener(OnHomeButtonClicked);
-                GetView.SuccessHomeButton.onClick.AddListener(OnHomeButtonClicked);
-                GetView.RestartButton.onClick.AddListener(OnRestartButtonClicked);
-                GetView.NextButton.onClick.AddListener(OnNextButtonClicked);
+                View.FailHomeButton.onClick.AddListener(OnHomeButtonClicked);
+                View.SuccessHomeButton.onClick.AddListener(OnHomeButtonClicked);
+                View.RestartButton.onClick.AddListener(OnRestartButtonClicked);
+                View.NextButton.onClick.AddListener(OnNextButtonClicked);
             }
             else
             {
                 _signalBus.Unsubscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
                 _signalBus.Unsubscribe<SetupGameOverPanelSignal>(OnSetupGameOverPanelSignal);
 
-                GetView.FailHomeButton.onClick.RemoveListener(OnHomeButtonClicked);
-                GetView.SuccessHomeButton.onClick.RemoveListener(OnHomeButtonClicked);
-                GetView.RestartButton.onClick.RemoveListener(OnRestartButtonClicked);
-                GetView.NextButton.onClick.RemoveListener(OnNextButtonClicked);
+                View.FailHomeButton.onClick.RemoveListener(OnHomeButtonClicked);
+                View.SuccessHomeButton.onClick.RemoveListener(OnHomeButtonClicked);
+                View.RestartButton.onClick.RemoveListener(OnRestartButtonClicked);
+                View.NextButton.onClick.RemoveListener(OnNextButtonClicked);
             }
         }
         #endregion
-
+        
         #region SignalReceivers
         private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal)
         {
-            bool isShow = signal.UIPanelType == GetView.UIPanelVo.UIPanelType;
-            GetView.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
-            GetView.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(isShow);
+            bool isShow = signal.UIPanelType == View.UIPanelVo.UIPanelType;
+            
+            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
+            View.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(isShow);
         }
         private void OnSetupGameOverPanelSignal(SetupGameOverPanelSignal signal)
         {
-            foreach (var item in GetView.GameOverPanels)
+            foreach (KeyValuePair<bool, GameObject> item in View.GameOverPanels)
             {
                 bool isActive = item.Key == signal.IsSuccess;
                 item.Value.SetActive(isActive);
@@ -72,19 +73,16 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         {
             _signalBus.Fire(new GameExitSignal());
             _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-            _signalBus.Fire(new PlayHapticSignal(HapticPatterns.PresetType.LightImpact));
         }
         private void OnRestartButtonClicked()
         {
             _signalBus.Fire(new PlayGameSignal());
             _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-            _signalBus.Fire(new PlayHapticSignal(HapticPatterns.PresetType.LightImpact));
         }
         private void OnNextButtonClicked()
         {
             _signalBus.Fire(new PlayGameSignal());
             _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-            _signalBus.Fire(new PlayHapticSignal(HapticPatterns.PresetType.LightImpact));
         }
         #endregion
     }

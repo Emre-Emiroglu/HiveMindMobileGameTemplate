@@ -1,12 +1,12 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Interfaces.CrossScene;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public sealed class TutorialPanelView : View, IUIPanel
+    public sealed class TutorialPanelView : View
     {
         #region Fields
         [Header("Tutorial Panel View Fields")]

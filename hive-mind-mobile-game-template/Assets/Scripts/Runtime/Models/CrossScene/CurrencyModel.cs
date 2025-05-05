@@ -1,16 +1,14 @@
+﻿using System;
 using System.Collections.Generic;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
+using CodeCatGames.HMPersistentData.Runtime;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
 {
     public sealed class CurrencyModel : Model<CurrencySettings>
     {
-        #region Constants
-        private const string ResourcePath = "Samples/SampleGame/CrossScene/CurrencySettings";
-        private const string CurrencyPath = "CURRENCY_PATH";
-        #endregion
-
         #region Fields
         private Dictionary<CurrencyTypes, int> _currencyValues;
         #endregion
@@ -20,28 +18,34 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
         #endregion
 
         #region Constructor
-        public CurrencyModel() : base(ResourcePath)
+        public CurrencyModel(CurrencySettings settings) : base(settings)
         {
-            _currencyValues = ES3.Load(nameof(_currencyValues), CurrencyPath,
-                new Dictionary<CurrencyTypes, int>(GetSettings.DefaultCurrencyValues));
+            _currencyValues = new Dictionary<CurrencyTypes, int>(settings.DefaultCurrencyValues);
 
-            Save();
+            try
+            {
+                LoadData();
+            }
+            catch (Exception)
+            {
+                SaveData();
+            }
         }
         #endregion
-
-        #region PostConstruct
-        public override void PostConstruct() { }
-        #endregion
-
+        
         #region Executes
         public void ChangeCurrencyValue(CurrencyTypes currencyType, int amount, bool isSet)
         {
-            int lasValue = _currencyValues[currencyType];
-            _currencyValues[currencyType] = isSet ? amount : lasValue + amount;
+            int lastValue = _currencyValues[currencyType];
+            
+            _currencyValues[currencyType] = isSet ? amount : lastValue + amount;
 
-            Save();
+            SaveData();
         }
-        public void Save() => ES3.Save(nameof(_currencyValues), _currencyValues, CurrencyPath);
+        public override void LoadData() => _currencyValues =
+            PersistentDataServiceUtilities.Load<Dictionary<CurrencyTypes, int>>(nameof(_currencyValues));
+        public override void SaveData() =>
+            PersistentDataServiceUtilities.Save(nameof(_currencyValues), _currencyValues);
         #endregion
     }
 }

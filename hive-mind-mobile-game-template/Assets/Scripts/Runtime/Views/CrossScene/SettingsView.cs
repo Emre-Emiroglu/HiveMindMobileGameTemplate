@@ -1,29 +1,30 @@
-using System.Collections.Generic;
+﻿using AYellowpaper.SerializedCollections;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
-    public sealed class SettingsView: View
+    public sealed class SettingsView : View
     {
         #region Fields
-        [Header("Settings Button View Fields")]
+        [Header("Settings View Fields")]
         [SerializeField] private GameObject verticalGroup;
         [SerializeField] private Button button;
         [SerializeField] private Button exitButton;
-        [SerializeField] private Dictionary<SettingsTypes, Button> _settingsButtons;
-        [SerializeField] private Dictionary<SettingsTypes, GameObject> _settingsOnImages;
-        [SerializeField] private Dictionary<SettingsTypes, GameObject> _settingsOffImages;
+        [SerializeField] private SerializedDictionary<SettingsTypes, Button> settingsButtons;
+        [SerializeField] private SerializedDictionary<SettingsTypes, GameObject> settingsOnImages;
+        [SerializeField] private SerializedDictionary<SettingsTypes, GameObject> settingsOffImages;
         #endregion
 
         #region Getters
         public GameObject VerticalGroup => verticalGroup;
         public Button Button => button;
         public Button ExitButton => exitButton;
-        public Dictionary<SettingsTypes, Button> SettingsButtons => _settingsButtons;
-        public Dictionary<SettingsTypes, GameObject> SettingsOnImages => _settingsOnImages;
-        public Dictionary<SettingsTypes, GameObject> SettingsOffImages => _settingsOffImages;
+        public SerializedDictionary<SettingsTypes, Button> SettingsButtons => settingsButtons;
+        public SerializedDictionary<SettingsTypes, GameObject> SettingsOnImages => settingsOnImages;
+        public SerializedDictionary<SettingsTypes, GameObject> SettingsOffImages => settingsOffImages;
         #endregion
     }
 }

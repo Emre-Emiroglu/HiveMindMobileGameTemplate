@@ -1,5 +1,6 @@
-using System.Collections.Generic;
+﻿using AYellowpaper.SerializedCollections;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
 using UnityEngine;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
@@ -8,11 +9,11 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
     {
         #region Fields
         [Header("Audio View Fields")]
-        [SerializeField] private Dictionary<AudioTypes, AudioSource> _audioSources;
+        [SerializeField] private SerializedDictionary<AudioTypes, AudioSource> audioSources;
         #endregion
 
         #region Getters
-        public Dictionary<AudioTypes, AudioSource> AudioSources => _audioSources;
+        public SerializedDictionary<AudioTypes, AudioSource> AudioSources => audioSources;
         #endregion
     }
 }

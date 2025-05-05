@@ -1,19 +1,17 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
 {
     public sealed class CrossSceneModel : Model<CrossSceneSettings>
     {
-        #region Constants
-        private const string ResourcePath = "Samples/SampleGame/CrossScene/CrossSceneSettings";
-        #endregion
-
         #region Constructor
-        public CrossSceneModel() : base(ResourcePath) { }
+        public CrossSceneModel(CrossSceneSettings settings) : base(settings) { }
         #endregion
 
-        #region PostConstruct
-        public override void PostConstruct() { }
+        #region Executes
+        public override void LoadData() { }
+        public override void SaveData() { }
         #endregion
     }
 }

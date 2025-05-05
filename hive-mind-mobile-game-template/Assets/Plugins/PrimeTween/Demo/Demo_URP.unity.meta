@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 15054139658a5445689224c71f805b10
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252960
+  packageName: "PrimeTween \xB7 High-Performance Animations and Sequences"
+  packageVersion: 1.2.2
+  assetPath: Assets/Plugins/PrimeTween/Demo/Demo_URP.unity
+  uploadId: 745996

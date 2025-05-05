@@ -1,19 +1,17 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
+using CodeCatGames.HMModelViewController.Runtime;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu
 {
     public sealed class MainMenuModel : Model<MainMenuSettings>
     {
-        #region Constants
-        private const string ResourcePath = "Samples/SampleGame/MainMenu/MainMenuSettings";
-        #endregion
-
         #region Constructor
-        public MainMenuModel() : base(ResourcePath) { }
+        public MainMenuModel(MainMenuSettings settings) : base(settings) { }
         #endregion
 
-        #region PostConstruct
-        public override void PostConstruct() { }
+        #region Executes
+        public override void LoadData() { }
+        public override void SaveData() { }
         #endregion
     }
 }

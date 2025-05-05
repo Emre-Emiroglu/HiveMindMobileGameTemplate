@@ -1,28 +1,28 @@
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Bootstrap;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
 using CodeCatGames.HMModelViewController.Runtime;
 using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap
 {
-    public sealed class LogoHolderPanelMediator : Mediator<BootstrapModel, BootstrapSettings, LogoHolderPanelView>,
-        IInitializable
+    public sealed class LogoHolderPanelMediator : Mediator<BootstrapModel, BootstrapSettings, LogoHolderPanelView>, IInitializable
     {
+        #region ReadonlyFields
+        private readonly LogoHolderPanelController _controller;
+        #endregion
+        
         #region Constructor
-        public LogoHolderPanelMediator(BootstrapModel model, LogoHolderPanelView view) : base(model, view) { }
+        public LogoHolderPanelMediator(BootstrapModel model, LogoHolderPanelView view,
+            LogoHolderPanelController controller) : base(model, view) => _controller = controller;
         #endregion
         
         #region Core
-        public new void Initialize()
+        void IInitializable.Initialize()
         {
             base.Initialize();
-        
-            View.LogoImage.sprite = Model.Settings.LogoSprite;
-            View.LogoImage.preserveAspect = true;
 
-            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(true);
-            View.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(true);
+            _controller.Execute();
         }
         public override void SetSubscriptions(bool isSubscribed) { }
         #endregion

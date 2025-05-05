@@ -1,81 +1,58 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
+using CodeCatGames.HMSignalBus.Runtime;
+using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
 {
-    public sealed class StartPanelMediator: Mediator<StartPanelView>
+    public sealed class StartPanelMediator : Mediator<MainMenuModel, MainMenuSettings, StartPanelView>, IInitializable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
-        private readonly LevelModel _levelModel;
+        private readonly StartPanelChangeUIPanelController _changeUIPanelController;
+        private readonly StartPanelPlayButtonClickedController _playButtonClickedController;
         #endregion
 
         #region Constructor
-        public StartPanelMediator(StartPanelView view, SignalBus signalBus, LevelModel levelModel) : base(view)
+        public StartPanelMediator(MainMenuModel model, StartPanelView view, SignalBus signalBus,
+            StartPanelChangeUIPanelController changeUIPanelController,
+            StartPanelPlayButtonClickedController playButtonClickedController) : base(model, view)
         {
             _signalBus = signalBus;
-            _levelModel = levelModel;
+            _changeUIPanelController = changeUIPanelController;
+            _playButtonClickedController = playButtonClickedController;
         }
         #endregion
 
-        #region PostConstruct
-        public override void PostConstruct() { }
-        #endregion
-
         #region Core
-        public override void Initialize() => SetCycleSubscriptions(true);
-        public override void Dispose() => SetCycleSubscriptions(false);
-        #endregion
-
-        #region Subscriptions
-        private void SetCycleSubscriptions(bool isSub)
+        void IInitializable.Initialize() => base.Initialize();
+        public override void SetSubscriptions(bool isSubscribed)
         {
-            if (isSub)
+            if (isSubscribed)
             {
                 _signalBus.Subscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
 
-                GetView.PlayButton.onClick.AddListener(OnPlayButtonClicked);
+                View.PlayButton.onClick.AddListener(OnPlayButtonClicked);
             }
             else
             {
                 _signalBus.Unsubscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
 
-                GetView.PlayButton.onClick.RemoveListener(OnPlayButtonClicked);
+                View.PlayButton.onClick.RemoveListener(OnPlayButtonClicked);
             }
         }
         #endregion
-        
+
         #region SignalReceivers
-        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal)
-        {
-            bool isShow = signal.UIPanelType == GetView.UIPanelVo.UIPanelType;
-
-            GetView.PlayButton.interactable = isShow;
-
-            GetView.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
-            GetView.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(isShow);
-            
-            if (isShow)
-                SetLevelText();
-        }
+        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) =>
+            _changeUIPanelController.Execute(signal.UIPanelType);
         #endregion
-
+        
         #region ButtonReceivers
-        private void OnPlayButtonClicked()
-        {
-            _signalBus.Fire(new LoadSceneSignal(SceneID.Game));
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-            _signalBus.Fire(new PlayHapticSignal(HapticPatterns.PresetType.LightImpact));
-        }
-        #endregion
-
-        #region Executes
-        private void SetLevelText()
-        {
-            int levelNumber = _levelModel.LevelPersistentData.CurrentLevelIndex + 1;
-            GetView.LevelText.SetText($"Level {levelNumber}");
-        }
+        private void OnPlayButtonClicked() => _playButtonClickedController.Execute();
         #endregion
     }
 }

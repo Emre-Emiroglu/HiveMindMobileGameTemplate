@@ -1,15 +1,13 @@
+﻿using System;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
+using CodeCatGames.HMPersistentData.Runtime;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
 {
     public sealed class LevelModel : Model<LevelSettings>
     {
-        #region Constants
-        private const string ResourcePath = "Samples/SampleGame/CrossScene/LevelSettings";
-        private const string LevelPersistentDataPath = "LEVEL_PERSISTENT_DATA_PATH";
-        #endregion
-
         #region Fields
         private LevelPersistentData _levelPersistentData;
         #endregion
@@ -17,34 +15,34 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
         #region Getters
         public LevelPersistentData LevelPersistentData => _levelPersistentData;
         #endregion
-
+        
         #region Constructor
-        public LevelModel() : base(ResourcePath)
+        public LevelModel(LevelSettings settings) : base(settings)
         {
-            _levelPersistentData = ES3.Load(nameof(_levelPersistentData), LevelPersistentDataPath, new LevelPersistentData(0));
-
-            Save();
+            _levelPersistentData = new LevelPersistentData(0);
+            
+            try
+            {
+                LoadData();
+            }
+            catch (Exception)
+            {
+                SaveData();
+            }
         }
         #endregion
 
-        #region PostConstruct
-        public override void PostConstruct() { }
-        #endregion
-
-        #region DataExecutes
-        public void ResetLevelPersistentData()
-        {
-            _levelPersistentData = new(0);
-
-            Save();
-        }
+        #region Executes
         public void UpdateCurrentLevelIndex(bool isSet, int value)
         {
             _levelPersistentData.CurrentLevelIndex = isSet ? value : _levelPersistentData.CurrentLevelIndex + value;
 
-            Save();
+            SaveData();
         }
-        public void Save() => ES3.Save(nameof(_levelPersistentData), _levelPersistentData, LevelPersistentDataPath);
+        public override void LoadData() => _levelPersistentData =
+            PersistentDataServiceUtilities.Load<LevelPersistentData>(nameof(_levelPersistentData));
+        public override void SaveData() =>
+            PersistentDataServiceUtilities.Save(nameof(_levelPersistentData), _levelPersistentData);
         #endregion
     }
 }

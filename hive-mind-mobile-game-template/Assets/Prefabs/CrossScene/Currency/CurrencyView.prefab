@@ -131,7 +131,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 804076184579160475}
-  - component: {fileID: 8501194876300558783}
+  - component: {fileID: 6904407447234859429}
+  - component: {fileID: 2354897752214634203}
   - component: {fileID: 7674572017609673808}
   m_Layer: 5
   m_Name: CurrencyView
@@ -160,7 +161,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &8501194876300558783
+--- !u!114 &6904407447234859429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,91 +170,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1620338669469934478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55788549c7204ba89979d67719b7edf3, type: 3}
+  m_Script: {fileID: 11500000, guid: f448cda4049c4984b0cf10db50699393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 5361205290379058306}
-    - {fileID: 1678547908656029}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: _currencyTexts
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Enums.CrossScene.CurrencyTypes,
-        CodeCatGames.HiveMind.Samples.Runtime],[TMPro.TextMeshProUGUI, Unity.TextMeshPro]],
-        mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Enums.CrossScene.CurrencyTypes,
-        CodeCatGames.HiveMind.Samples.Runtime]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: _currencyButtons
-      Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Enums.CrossScene.CurrencyTypes,
-        CodeCatGames.HiveMind.Samples.Runtime],[UnityEngine.UI.Button, UnityEngine.UI]],
-        mscorlib
-    - Name: comparer
-      Entry: 9
-      Data: 1
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+  parentReference:
+    TypeName: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene.CrossSceneScope
+  autoRun: 1
+  autoInjectGameObjects: []
+  currencyView: {fileID: 2354897752214634203}
+--- !u!114 &2354897752214634203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620338669469934478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ce408408f8470299f7fe0845c0cb2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currencyTexts:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 5361205290379058306}
+  currencyButtons:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 1678547908656029}
 --- !u!95 &7674572017609673808
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -267,6 +214,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -455,15 +403,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0

@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7914984728314502789}
-  - component: {fileID: 4451742877048992002}
+  - component: {fileID: 3270227401707105964}
   m_Layer: 0
   m_Name: AudioView
   m_TagString: Untagged
@@ -66,7 +66,7 @@ Transform:
   - {fileID: 8149128769165366065}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4451742877048992002
+--- !u!114 &3270227401707105964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,71 +75,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2781781836545237117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07cc8c1588e84445ae7722f0eda8cc80, type: 3}
+  m_Script: {fileID: 11500000, guid: adca7c5c939e45a5a932405a63183da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 981444976310190836}
-    - {fileID: 52447538166106480}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: _audioSources
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Enums.CrossScene.AudioTypes,
-        CodeCatGames.HiveMind.Samples.Runtime],[UnityEngine.AudioSource, UnityEngine.AudioModule]],
-        mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[CodeCatGames.HiveMind.Samples.Runtime.SampleGame.Enums.CrossScene.AudioTypes,
-        CodeCatGames.HiveMind.Samples.Runtime]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+  audioSources:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 981444976310190836}
+    - Key: 1
+      Value: {fileID: 52447538166106480}
 --- !u!1 &3617651634142643977
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,9 +125,9 @@ AudioSource:
   m_GameObject: {fileID: 3617651634142643977}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4276788993044508435, guid: ea7a3d5e6799cbd47943169963c3ff75,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: -4276788993044508435, guid: ea7a3d5e6799cbd47943169963c3ff75, type: 2}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -310,9 +254,9 @@ AudioSource:
   m_GameObject: {fileID: 5304881669810168447}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -7693697196663338797, guid: ea7a3d5e6799cbd47943169963c3ff75,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: -7693697196663338797, guid: ea7a3d5e6799cbd47943169963c3ff75, type: 2}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

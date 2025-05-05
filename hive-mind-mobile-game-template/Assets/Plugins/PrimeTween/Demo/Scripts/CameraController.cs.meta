@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 3f2f29997e7148b98e1d84f3de1011bc
+timeCreated: 1682326446
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252960
+  packageName: "PrimeTween \xB7 High-Performance Animations and Sequences"
+  packageVersion: 1.2.2
+  assetPath: Assets/Plugins/PrimeTween/Demo/Scripts/CameraController.cs
+  uploadId: 745996

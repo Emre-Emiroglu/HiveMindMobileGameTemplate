@@ -1,5 +1,4 @@
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Interfaces.CrossScene;
 using CodeCatGames.HMModelViewController.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,10 +6,10 @@ using UnityEngine.UI;
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public sealed class LogoHolderPanelView : View, IUIPanel
+    public sealed class LogoHolderPanelView : View
     {
         #region Fields
-        [Header("Logo Holder Panel View Fields")]
+        [Header("Bootstrap Panel View Fields")]
         [SerializeField] private UIPanelVo uiPanelVo;
         [SerializeField] private Image logoImage;
         #endregion

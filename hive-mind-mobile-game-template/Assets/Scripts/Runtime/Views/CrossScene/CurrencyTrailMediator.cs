@@ -1,62 +1,58 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using UnityEngine;
+using CodeCatGames.HMModelViewController.Runtime;
+using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
-    public sealed class CurrencyTrailMediator : MonoBehaviour, IPoolable<CurrencyTrailData, IMemoryPool>
+    public sealed class CurrencyTrailMediator : Mediator<CurrencyModel, CurrencySettings, CurrencyTrailView>, IInitializable
     {
-        #region Injects
-        private SignalBus _signalBus;
-        private CurrencyModel _currencyModel;
-        private CurrencyTrailView _view;
+        #region ReadonlyFields
+        private readonly CurrencyTrailVisualController _currencyTrailVisualController;
+        private readonly CurrencyTrailTweenController _currencyTrailTweenController;
         #endregion
 
-        #region Fields
-        private IMemoryPool _memoryPool;
-        #endregion
-
-        #region PostConstruct
-        [Inject]
-        private void PostConstruct(SignalBus signalBus, CurrencyModel currencyModel, CurrencyTrailView view)
+        #region Constructor
+        public CurrencyTrailMediator(CurrencyModel model, CurrencyTrailView view,
+            CurrencyTrailVisualController currencyTrailVisualController,
+            CurrencyTrailTweenController currencyTrailTweenController) : base(model, view)
         {
-            _signalBus = signalBus;
-            _currencyModel = currencyModel;
-            _view = view;
+            _currencyTrailVisualController = currencyTrailVisualController;
+            _currencyTrailTweenController = currencyTrailTweenController;
         }
         #endregion
 
-        #region Pool
-        public void OnSpawned(CurrencyTrailData data, IMemoryPool memoryPool)
+        #region Core
+        void IInitializable.Initialize() => base.Initialize();
+        public override void SetSubscriptions(bool isSubscribed)
         {
-            _memoryPool = memoryPool;
-            
-            SetVisual(data);
-            PlayTween(data);
+            if (isSubscribed)
+            {
+                View.Created += OnCreated;
+                View.GetFromPool += OnGetFromPool;
+                View.ReturnToPool += OnReturnToPool;
+                View.Destroyed += OnDestroyed;
+            }
+            else
+            {
+                View.Created -= OnCreated;
+                View.GetFromPool -= OnGetFromPool;
+                View.ReturnToPool -= OnReturnToPool;
+                View.Destroyed -= OnDestroyed;
+            }
         }
-        public void OnDespawned() => _memoryPool = null;
         #endregion
 
-        #region Executes
-        private void SetVisual(CurrencyTrailData data)
+        #region PoolReceivers
+        private void OnCreated() { }
+        private void OnGetFromPool()
         {
-            transform.position = data.StartPosition;
-            
-            _view.IconImage.sprite = _currencyModel.GetSettings.CurrencyIcons[data.CurrencyType];
-            _view.IconImage.preserveAspect = true;
-            
-            _view.AmountText.SetText($"{data.Amount}x");
+            _currencyTrailVisualController.Execute();
+            _currencyTrailTweenController.Execute();
         }
-        private void PlayTween(CurrencyTrailData data) =>
-            Tween.Position(transform, data.TargetPosition, data.Duration, data.Ease)
-                .OnComplete(() => TweenCompleteCallback(data));
-        private void TweenCompleteCallback(CurrencyTrailData data)
-        {
-            _signalBus.Fire(new ChangeCurrencySignal(data.CurrencyType, data.Amount, false));
-            
-            _memoryPool.Despawn(this);
-        }
+        private void OnReturnToPool() { }
+        private void OnDestroyed() { }
         #endregion
     }
 }

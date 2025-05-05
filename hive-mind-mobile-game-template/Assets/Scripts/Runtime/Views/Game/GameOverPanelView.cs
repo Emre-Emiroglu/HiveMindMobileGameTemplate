@@ -1,18 +1,18 @@
-using System.Collections.Generic;
+﻿using AYellowpaper.SerializedCollections;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Interfaces.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public sealed class GameOverPanelView : View, IUIPanel
+    public sealed class GameOverPanelView : View
     {
         #region Fields
         [Header("Game Over Panel View Fields")]
         [SerializeField] private UIPanelVo uiPanelVo;
-        [SerializeField] private Dictionary<bool, GameObject> _gameOverPanels;
+        [SerializeField] private SerializedDictionary<bool, GameObject> gameOverPanels;
         [SerializeField] private Button failHomeButton;
         [SerializeField] private Button successHomeButton;
         [SerializeField] private Button restartButton;
@@ -21,7 +21,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
 
         #region Getters
         public UIPanelVo UIPanelVo => uiPanelVo;
-        public Dictionary<bool, GameObject> GameOverPanels => _gameOverPanels;
+        public SerializedDictionary<bool, GameObject> GameOverPanels => gameOverPanels;
         public Button FailHomeButton => failHomeButton;
         public Button SuccessHomeButton => successHomeButton;
         public Button RestartButton => restartButton;

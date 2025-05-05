@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 85ffa6ed6408b405d94d60bf1dce1057
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252960
+  packageName: "PrimeTween \xB7 High-Performance Animations and Sequences"
+  packageVersion: 1.2.2
+  assetPath: Assets/Plugins/PrimeTween/Demo/Scripts/PrimeTween.Demo.asmdef
+  uploadId: 745996

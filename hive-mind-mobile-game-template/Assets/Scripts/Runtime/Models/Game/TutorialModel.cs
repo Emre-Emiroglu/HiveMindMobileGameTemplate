@@ -1,14 +1,12 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
+﻿using System;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
+using CodeCatGames.HMModelViewController.Runtime;
+using CodeCatGames.HMPersistentData.Runtime;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game
 {
     public sealed class TutorialModel : Model<TutorialSettings>
     {
-        #region Constants
-        private const string ResourcePath = "Samples/SampleGame/Game/TutorialSettings";
-        private const string TutorialPath = "TUTORIAL_PATH";
-        #endregion
-
         #region Fields
         private bool _isTutorialShowed;
         #endregion
@@ -16,23 +14,32 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game
         #region Getters
         public bool IsTutorialShowed => _isTutorialShowed;
         #endregion
-
+        
         #region Constructor
-        public TutorialModel() : base(ResourcePath) =>
-            _isTutorialShowed = ES3.Load(nameof(_isTutorialShowed), TutorialPath, false);
-        #endregion
-
-        #region PostConstruct
-        public override void PostConstruct() { }
+        public TutorialModel(TutorialSettings settings) : base(settings)
+        {
+            try
+            {
+                LoadData();
+            }
+            catch (Exception)
+            {
+                SaveData();
+            }
+        }
         #endregion
 
         #region Executes
-        public void SetTutorial(bool isActive)
+        public void SetIsTutorialShowed(bool isTutorialShowed)
         {
-            _isTutorialShowed = isActive;
+            _isTutorialShowed = isTutorialShowed;
             
-            ES3.Save(nameof(_isTutorialShowed), _isTutorialShowed, TutorialPath);
+            SaveData();
         }
+        public override void LoadData() =>
+            _isTutorialShowed = PersistentDataServiceUtilities.Load<bool>(nameof(_isTutorialShowed));
+        public override void SaveData() =>
+            PersistentDataServiceUtilities.Save(nameof(_isTutorialShowed), _isTutorialShowed);
         #endregion
     }
 }

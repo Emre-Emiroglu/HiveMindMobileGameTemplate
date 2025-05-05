@@ -12,7 +12,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "cfb5433cc7889b87d00c5b3e47d1c23bf9576f2b"
+      "hash": "3f5a51aea34ba4ac1305c9934c1fb79b4889bf48"
     },
     "com.codecatgames.hmpool": {
       "version": "https://github.com/Emre-Emiroglu/HMPool.git",
@@ -42,7 +42,7 @@
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.2.1"
       },
-      "hash": "b89c118c28a191d01ee1d3761bd90a07d93efbcb"
+      "hash": "a432ec351fec332e49ea9fa884c0cef1bd4376f5"
     },
     "com.codecatgames.hmutilities": {
       "version": "https://github.com/Emre-Emiroglu/HMUtilities.git",
@@ -57,6 +57,12 @@
       "source": "git",
       "dependencies": {},
       "hash": "06067cd4c83e372310d6f79d1c625f6870ff7a2a"
+    },
+    "com.kyrylokuzyk.primetween": {
+      "version": "file:../Assets/Plugins/PrimeTween/internal/com.kyrylokuzyk.primetween.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
     },
     "com.unity.ext.nunit": {
       "version": "2.0.5",

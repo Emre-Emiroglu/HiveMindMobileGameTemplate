@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 453932c77a72487599d5103bcde610da
+timeCreated: 1685366944
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252960
+  packageName: "PrimeTween \xB7 High-Performance Animations and Sequences"
+  packageVersion: 1.2.2
+  assetPath: Assets/Plugins/PrimeTween/Demo/Scripts/JumpAnimation.cs
+  uploadId: 745996

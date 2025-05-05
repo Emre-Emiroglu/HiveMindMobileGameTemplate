@@ -1,62 +1,58 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
+using CodeCatGames.HMSignalBus.Runtime;
+using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
 {
-    public sealed class ShopPanelMediator : Mediator<ShopPanelView>
+    public sealed class ShopPanelMediator : Mediator<MainMenuModel, MainMenuSettings, ShopPanelView>, IInitializable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
+        private readonly ShopPanelChangeUIPanelController _changeUIPanelController;
+        private readonly ShopPanelHomeButtonClickedController _homeButtonClickedController;
         #endregion
-
+        
         #region Constructor
-        public ShopPanelMediator(ShopPanelView view, SignalBus signalBus) : base(view) => _signalBus = signalBus;
-        #endregion
-
-        #region PostConstruct
-        public override void PostConstruct() { }
-        #endregion
-
-        #region Core
-        public override void Initialize() => SetCycleSubscriptions(true);
-        public override void Dispose() => SetCycleSubscriptions(false);
-        #endregion
-
-        #region Subscriptions
-        private void SetCycleSubscriptions(bool isSub)
+        public ShopPanelMediator(MainMenuModel model, ShopPanelView view, SignalBus signalBus,
+            ShopPanelChangeUIPanelController changeUIPanelController,
+            ShopPanelHomeButtonClickedController homeButtonClickedController) : base(model, view)
         {
-            if (isSub)
+            _signalBus = signalBus;
+            _changeUIPanelController = changeUIPanelController;
+            _homeButtonClickedController = homeButtonClickedController;
+        }
+        #endregion
+        
+        #region Core
+        void IInitializable.Initialize() => base.Initialize();
+        public override void SetSubscriptions(bool isSubscribed)
+        {
+            if (isSubscribed)
             {
                 _signalBus.Subscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
 
-                GetView.HomeButton.onClick.AddListener(OnHomeButtonClicked);
+                View.HomeButton.onClick.AddListener(OnHomeButtonClicked);
             }
             else
             {
                 _signalBus.Unsubscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
 
-                GetView.HomeButton.onClick.RemoveListener(OnHomeButtonClicked);
+                View.HomeButton.onClick.RemoveListener(OnHomeButtonClicked);
             }
         }
         #endregion
         
         #region SignalReceivers
-        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal)
-        {
-            bool isShow = signal.UIPanelType == GetView.UIPanelVo.UIPanelType;
-
-            GetView.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
-            GetView.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(isShow);
-        }
+        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) =>
+            _changeUIPanelController.Execute(signal.UIPanelType);
         #endregion
 
         #region ButtonReceivers
-        private void OnHomeButtonClicked()
-        {
-            _signalBus.Fire(new ChangeUIPanelSignal(UIPanelTypes.StartPanel));
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-            _signalBus.Fire(new PlayHapticSignal(HapticPatterns.PresetType.LightImpact));
-        }
+        private void OnHomeButtonClicked() => _homeButtonClickedController.Execute();
         #endregion
     }
 }

@@ -1,5 +1,5 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Interfaces.CrossScene;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public sealed class StartPanelView: View, IUIPanel
+    public sealed class StartPanelView: View
     {
         #region Fields
         [Header("Start Panel View Fields")]

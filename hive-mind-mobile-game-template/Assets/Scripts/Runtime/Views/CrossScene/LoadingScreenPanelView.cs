@@ -1,15 +1,15 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Interfaces.CrossScene;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public sealed class LoadingScreenPanelView : View, IUIPanel
+    public sealed class LoadingScreenPanelView : View
     {
         #region Fields
-        [Header("Logo Holder Panel View Fields")]
+        [Header("Loading Screen Panel View Fields")]
         [SerializeField] private UIPanelVo uiPanelVo;
         [SerializeField] private Image fillImage;
         #endregion

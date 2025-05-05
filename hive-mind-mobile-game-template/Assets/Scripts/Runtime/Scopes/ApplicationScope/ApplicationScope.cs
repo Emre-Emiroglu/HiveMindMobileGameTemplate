@@ -29,7 +29,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.ApplicationScop
         }
         private void ServiceBindings(IContainerBuilder builder)
         {
-            PersistentDataServiceUtilities.Initialize(SerializerType.Json, "dat", string.Empty, string.Empty);
+            PersistentDataServiceUtilities.Initialize();
             
             builder.RegisterSignalBus();
             builder.RegisterPoolService(poolConfig);
@@ -42,16 +42,16 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.ApplicationScop
         }
         private void ControllerBindings(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<AppInitController>().AsSelf();
-            builder.RegisterEntryPoint<AppQuitController>().AsSelf();
+            builder.DeclareSignal<InitializeApplicationSignal>();
+            builder.DeclareSignal<QuitApplicationSignal>();
             
-            builder.DeclareSignal<InitAppSignal>();
-            builder.DeclareSignal<QuitAppSignal>();
+            builder.RegisterEntryPoint<InitializeApplicationController>().AsSelf();
+            builder.RegisterEntryPoint<QuitApplicationController>().AsSelf();
         }
         #endregion
 
         #region Cycle
-        private void Start() => Container.Resolve<SignalBus>().Fire(new InitAppSignal());
+        private void Start() => Container.Resolve<SignalBus>().Fire(new InitializeApplicationSignal());
         #endregion
     }
 }

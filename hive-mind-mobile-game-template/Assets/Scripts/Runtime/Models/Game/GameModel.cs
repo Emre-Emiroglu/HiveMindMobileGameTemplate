@@ -1,19 +1,17 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
+using CodeCatGames.HMModelViewController.Runtime;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game
 {
     public sealed class GameModel : Model<GameSettings>
     {
-        #region Constants
-        private const string ResourcePath = "Samples/SampleGame/Game/GameSettings";
-        #endregion
-
         #region Constructor
-        public GameModel() : base(ResourcePath) { }
+        public GameModel(GameSettings settings) : base(settings) { }
         #endregion
 
-        #region PostConstruct
-        public override void PostConstruct() { }
+        #region Executes
+        public override void LoadData() { }
+        public override void SaveData() { }
         #endregion
     }
 }

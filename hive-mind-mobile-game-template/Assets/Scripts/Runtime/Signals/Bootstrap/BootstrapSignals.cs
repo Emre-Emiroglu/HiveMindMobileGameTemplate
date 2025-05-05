@@ -1,4 +1,4 @@
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Bootstrap
 {
-    public readonly struct InitBootstrapSignal { }
+    public readonly struct InitializeBootstrapSignal { }
 }

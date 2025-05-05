@@ -1,115 +1,48 @@
-using System;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using Cysharp.Threading.Tasks;
-using UnityEngine;
+using CodeCatGames.HMModelViewController.Runtime;
+using CodeCatGames.HMSignalBus.Runtime;
+using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
-    public sealed class LoadingScreenPanelMediator : Mediator<LoadingScreenPanelView>
+    public sealed class LoadingScreenPanelMediator : Mediator<CrossSceneModel, CrossSceneSettings, LoadingScreenPanelView>, IInitializable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
-        #endregion
-
-        #region Fields
-        private AsyncOperation _loadOperation;
-        private bool _loadingCompleted;
+        private readonly LoadingScreenPanelController _loadingScreenPanelController;
         #endregion
 
         #region Constructor
-        public LoadingScreenPanelMediator(LoadingScreenPanelView view, SignalBus signalBus) : base(view) =>
+        public LoadingScreenPanelMediator(CrossSceneModel model, LoadingScreenPanelView view, SignalBus signalBus,
+            LoadingScreenPanelController loadingScreenPanelController) : base(model, view)
+        {
             _signalBus = signalBus;
-        #endregion
-
-        #region PostConstruct
-        public override void PostConstruct() { }
+            _loadingScreenPanelController = loadingScreenPanelController;
+        }
         #endregion
 
         #region Core
-        public override void Initialize()
+        void IInitializable.Initialize()
         {
-            ChangePanelActivation(false);
+            base.Initialize();
 
-            _signalBus.Subscribe<ChangeLoadingScreenActivationSignal>(OnChangeLoadingScreenActivationSignal);
+            _loadingScreenPanelController.Execute(null, false);
         }
-        public override void Dispose() =>
-            _signalBus.Unsubscribe<ChangeLoadingScreenActivationSignal>(OnChangeLoadingScreenActivationSignal);
+        public override void SetSubscriptions(bool isSubscribed)
+        {
+            if (isSubscribed)
+                _signalBus.Subscribe<ChangeLoadingScreenActivationSignal>(OnChangeLoadingScreenActivationSignal);
+            else
+                _signalBus.Unsubscribe<ChangeLoadingScreenActivationSignal>(OnChangeLoadingScreenActivationSignal);
+        }
         #endregion
 
         #region SignalReceivers
-        // ReSharper disable once AsyncVoidMethod
-        private async void OnChangeLoadingScreenActivationSignal(ChangeLoadingScreenActivationSignal signal)
-        {
-            bool isActive = signal.IsActive;
-
-            if (isActive)
-            {
-                ResetProgressBar();
-                
-                _loadOperation = signal.AsyncOperation;
-                
-                ChangePanelActivation(true);
-                WaitUntilSceneIsLoaded();
-            }
-            else
-            {
-                await UniTask.WaitUntil(() => _loadingCompleted);
-                
-                ChangePanelActivation(false);
-            }
-        }
-        #endregion
-
-        #region Executes
-        private void ChangePanelActivation(bool isActive)
-        {
-            GetView.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isActive);
-            GetView.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(isActive);
-        }
-        private void ResetProgressBar()
-        {
-            GetView.FillImage.fillAmount = 0f;
-            _loadOperation = null;
-            _loadingCompleted = false;
-        }
-        private async void WaitUntilSceneIsLoaded()
-        {
-            try
-            {
-                while (!_loadOperation.isDone)
-                {
-                    float progress = _loadOperation.progress;
-                    float targetProgress = _loadOperation.isDone ? 1f : progress;
-
-                    // Lerp fill amount towards target progress
-                    LerpProgressBar(targetProgress);
-
-                    await UniTask.Yield();
-                }
-
-                //async operation finishes at 90%, lerp to full value for a while
-                float time = 0.5f;
-                while (time > 0)
-                {
-                    time -= Time.deltaTime;
-                    // Lerp fill amount towards target progress
-                    LerpProgressBar(1f);
-
-                    await UniTask.Yield();
-                }
-
-                await UniTask.Yield();
-
-                _loadingCompleted = true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-        }
-        private void LerpProgressBar(float targetProgress) =>
-            GetView.FillImage.fillAmount = Mathf.Lerp(GetView.FillImage.fillAmount, targetProgress,
-                Time.fixedDeltaTime * 10f);
+        private void OnChangeLoadingScreenActivationSignal(ChangeLoadingScreenActivationSignal signal) =>
+            _loadingScreenPanelController.Execute(signal.AsyncOperation, signal.IsActive);
         #endregion
     }
 }

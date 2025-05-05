@@ -1,34 +1,26 @@
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game
 {
-    public readonly struct InitializeGameSignal { } // Has Command
-    public readonly struct PlayGameSignal { } // Has Command
+    public readonly struct InitializeGameSignal { }
+    public readonly struct PlayGameSignal { }
     public readonly struct GameOverSignal
     {
-        #region ReadonlyFields
-        private readonly bool _isSuccess;
-        #endregion
-
-        #region Getters
-        public bool IsSuccess => _isSuccess;
+        #region Properities
+        public bool IsSuccess { get; }
         #endregion
 
         #region Constructor
-        public GameOverSignal(bool isSuccess) => _isSuccess = isSuccess;
+        public GameOverSignal(bool isSuccess) => IsSuccess = isSuccess;
         #endregion
-    } // Has Command
-    public readonly struct GameExitSignal { } // Has Command
+    }
+    public readonly struct GameExitSignal { }
     public readonly struct SetupGameOverPanelSignal
     {
-        #region ReadonlyFields
-        private readonly bool _isSuccess;
-        #endregion
-
-        #region Getters
-        public bool IsSuccess => _isSuccess;
+        #region Properities
+        public bool IsSuccess { get; }
         #endregion
 
         #region Constructor
-        public SetupGameOverPanelSignal(bool isSuccess) => _isSuccess = isSuccess;
+        public SetupGameOverPanelSignal(bool isSuccess) => IsSuccess = isSuccess;
         #endregion
     }
 }

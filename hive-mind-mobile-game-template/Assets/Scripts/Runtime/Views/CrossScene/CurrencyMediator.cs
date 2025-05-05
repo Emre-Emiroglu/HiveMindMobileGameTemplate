@@ -1,69 +1,72 @@
 ﻿using System.Linq;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using CodeCatGames.HMModelViewController.Runtime;
+using CodeCatGames.HMSignalBus.Runtime;
+using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
-     public sealed class CurrencyMediator : Mediator<CurrencyView>
+    public sealed class CurrencyMediator : Mediator<CurrencyModel, CurrencySettings, CurrencyView>, IInitializable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
-        private readonly CurrencyModel _currencyModel;
+        private readonly ChangeCurrencyController _changeCurrencyController;
+        private readonly RefreshCurrencyVisualController _refreshCurrencyVisualController;
+        private readonly CurrencyButtonClickedController _currencyButtonClickedController;
         #endregion
 
         #region Constructor
-        public CurrencyMediator(CurrencyView view, SignalBus signalBus, CurrencyModel currencyModel) : base(view)
+        public CurrencyMediator(CurrencyModel model, CurrencyView view, SignalBus signalBus,
+            ChangeCurrencyController changeCurrencyController,
+            RefreshCurrencyVisualController refreshCurrencyVisualController,
+            CurrencyButtonClickedController currencyButtonClickedController) : base(model, view)
         {
             _signalBus = signalBus;
-            _currencyModel = currencyModel;
+            _changeCurrencyController = changeCurrencyController;
+            _refreshCurrencyVisualController = refreshCurrencyVisualController;
+            _currencyButtonClickedController = currencyButtonClickedController;
         }
-        #endregion
-
-        #region PostConstruct
-        public override void PostConstruct() { }
         #endregion
 
         #region Core
-        public override void Initialize()
+        void IInitializable.Initialize()
         {
-            RefreshAllCurrencyVisual();
+            base.Initialize();
 
-            _signalBus.Subscribe<RefreshCurrencyVisualSignal>(OnRefreshCurrencyVisualSignal);
-
-            GetView.CurrencyButtons.Values.ToList().ForEach(x => x.onClick.AddListener(ButtonClicked));
+            _refreshCurrencyVisualController.Execute(CurrencyTypes.Coin, true);
         }
-        public override void Dispose()
+        public override void SetSubscriptions(bool isSubscribed)
         {
-            _signalBus.Unsubscribe<RefreshCurrencyVisualSignal>(OnRefreshCurrencyVisualSignal);
-            
-            GetView.CurrencyButtons.Values.ToList().ForEach(x => x.onClick.RemoveAllListeners());
+            if (isSubscribed)
+            {
+                _signalBus.Subscribe<ChangeCurrencySignal>(OnChangeCurrencySignal);
+                _signalBus.Subscribe<RefreshCurrencyVisualSignal>(OnRefreshCurrencyVisualSignal);
+                
+                View.CurrencyButtons.Values.ToList().ForEach(x => x.onClick.AddListener(ButtonClicked));
+            }
+            else
+            {
+                _signalBus.Unsubscribe<ChangeCurrencySignal>(OnChangeCurrencySignal);
+                _signalBus.Unsubscribe<RefreshCurrencyVisualSignal>(OnRefreshCurrencyVisualSignal);
+                
+                View.CurrencyButtons.Values.ToList().ForEach(x => x.onClick.RemoveAllListeners());
+            }
         }
         #endregion
 
         #region SignalReceivers
+        private void OnChangeCurrencySignal(ChangeCurrencySignal signal) =>
+            _changeCurrencyController.Execute(signal.CurrencyType, signal.Amount, signal.IsSet);
         private void OnRefreshCurrencyVisualSignal(RefreshCurrencyVisualSignal signal) =>
-            RefreshCurrencyVisual(signal.CurrencyType);
+            _refreshCurrencyVisualController.Execute(signal.CurrencyType, false);
         #endregion
 
         #region ButtonReceivers
-        private void ButtonClicked()
-        {
-            _signalBus.Fire(new ChangeUIPanelSignal(UIPanelTypes.ShopPanel));
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-            _signalBus.Fire(new PlayHapticSignal(HapticPatterns.PresetType.LightImpact));
-        }
-        #endregion
-
-        #region Executes
-        private void RefreshAllCurrencyVisual() =>
-            _currencyModel.CurrencyValues.Keys.ToList().ForEach(RefreshCurrencyVisual);
-        private void RefreshCurrencyVisual(CurrencyTypes currencyType)
-        {
-            int value = _currencyModel.CurrencyValues[currencyType];
-
-            GetView.CurrencyTexts[currencyType].SetText(TextFormatter.FormatNumber(value));
-        }
+        private void ButtonClicked() => _currencyButtonClickedController.Execute();
         #endregion
     }
 }

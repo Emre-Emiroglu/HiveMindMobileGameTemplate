@@ -1,10 +1,12 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-using AudioSettings = CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene.AudioSettings;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
 {
@@ -12,45 +14,51 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
     {
         #region Fields
         [Header("Cross Scene Scope Fields")]
+        [SerializeField] private Settings settings;
         [SerializeField] private CrossSceneSettings crossSceneSettings;
         [SerializeField] private CurrencySettings currencySettings;
         [SerializeField] private LevelSettings levelSettings;
-        [SerializeField] private AudioSettings audioSettings;
         #endregion
 
         #region Bindings
         protected override void Configure(IContainerBuilder builder)
         {
             ModelBindings(builder);
-            MediationBindings(builder);
             ControllerBindings(builder);
+            MediationBindings(builder);
         }
         private void ModelBindings(IContainerBuilder builder)
         {
+            builder.RegisterInstance(settings).AsSelf();
             builder.RegisterInstance(crossSceneSettings).AsSelf();
             builder.RegisterInstance(currencySettings).AsSelf();
             builder.RegisterInstance(levelSettings).AsSelf();
-            builder.RegisterInstance(audioSettings).AsSelf();
             
+            builder.Register<SettingsModel>(Lifetime.Singleton).AsSelf();
             builder.Register<CrossSceneModel>(Lifetime.Singleton).AsSelf();
             builder.Register<CurrencyModel>(Lifetime.Singleton).AsSelf();
             builder.Register<LevelModel>(Lifetime.Singleton).AsSelf();
-            builder.Register<AudioModel>(Lifetime.Singleton).AsSelf();
-        }
-        private void MediationBindings(IContainerBuilder builder)
-        {
-            builder.RegisterComponentInHierarchy<CurrencyView>();
-            builder.RegisterComponentInHierarchy<LoadingScreenPanelView>();
-            builder.RegisterComponentInHierarchy<AudioView>();
-            builder.RegisterComponentInHierarchy<SettingsView>();
-
-            builder.RegisterEntryPoint<CurrencyMediator>().AsSelf();
-            builder.RegisterEntryPoint<LoadingScreenPanelMediator>().AsSelf();
-            builder.RegisterEntryPoint<AudioMediator>().AsSelf();
-            builder.RegisterEntryPoint<SettingsMediator>().AsSelf();
         }
         private void ControllerBindings(IContainerBuilder builder)
         {
+            builder.DeclareSignal<ChangeLoadingScreenActivationSignal>();
+            builder.DeclareSignal<PlayAudioSignal>();
+            builder.DeclareSignal<ChangeCurrencySignal>();
+            builder.DeclareSignal<RefreshCurrencyVisualSignal>();
+            builder.DeclareSignal<SpawnCurrencyTrailSignal>();
+            builder.DeclareSignal<ChangeUIPanelSignal>();
+            
+            builder.RegisterEntryPoint<AudioController>().AsSelf();
+            builder.RegisterEntryPoint<LoadingScreenPanelController>().AsSelf();
+            builder.RegisterEntryPoint<CurrencyTrailSpawnController>().AsSelf();
+        }
+        private void MediationBindings(IContainerBuilder builder)
+        {
+            builder.RegisterComponentInHierarchy<AudioView>();
+            builder.RegisterComponentInHierarchy<LoadingScreenPanelView>();
+            
+            builder.RegisterEntryPoint<AudioMediator>().AsSelf();
+            builder.RegisterEntryPoint<LoadingScreenPanelMediator>().AsSelf();
         }
         #endregion
     }

@@ -7,26 +7,16 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene
     public readonly struct ChangeLoadingScreenActivationSignal
     {
         #region Properities
-        public bool IsActive { get; }
         public AsyncOperation AsyncOperation { get; }
+        public bool IsActive { get; }
         #endregion
 
         #region Constructor
-        public ChangeLoadingScreenActivationSignal(bool isActive, AsyncOperation asyncOperation)
+        public ChangeLoadingScreenActivationSignal(AsyncOperation asyncOperation, bool isActive)
         {
-            IsActive = isActive;
             AsyncOperation = asyncOperation;
+            IsActive = isActive;
         }
-        #endregion
-    }
-    public readonly struct LoadSceneSignal
-    {
-        #region Properities
-        public SceneID SceneId { get; }
-        #endregion
-
-        #region Constructor
-        public LoadSceneSignal(SceneID sceneId) => SceneId = sceneId;
         #endregion
     }
     public readonly struct PlayAudioSignal
@@ -63,16 +53,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene
         }
         #endregion
     }
-    public readonly struct SpawnCurrencyTrailSignal
-    {
-        #region Properities
-        public CurrencyTrailData CurrencyTrailData { get; }
-        #endregion
-
-        #region Constructor
-        public SpawnCurrencyTrailSignal(CurrencyTrailData currencyTrailData) => CurrencyTrailData = currencyTrailData;
-        #endregion
-    }
     public readonly struct RefreshCurrencyVisualSignal
     {
         #region Properities
@@ -83,24 +63,14 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene
         public RefreshCurrencyVisualSignal(CurrencyTypes currencyType) => CurrencyType = currencyType;
         #endregion
     }
-    public readonly struct SettingsButtonPressedSignal
+    public readonly struct SpawnCurrencyTrailSignal
     {
         #region Properities
-        public SettingsTypes SettingsType { get; }
+        public CurrencyTrailData CurrencyTrailData { get; }
         #endregion
-
+        
         #region Constructor
-        public SettingsButtonPressedSignal(SettingsTypes settingsType) => SettingsType = settingsType;
-        #endregion
-    }
-    public readonly struct SettingsButtonRefreshSignal
-    {
-        #region Properities
-        public SettingsTypes SettingsType { get; }
-        #endregion
-
-        #region Constructor
-        public SettingsButtonRefreshSignal(SettingsTypes settingsType) => SettingsType = settingsType;
+        public SpawnCurrencyTrailSignal(CurrencyTrailData currencyTrailData) => CurrencyTrailData = currencyTrailData;
         #endregion
     }
     public readonly struct ChangeUIPanelSignal

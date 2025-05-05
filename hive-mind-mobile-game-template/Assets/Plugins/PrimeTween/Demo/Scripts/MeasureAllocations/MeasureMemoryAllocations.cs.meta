@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 6af581ca2a164600b2d47b0f7f7d5570
+timeCreated: 1686221280
+AssetOrigin:
+  serializedVersion: 1
+  productId: 252960
+  packageName: "PrimeTween \xB7 High-Performance Animations and Sequences"
+  packageVersion: 1.2.2
+  assetPath: Assets/Plugins/PrimeTween/Demo/Scripts/MeasureAllocations/MeasureMemoryAllocations.cs
+  uploadId: 745996
