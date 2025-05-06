@@ -30,6 +30,9 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
         #region Executes
         public override void Execute(params object[] parameters)
         {
+            if (View == null)
+                return;
+            
             SettingsTypes settingsType = (SettingsTypes)parameters[0];
             
             switch (settingsType)

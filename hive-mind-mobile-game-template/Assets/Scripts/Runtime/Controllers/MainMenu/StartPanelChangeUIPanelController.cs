@@ -22,6 +22,9 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu
         #region Executes
         public override void Execute(params object[] parameters)
         {
+            if (View == null)
+                return;
+            
             UIPanelTypes uiPanelType = (UIPanelTypes)parameters[0];
             
             bool isShow = uiPanelType == View.UIPanelVo.UIPanelType;
