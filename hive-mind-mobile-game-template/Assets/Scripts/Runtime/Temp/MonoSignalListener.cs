@@ -1,16 +1,17 @@
 ﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Interfaces;
 using CodeCatGames.HMSignalBus.Runtime;
+using UnityEngine;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Temp
 {
-    public abstract class SignalListener : ISignalListenable
+    public abstract class MonoSignalListener : MonoBehaviour, ISignalListenable
     {
-        #region ReadonlyFields
-        protected readonly SignalBus SignalBus;
+        #region Fields
+        protected SignalBus SignalBus;
         #endregion
 
-        #region Constructor
-        protected SignalListener(SignalBus signalBus) => SignalBus = signalBus;
+        #region PostConstruct
+        protected virtual void PostConstruct(SignalBus signalBus) => SignalBus = signalBus;
         #endregion
 
         #region Core

@@ -10,9 +10,9 @@ namespace PrimeTweenDemo {
         [CanBeNull] public HighlightableElement current { get; private set; }
 
         void Awake() {
-        #if UNITY_2019_1_OR_NEWER && !PHYSICS_MODULE_INSTALLED
-        Debug.LogError("Please install the package needed for Physics.Raycast(): 'Package Manager/Packages/Built-in/Physics' (com.unity.modules.physics).");
-        #endif
+            #if UNITY_2019_1_OR_NEWER && !PHYSICS_MODULE_INSTALLED
+                Debug.LogError("Please install the package needed for Physics.Raycast(): 'Package Manager/Packages/Built-in/Physics' (com.unity.modules.physics).");
+            #endif
         }
 
         void Update() {
@@ -34,12 +34,12 @@ namespace PrimeTweenDemo {
 
         [CanBeNull]
         static HighlightableElement RaycastHighlightableElement(Ray ray) {
-        #if !UNITY_2019_1_OR_NEWER || PHYSICS_MODULE_INSTALLED
-            // If you're seeing a compilation error on the next line, please install the package needed for Physics.Raycast(): 'Package Manager/Packages/Built-in/Physics' (com.unity.modules.physics).
-            return Physics.Raycast(ray, out var hit) ? hit.collider.GetComponentInParent<HighlightableElement>() : null;
-        #else
-            return null;
-        #endif
+            #if !UNITY_2019_1_OR_NEWER || PHYSICS_MODULE_INSTALLED
+                // If you're seeing a compilation error on the next line, please install the package needed for Physics.Raycast(): 'Package Manager/Packages/Built-in/Physics' (com.unity.modules.physics).
+                return Physics.Raycast(ray, out var hit) ? hit.collider.GetComponentInParent<HighlightableElement>() : null;
+            #else
+                return null;
+            #endif
         }
 
         void SetCurrentHighlighted([CanBeNull] HighlightableElement newHighlighted) {

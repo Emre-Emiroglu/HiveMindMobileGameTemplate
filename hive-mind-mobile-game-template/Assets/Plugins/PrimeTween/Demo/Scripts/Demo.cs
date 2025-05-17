@@ -17,10 +17,8 @@ namespace PrimeTweenDemo {
         [SerializeField, Range(0.5f, 5f)] float timeScale = 1;
         bool isAnimatingWithCoroutineOrAsync;
         public Sequence animateAllSequence;
-        public static Demo instance { get; private set; }
 
         void Awake() {
-            instance = this;
             PrimeTweenConfig.SetTweensCapacity(100);
         }
 
@@ -30,8 +28,6 @@ namespace PrimeTweenDemo {
         }
 
         void OnDisable() => sequenceTimelineSlider.onValueChanged.RemoveListener(SequenceTimelineSliderChanged);
-
-        void OnDestroy() => instance = null;
 
         void SequenceTimelineSliderChanged(float sliderValue) {
             if (!notifySliderChanged) {

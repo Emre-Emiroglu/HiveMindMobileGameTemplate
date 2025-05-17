@@ -3,9 +3,11 @@ using PrimeTween;
 using UnityEngine;
 
 namespace PrimeTweenDemo {
-    public class SqueezeAnimation : MonoBehaviour {
+    public class SqueezeAnimation : Clickable {
         [SerializeField] Transform target;
         Tween tween;
+
+        public override void OnClick() => PlayAnimation();
 
         public void PlayAnimation() {
             if (!tween.isAlive) {

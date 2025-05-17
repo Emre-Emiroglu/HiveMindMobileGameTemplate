@@ -1816,6 +1816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6113f6e98f16c489f87f373fc4133597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  demo: {fileID: 182366648}
   wheels:
   - {fileID: 4185769961175156060}
   - {fileID: 7375368130044152401}
@@ -3151,6 +3152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42977785d1b549d59c346556945e0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  demo: {fileID: 182366648}
   animationAnchor: {fileID: 9120391027429686458}
   openedPos: {x: 0, y: 0, z: 0}
   midPos: {x: 1.13, y: 0, z: 0}

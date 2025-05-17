@@ -4,13 +4,14 @@ using UnityEngine;
 
 namespace PrimeTweenDemo {
     public class SlidingDoor : Animatable {
+        [SerializeField] Demo demo;
         [SerializeField] Transform animationAnchor;
         [SerializeField] Vector3 openedPos, midPos, closedPos;
         bool isClosed;
         Sequence sequence;
 
         public override void OnClick() {
-            if (!Demo.instance.animateAllSequence.isAlive) {
+            if (!demo.animateAllSequence.isAlive) {
                 Animate(!isClosed);
             }
         }

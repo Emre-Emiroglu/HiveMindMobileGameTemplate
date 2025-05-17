@@ -1,4 +1,5 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
+﻿using System;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
@@ -35,7 +36,14 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.MainMenu
         }
         private void ControllerBindings(IContainerBuilder builder)
         {
-            builder.DeclareSignal<InitializeMainMenuSignal>();
+            try
+            {
+                builder.DeclareSignal<InitializeMainMenuSignal>();
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning(e);
+            }
 
             builder.RegisterEntryPoint<InitializeMainMenuController>().AsSelf();
             builder.RegisterEntryPoint<StartPanelChangeUIPanelController>().AsSelf();

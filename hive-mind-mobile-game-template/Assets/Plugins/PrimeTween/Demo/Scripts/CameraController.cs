@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace PrimeTweenDemo {
-    public class CameraController : MonoBehaviour {
+    public class CameraController : Clickable {
         [SerializeField] HighlightedElementController highlightedElementController;
         [SerializeField] SwipeTutorial swipeTutorial;
         [SerializeField] Camera mainCamera;
@@ -42,6 +42,8 @@ namespace PrimeTweenDemo {
                 }
             }
         }
+
+        public override void OnClick() => ShakeCamera();
 
         public void ShakeCamera() {
             Shake();

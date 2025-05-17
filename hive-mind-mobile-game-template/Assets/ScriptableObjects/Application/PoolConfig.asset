@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d165ba9213d6fb459f0198d18e70e2c, type: 3}
   m_Name: PoolConfig
   m_EditorClassIdentifier: 
-  poolData: []
+  poolData:
+  - isMono: 1
+    monoPrefab: {fileID: 6219064857540798425, guid: 1a1bbe07da6995e4e99b471f5ff0333b, type: 3}
+    classTypeName: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene.CurrencyTrailView,
+      CodeCatGames.HiveMindMobileGameTemplate.Runtime, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    initialSize: 5
+    defaultCapacity: 10
+    maximumSize: 100

@@ -3,9 +3,11 @@ using PrimeTween;
 using UnityEngine;
 
 namespace PrimeTweenDemo {
-    public class JumpAnimation : MonoBehaviour {
+    public class JumpAnimation : Clickable {
         [SerializeField] Transform target;
         Sequence sequence;
+
+        public override void OnClick() => PlayAnimation();
 
         public void PlayAnimation() {
             if (!sequence.isAlive) {

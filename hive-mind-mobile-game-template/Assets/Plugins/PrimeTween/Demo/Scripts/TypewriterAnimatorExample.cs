@@ -27,6 +27,13 @@ namespace PrimeTweenDemo {
         }
 
         public Tween Animate() {
+            if (!Application.isPlaying) {
+                // 'text' is created in Awake(), so this animation can't be played in Edit mode
+                PrimeTweenConfig.warnZeroDuration = false;
+                var emptyTween = Tween.Delay(0f);
+                PrimeTweenConfig.warnZeroDuration = true;
+                return emptyTween;
+            }
             switch (animationType) {
                 case AnimationType.Simple:
                     return TypewriterAnimationSimple();
