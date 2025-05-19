@@ -33,7 +33,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8a1aa023859fa04a0fd7b37ebd5a021cc94a0349"
+      "hash": "54f4bd70de840fa5696818206bb48aa2d7455974"
     },
     "com.codecatgames.hmspersistentdata": {
       "version": "https://github.com/Emre-Emiroglu/HMPersistentData.git",

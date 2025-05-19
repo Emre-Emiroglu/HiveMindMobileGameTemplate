@@ -19,7 +19,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
         #region Executes
         public override void Execute(params object[] parameters)
         {
-            if (View == null)
+            if (!View)
                 return;
             
             SettingsTypes settingsType = (SettingsTypes)parameters[0];
@@ -44,7 +44,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
         }
         public void SetVerticalGroupActivation(bool isActive)
         {
-            if (View == null)
+            if (!View)
                 return;
             
             IsVerticalGroupActive = isActive;

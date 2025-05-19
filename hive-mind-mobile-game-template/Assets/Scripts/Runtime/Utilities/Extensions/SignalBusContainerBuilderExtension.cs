@@ -13,14 +13,14 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions
         public static void DeclareSignal<TSignal>(this IContainerBuilder containerBuilder)
         {
             if (_signalBus != null)
-                _signalBus.DeclareSignal<TSignal>();
+                DeclareLogic<TSignal>();
             else
             {
                 containerBuilder.RegisterBuildCallback(container =>
                 {
                     _signalBus = container.Resolve<SignalBus>();
 
-                    _signalBus.DeclareSignal<TSignal>();
+                    DeclareLogic<TSignal>();
                 });
             }
         }
@@ -29,6 +29,11 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions
             containerBuilder.Register<SignalBus>(Lifetime.Singleton).AsSelf();
 
             containerBuilder.RegisterBuildCallback(container => _signalBus = container.Resolve<SignalBus>());
+        }
+        private static void DeclareLogic<TSignal>()
+        {
+            if (!_signalBus.HasDeclared<TSignal>())
+                _signalBus.DeclareSignal<TSignal>();
         }
         #endregion
     }

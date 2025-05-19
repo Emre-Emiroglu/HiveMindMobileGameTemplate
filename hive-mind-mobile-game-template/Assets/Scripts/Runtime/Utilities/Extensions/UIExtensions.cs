@@ -10,20 +10,27 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions
         #region UIPanel
         public static void ChangeUIPanelCanvasGroupActivation(this CanvasGroup canvasGroup, bool isActive)
         {
+            if (!canvasGroup)
+                return;
+            
             canvasGroup.alpha = isActive ? 1 : 0;
             canvasGroup.interactable = isActive;
             canvasGroup.blocksRaycasts = isActive;
         }
-        public static void ChangeUIPanelTimelineActivation(this PlayableDirector timeline, bool isActive, bool withReversePlay = false, Action reversePlayEnding = null)
+        public static void ChangeUIPanelTimelineActivation(this PlayableDirector timeline, bool isActive,
+            bool withReversePlay = false, Action reversePlayEnding = null)
         {
+            if (!timeline)
+                return;
+            
             if (isActive)
-                timeline?.Play();
+                timeline.Play();
             else
             {
                 if (withReversePlay)
                     TimelineReversePlay(timeline, reversePlayEnding);
                 else
-                    timeline?.Stop();
+                    timeline.Stop();
             }
         }
         #endregion
@@ -32,6 +39,9 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions
         // ReSharper disable once AsyncVoidMethod
         public static async void TimelineReversePlay(this PlayableDirector timeline, Action reversePlayEnding = null)
         {
+            if (!timeline)
+                return;
+
             DirectorUpdateMode defaultUpdateMode = timeline.timeUpdateMode;
             timeline.timeUpdateMode = DirectorUpdateMode.Manual;
 
