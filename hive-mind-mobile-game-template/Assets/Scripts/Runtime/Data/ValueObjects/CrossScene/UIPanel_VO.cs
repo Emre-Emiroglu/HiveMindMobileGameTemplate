@@ -1,7 +1,6 @@
 using System;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using UnityEngine;
-using UnityEngine.Playables;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene
 {
@@ -12,13 +11,11 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.Cros
         [Header("UI Panel VO Fields")]
         [SerializeField] private UIPanelTypes uiPanelType;
         [SerializeField] private CanvasGroup canvasGroup;
-        [SerializeField] private PlayableDirector playableDirector;
         #endregion
 
         #region Getters
         public readonly UIPanelTypes UIPanelType => uiPanelType;
         public readonly CanvasGroup CanvasGroup => canvasGroup;
-        public readonly PlayableDirector PlayableDirector => playableDirector;
         #endregion
     }
 }

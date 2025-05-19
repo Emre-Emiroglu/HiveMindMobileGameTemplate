@@ -19,7 +19,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Bootstrap
             View.LogoImage.preserveAspect = true;
 
             View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(true);
-            View.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(true);
         }
         #endregion
     }

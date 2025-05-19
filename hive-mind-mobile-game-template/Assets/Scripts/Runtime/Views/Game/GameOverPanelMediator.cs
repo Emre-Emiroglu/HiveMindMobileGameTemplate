@@ -56,7 +56,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
             bool isShow = signal.UIPanelType == View.UIPanelVo.UIPanelType;
             
             View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
-            View.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(isShow);
         }
         private void OnSetupGameOverPanelSignal(SetupGameOverPanelSignal signal)
         {

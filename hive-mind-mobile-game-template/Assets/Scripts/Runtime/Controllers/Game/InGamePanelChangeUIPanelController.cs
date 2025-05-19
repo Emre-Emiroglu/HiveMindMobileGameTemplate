@@ -27,7 +27,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Game
             bool isShow = uiPanelType == View.UIPanelVo.UIPanelType;
 
             View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
-            View.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(isShow);
             
             if (isShow)
                 SetLevelText();

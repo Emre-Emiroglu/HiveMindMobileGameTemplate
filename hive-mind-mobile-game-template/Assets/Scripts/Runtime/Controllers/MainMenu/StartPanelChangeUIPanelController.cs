@@ -32,7 +32,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu
             View.PlayButton.interactable = isShow;
 
             View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
-            View.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(isShow);
             
             if (isShow)
                 SetLevelText();

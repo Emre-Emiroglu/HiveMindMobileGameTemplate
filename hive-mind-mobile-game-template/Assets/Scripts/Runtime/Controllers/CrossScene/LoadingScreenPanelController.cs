@@ -49,7 +49,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
         private void ChangePanelActivation(bool isActive)
         {
             View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isActive);
-            View.UIPanelVo.PlayableDirector.ChangeUIPanelTimelineActivation(isActive);
         }
         private void ResetProgressBar()
         {
