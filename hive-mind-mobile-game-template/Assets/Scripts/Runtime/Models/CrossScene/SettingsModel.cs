@@ -1,5 +1,6 @@
 ﻿using System;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
 using CodeCatGames.HMModelViewController.Runtime;
 using CodeCatGames.HMPersistentData.Runtime;
 using UnityEngine.Audio;
@@ -18,21 +19,19 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
         #endregion
 
         #region Fields
-        private bool _isSoundMuted;
-        private bool _isMusicMuted;
-        private bool _isHapticMuted;
+        private SettingsPersistentData _settingsPersistentData;
         #endregion
         
         #region Getters
-        public bool IsSoundMuted => _isSoundMuted;
-        public bool IsMusicMuted => _isMusicMuted;
-        public bool IsHapticMuted => _isHapticMuted;
+        public SettingsPersistentData SettingsPersistentData => _settingsPersistentData;
         #endregion
 
         #region Constructor
         public SettingsModel(Settings settings) : base(settings)
         {
             _audioMixer = Settings.AudioMixer;
+
+            _settingsPersistentData = new SettingsPersistentData(false, false, false);
             
             try
             {
@@ -40,9 +39,9 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
             }
             catch (Exception)
             {
-                SetMusic(_isMusicMuted);
-                SetSound(_isSoundMuted);
-                SetHaptic(_isHapticMuted);
+                SetMusic(_settingsPersistentData.IsMusicMuted);
+                SetSound(_settingsPersistentData.IsSoundMuted);
+                SetHaptic(_settingsPersistentData.IsHapticMuted);
             }
         }
         #endregion
@@ -50,36 +49,30 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
         #region Executes
         public void SetMusic(bool isActive)
         {
-            _isMusicMuted = isActive;
-            _audioMixer.SetFloat(MusicParam, _isMusicMuted ? -80 : -20);
+            _settingsPersistentData.IsMusicMuted = isActive;
+            
+            _audioMixer.SetFloat(MusicParam, _settingsPersistentData.IsMusicMuted ? -80 : -20);
 
             SaveData();
         }
         public void SetSound(bool isActive)
         {
-            _isSoundMuted = isActive;
-            _audioMixer.SetFloat(SoundParam, _isSoundMuted ? -80 : -10);
+            _settingsPersistentData.IsSoundMuted = isActive;
+            
+            _audioMixer.SetFloat(SoundParam, _settingsPersistentData.IsSoundMuted ? -80 : -10);
 
             SaveData();
         }
         public void SetHaptic(bool isActive)
         {
-            _isHapticMuted = isActive;
+            _settingsPersistentData.IsHapticMuted = isActive;
 
             SaveData();
         }
-        public override void LoadData()
-        {
-            _isSoundMuted = PersistentDataServiceUtilities.Load<bool>(nameof(_isSoundMuted));
-            _isMusicMuted = PersistentDataServiceUtilities.Load<bool>(nameof(_isMusicMuted));
-            _isHapticMuted = PersistentDataServiceUtilities.Load<bool>(nameof(_isHapticMuted));
-        }
-        public override void SaveData()
-        {
-            PersistentDataServiceUtilities.Save(nameof(_isSoundMuted), _isSoundMuted);
-            PersistentDataServiceUtilities.Save(nameof(_isMusicMuted), _isSoundMuted);
-            PersistentDataServiceUtilities.Save(nameof(_isHapticMuted), _isHapticMuted);
-        }
+        public override void LoadData() => _settingsPersistentData =
+            PersistentDataServiceUtilities.Load<SettingsPersistentData>(nameof(_settingsPersistentData));
+        public override void SaveData() =>
+            PersistentDataServiceUtilities.Save(nameof(_settingsPersistentData), _settingsPersistentData);
         #endregion
     }
 }

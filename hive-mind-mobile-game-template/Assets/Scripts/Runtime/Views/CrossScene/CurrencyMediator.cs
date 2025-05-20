@@ -60,12 +60,12 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
         #region Executes
         private void RefreshAllCurrencyVisual()
         {
-            foreach (KeyValuePair<CurrencyTypes, int> modelCurrencyValue in Model.CurrencyValues)
+            foreach (KeyValuePair<CurrencyTypes, int> modelCurrencyValue in Model.CurrencyPersistentData.CurrencyValues)
                 RefreshCurrencyVisual(modelCurrencyValue.Key);
         }
         private void RefreshCurrencyVisual(CurrencyTypes currencyType)
         {
-            int value = Model.CurrencyValues[currencyType];
+            int value = Model.CurrencyPersistentData.CurrencyValues[currencyType];
 
             View.CurrencyTexts[currencyType].SetText(TextFormatter.FormatNumber(value));
         }

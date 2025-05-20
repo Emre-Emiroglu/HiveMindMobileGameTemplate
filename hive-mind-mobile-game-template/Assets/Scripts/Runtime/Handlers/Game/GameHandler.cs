@@ -53,7 +53,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.Game
         #region Executes
         private void InitializeGame()
         {
-            if (_tutorialModel.IsTutorialShowed)
+            if (_tutorialModel.TutorialPersistentData.IsTutorialShowed)
                 SignalBus.Fire(new PlayGameSignal());
             else
                 SignalBus.Fire(new ChangeUIPanelSignal(UIPanelTypes.TutorialPanel));
@@ -67,7 +67,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.Game
             SignalBus.Fire(new ChangeUIPanelSignal(UIPanelTypes.GameOverPanel));
             SignalBus.Fire(new SetupGameOverPanelSignal(isSuccess));
 
-            _levelModel.UpdateCurrentLevelIndex(false, isSuccess ? 1 : 0);
+            _levelModel.ChangeLevelIndex(false, isSuccess ? 1 : 0);
         }
         private void GameExit() => SignalBus.Fire(new LoadSceneSignal(SceneID.MainMenu));
         #endregion

@@ -33,7 +33,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
         #endregion
 
         #region Executes
-        public void UpdateCurrentLevelIndex(bool isSet, int value)
+        public void ChangeLevelIndex(bool isSet, int value)
         {
             _levelPersistentData.CurrentLevelIndex = isSet ? value : _levelPersistentData.CurrentLevelIndex + value;
 

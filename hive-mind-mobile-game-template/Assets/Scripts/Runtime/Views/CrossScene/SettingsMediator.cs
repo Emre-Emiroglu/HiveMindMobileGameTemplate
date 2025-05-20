@@ -81,13 +81,13 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
             switch (settingsType)
             {
                 case SettingsTypes.Music:
-                    isActive = !Model.IsMusicMuted;
+                    isActive = !Model.SettingsPersistentData.IsMusicMuted;
                     break;
                 case SettingsTypes.Sound:
-                    isActive = !Model.IsSoundMuted;
+                    isActive = !Model.SettingsPersistentData.IsSoundMuted;
                     break;
                 case SettingsTypes.Haptic:
-                    isActive = !Model.IsHapticMuted;
+                    isActive = !Model.SettingsPersistentData.IsHapticMuted;
                     break;
             }
 
@@ -99,13 +99,13 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
             switch (settingsType)
             {
                 case SettingsTypes.Music:
-                    Model.SetMusic(!Model.IsMusicMuted);
+                    Model.SetMusic(!Model.SettingsPersistentData.IsMusicMuted);
                     break;
                 case SettingsTypes.Sound:
-                    Model.SetSound(!Model.IsSoundMuted);
+                    Model.SetSound(!Model.SettingsPersistentData.IsSoundMuted);
                     break;
                 case SettingsTypes.Haptic:
-                    Model.SetHaptic(!Model.IsHapticMuted);
+                    Model.SetHaptic(!Model.SettingsPersistentData.IsHapticMuted);
                     break;
             }
             
