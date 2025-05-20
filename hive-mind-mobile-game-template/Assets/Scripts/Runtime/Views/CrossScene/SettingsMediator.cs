@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
@@ -13,7 +14,7 @@ using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
-    public sealed class SettingsMediator : Mediator<SettingsModel, Settings, SettingsView>, IInitializable
+    public sealed class SettingsMediator : Mediator<SettingsModel, Settings, SettingsView>, IInitializable, IDisposable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
@@ -29,27 +30,29 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
         #endregion
 
         #region Core
-        void IInitializable.Initialize() => base.Initialize();
+
+        public override void Initialize()
+        {
+            base.Initialize();
+            
+            ChangeVerticalGroupActivation(false);
+        }
         public override void SetSubscriptions(bool isSubscribed)
         {
             if (isSubscribed)
             {
-                _signalBus.Subscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
-                
                 View.Button.onClick.AddListener(OnMainButtonClicked);
                 View.ExitButton.onClick.AddListener(OnExitButtonClicked);
 
                 foreach (KeyValuePair<SettingsTypes, Button> item in View.SettingsButtons)
                 {
-                    SettingsButtonClicked(item.Key);
+                    ChangeOnOffImage(item.Key);
 
                     item.Value.onClick.AddListener(() => OnSettingsButtonClicked(item.Key));
                 }
             }
             else
             {
-                _signalBus.Unsubscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
-                
                 View.Button.onClick.RemoveListener(OnMainButtonClicked);
                 View.ExitButton.onClick.RemoveListener(OnExitButtonClicked);
 
@@ -57,10 +60,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
                     item.Value.onClick.RemoveListener(() => OnSettingsButtonClicked(item.Key));
             }
         }
-        #endregion
-
-        #region SignalReceivers
-        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) => ChangeVerticalGroupActivation(false);
         #endregion
 
         #region ButtonReceivers
@@ -75,7 +74,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
             _isVerticalGroupActive = isActive;
             View.VerticalGroup.SetActive(_isVerticalGroupActive);
         }
-        private void SettingsButtonClicked(SettingsTypes settingsType)
+        private void ChangeOnOffImage(SettingsTypes settingsType)
         {
             bool isActive = false;
 
@@ -95,9 +94,28 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
             View.SettingsOnImages[settingsType].SetActive(isActive);
             View.SettingsOffImages[settingsType].SetActive(!isActive);
         }
+        private void SettingsButtonClicked(SettingsTypes settingsType)
+        {
+            switch (settingsType)
+            {
+                case SettingsTypes.Music:
+                    Model.SetMusic(!Model.IsMusicMuted);
+                    break;
+                case SettingsTypes.Sound:
+                    Model.SetSound(!Model.IsSoundMuted);
+                    break;
+                case SettingsTypes.Haptic:
+                    Model.SetHaptic(!Model.IsHapticMuted);
+                    break;
+            }
+            
+            ChangeOnOffImage(settingsType);
+
+            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
+        }
         private void MainButtonClicked()
         {
-            ChangeVerticalGroupActivation(_isVerticalGroupActive);
+            ChangeVerticalGroupActivation(!_isVerticalGroupActive);
 
             _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
         }

@@ -14,6 +14,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
     {
         #region Fields
         [Header("Cross Scene Scope Fields")]
+        [SerializeField] private CrossSceneSettings crossSceneSettings;
         [SerializeField] private Settings settings;
         [SerializeField] private CurrencySettings currencySettings;
         [SerializeField] private LevelSettings levelSettings;
@@ -29,10 +30,12 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
         }
         private void ModelBindings(IContainerBuilder builder)
         {
+            builder.RegisterInstance(crossSceneSettings).AsSelf();
             builder.RegisterInstance(settings).AsSelf();
             builder.RegisterInstance(currencySettings).AsSelf();
             builder.RegisterInstance(levelSettings).AsSelf();
             
+            builder.Register<CrossSceneModel>(Lifetime.Singleton).AsSelf();
             builder.Register<SettingsModel>(Lifetime.Singleton).AsSelf();
             builder.Register<CurrencyModel>(Lifetime.Singleton).AsSelf();
             builder.Register<LevelModel>(Lifetime.Singleton).AsSelf();
@@ -48,12 +51,8 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
         private void MediationBindings(IContainerBuilder builder)
         {
             builder.RegisterComponentInHierarchy<AudioView>();
-            builder.RegisterComponentInHierarchy<CurrencyView>();
-            builder.RegisterComponentInHierarchy<SettingsView>();
             
             builder.RegisterEntryPoint<AudioMediator>().AsSelf();
-            builder.RegisterEntryPoint<CurrencyMediator>().AsSelf();
-            builder.RegisterEntryPoint<SettingsMediator>().AsSelf();
         }
         private void HandlerBindings(IContainerBuilder builder) =>
             builder.RegisterEntryPoint<CrossSceneHandler>().AsSelf();

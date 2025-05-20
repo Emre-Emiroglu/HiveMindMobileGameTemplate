@@ -1,4 +1,5 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
+﻿using System;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
@@ -9,7 +10,8 @@ using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
 {
-    public sealed class ShopPanelMediator : Mediator<MainMenuModel, MainMenuSettings, ShopPanelView>, IInitializable
+    public sealed class ShopPanelMediator : Mediator<MainMenuModel, MainMenuSettings, ShopPanelView>, IInitializable,
+        IDisposable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
@@ -21,7 +23,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
         #endregion
         
         #region Core
-        void IInitializable.Initialize() => base.Initialize();
         public override void SetSubscriptions(bool isSubscribed)
         {
             if (isSubscribed)

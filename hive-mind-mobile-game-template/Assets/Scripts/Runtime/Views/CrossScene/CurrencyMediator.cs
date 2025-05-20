@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
@@ -11,7 +12,8 @@ using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
-    public sealed class CurrencyMediator : Mediator<CurrencyModel, CurrencySettings, CurrencyView>, IInitializable
+    public sealed class CurrencyMediator : Mediator<CurrencyModel, CurrencySettings, CurrencyView>, IInitializable,
+        IDisposable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
@@ -23,10 +25,10 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
         #endregion
 
         #region Core
-        void IInitializable.Initialize()
+        public override void Initialize()
         {
             base.Initialize();
-
+            
             RefreshAllCurrencyVisual();
         }
         public override void SetSubscriptions(bool isSubscribed)

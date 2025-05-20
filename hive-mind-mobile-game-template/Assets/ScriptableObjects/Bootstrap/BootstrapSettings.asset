@@ -14,3 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logoSprite: {fileID: 21300000, guid: 54115b3ee6c0ef54fb685045079cfff9, type: 3}
   sceneActivationDuration: 2
+  logoTweenSettings:
+    startFromCurrent: 0
+    startValue: 1
+    endValue: 1.25
+    settings:
+      duration: 1
+      ease: 28
+      customEase:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      cycles: 1
+      cycleMode: 0
+      startDelay: 0
+      endDelay: 0
+      useUnscaledTime: 0
+      _useFixedUpdate: 0
+      _updateType: 0

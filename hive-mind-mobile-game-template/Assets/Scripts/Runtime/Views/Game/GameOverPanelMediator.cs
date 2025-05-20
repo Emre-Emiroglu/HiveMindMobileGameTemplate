@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game;
@@ -12,7 +13,8 @@ using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
 {
-    public sealed class GameOverPanelMediator : Mediator<GameModel, GameSettings, GameOverPanelView>, IInitializable
+    public sealed class GameOverPanelMediator : Mediator<GameModel, GameSettings, GameOverPanelView>, IInitializable,
+        IDisposable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
@@ -24,7 +26,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         #endregion
 
         #region Core
-        void IInitializable.Initialize() => base.Initialize();
         public override void SetSubscriptions(bool isSubscribed)
         {
             if (isSubscribed)

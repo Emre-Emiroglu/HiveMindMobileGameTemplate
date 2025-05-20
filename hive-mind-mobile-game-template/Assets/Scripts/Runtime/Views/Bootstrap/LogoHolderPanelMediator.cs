@@ -1,3 +1,4 @@
+using System;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
@@ -9,14 +10,14 @@ using VContainer.Unity;
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap
 {
     public sealed class LogoHolderPanelMediator : Mediator<BootstrapModel, BootstrapSettings, LogoHolderPanelView>,
-        IInitializable
+        IInitializable, IDisposable
     {
         #region Constructor
         public LogoHolderPanelMediator(BootstrapModel model, LogoHolderPanelView view) : base(model, view) { }
         #endregion
         
         #region Core
-        void IInitializable.Initialize()
+        public override void Initialize()
         {
             base.Initialize();
             

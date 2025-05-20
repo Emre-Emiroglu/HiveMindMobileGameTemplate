@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17cedd5726dc31044a889722947c35cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a39a6773e2a4cafad60b39acdc62454, type: 3}
   m_Name: CrossSceneSettings
   m_EditorClassIdentifier: 

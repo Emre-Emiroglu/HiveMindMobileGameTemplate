@@ -1,4 +1,5 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+﻿using System;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
@@ -8,7 +9,7 @@ using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
-    public sealed class AudioMediator : Mediator<SettingsModel, Settings, AudioView>, IInitializable
+    public sealed class AudioMediator : Mediator<SettingsModel, Settings, AudioView>, IInitializable, IDisposable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;

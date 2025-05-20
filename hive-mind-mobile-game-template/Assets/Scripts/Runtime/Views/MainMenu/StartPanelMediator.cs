@@ -1,4 +1,5 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
+﻿using System;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
@@ -10,7 +11,8 @@ using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
 {
-    public sealed class StartPanelMediator : Mediator<MainMenuModel, MainMenuSettings, StartPanelView>, IInitializable
+    public sealed class StartPanelMediator : Mediator<MainMenuModel, MainMenuSettings, StartPanelView>, IInitializable,
+        IDisposable
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
@@ -27,19 +29,18 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
         #endregion
 
         #region Core
-        void IInitializable.Initialize() => base.Initialize();
         public override void SetSubscriptions(bool isSubscribed)
         {
             if (isSubscribed)
             {
                 _signalBus.Subscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
-
+                
                 View.PlayButton.onClick.AddListener(OnPlayButtonClicked);
             }
             else
             {
                 _signalBus.Unsubscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
-
+                
                 View.PlayButton.onClick.RemoveListener(OnPlayButtonClicked);
             }
         }
@@ -57,8 +58,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
         private void ChangeUIPanel(UIPanelTypes uiPanelType)
         {
             bool isShow = uiPanelType == View.UIPanelVo.UIPanelType;
-
-            View.PlayButton.interactable = isShow;
 
             View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
             
