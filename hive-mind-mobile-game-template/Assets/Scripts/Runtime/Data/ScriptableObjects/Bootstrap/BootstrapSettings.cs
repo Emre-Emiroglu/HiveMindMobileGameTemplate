@@ -1,3 +1,4 @@
+using PrimeTween;
 using UnityEngine;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap
@@ -9,11 +10,13 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects
         [Header("Bootstrap Settings Fields")]
         [SerializeField] private Sprite logoSprite;
         [SerializeField] private float sceneActivationDuration;
+        [SerializeField] private TweenSettings<float> logoTweenSettings;
         #endregion
 
         #region Getters
         public Sprite LogoSprite => logoSprite;
         public float SceneActivationDuration => sceneActivationDuration;
+        public TweenSettings<float> LogoTweenSettings => logoTweenSettings;
         #endregion
     }
 }

@@ -41,16 +41,17 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         #endregion
 
         #region SignalReceivers
-        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal)
-        {
-            bool isShow = signal.UIPanelType == View.UIPanelVo.UIPanelType;
-
-            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
-        }
+        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) => ChangeUIPanel(signal.UIPanelType);
         #endregion
 
         #region ButtonReceivers
-        private void OnCloseButtonClicked()
+        private void OnCloseButtonClicked() => CloseButtonClicked();
+        #endregion
+
+        #region Executes
+        private void ChangeUIPanel(UIPanelTypes uiPanelType) =>
+            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(uiPanelType == View.UIPanelVo.UIPanelType);
+        private void CloseButtonClicked()
         {
             Model.SetIsTutorialShowed(true);
 

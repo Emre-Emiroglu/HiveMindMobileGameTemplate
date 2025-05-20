@@ -1,5 +1,5 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Application;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Application;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Application;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.Application;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Application;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Application;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
@@ -26,6 +26,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.ApplicationScop
             ServiceBindings(builder);
             ModelBindings(builder);
             ControllerBindings(builder);
+            HandlerBindings(builder);
         }
         private void ServiceBindings(IContainerBuilder builder)
         {
@@ -44,10 +45,9 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.ApplicationScop
         {
             builder.DeclareSignal<InitializeApplicationSignal>();
             builder.DeclareSignal<QuitApplicationSignal>();
-            
-            builder.RegisterEntryPoint<InitializeApplicationController>().AsSelf();
-            builder.RegisterEntryPoint<QuitApplicationController>().AsSelf();
         }
+        private void HandlerBindings(IContainerBuilder builder) =>
+            builder.RegisterEntryPoint<ApplicationHandler>().AsSelf();
         #endregion
 
         #region Cycle

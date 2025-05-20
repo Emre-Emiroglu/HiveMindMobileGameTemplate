@@ -1,10 +1,7 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game;
 using CodeCatGames.HMSignalBus.Runtime;
 using UnityEngine;
@@ -41,12 +38,10 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Game
             builder.RegisterComponentInHierarchy<InGamePanelView>().AsSelf();
             builder.RegisterComponentInHierarchy<GameOverPanelView>().AsSelf();
             builder.RegisterComponentInHierarchy<TutorialPanelView>().AsSelf();
-            builder.RegisterComponentInHierarchy<SettingsView>().AsSelf();
 
             builder.RegisterEntryPoint<InGamePanelMediator>().AsSelf();
             builder.RegisterEntryPoint<GameOverPanelMediator>().AsSelf();
             builder.RegisterEntryPoint<TutorialPanelMediator>().AsSelf();
-            builder.RegisterEntryPoint<SettingsMediator>().AsSelf();
         }
         private void ControllerBindings(IContainerBuilder builder)
         {
@@ -55,17 +50,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Game
             builder.DeclareSignal<GameOverSignal>();
             builder.DeclareSignal<GameExitSignal>();
             builder.DeclareSignal<SetupGameOverPanelSignal>();
-
-            builder.RegisterEntryPoint<InGamePanelChangeUIPanelController>().AsSelf();
-            builder.RegisterEntryPoint<InGamePanelWinButtonPressedController>().AsSelf();
-            builder.RegisterEntryPoint<InGamePanelFailButtonPressedController>().AsSelf();
-            builder.RegisterEntryPoint<InGamePanelAddCurrencyButtonPressedController>().AsSelf();
-            builder.RegisterEntryPoint<InitializeGameController>().AsSelf();
-            builder.RegisterEntryPoint<PlayGameController>().AsSelf();
-            builder.RegisterEntryPoint<GameOverController>().AsSelf();
-            builder.RegisterEntryPoint<GameExitController>().AsSelf();
-            builder.RegisterEntryPoint<SettingsVisualController>().AsSelf();
-            builder.RegisterEntryPoint<SettingsButtonClickedController>().AsSelf();
         }
         #endregion
 

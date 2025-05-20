@@ -1,5 +1,5 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
@@ -15,7 +15,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
         #region Fields
         [Header("Cross Scene Scope Fields")]
         [SerializeField] private Settings settings;
-        [SerializeField] private CrossSceneSettings crossSceneSettings;
         [SerializeField] private CurrencySettings currencySettings;
         [SerializeField] private LevelSettings levelSettings;
         #endregion
@@ -26,40 +25,38 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
             ModelBindings(builder);
             ControllerBindings(builder);
             MediationBindings(builder);
+            HandlerBindings(builder);
         }
         private void ModelBindings(IContainerBuilder builder)
         {
             builder.RegisterInstance(settings).AsSelf();
-            builder.RegisterInstance(crossSceneSettings).AsSelf();
             builder.RegisterInstance(currencySettings).AsSelf();
             builder.RegisterInstance(levelSettings).AsSelf();
             
             builder.Register<SettingsModel>(Lifetime.Singleton).AsSelf();
-            builder.Register<CrossSceneModel>(Lifetime.Singleton).AsSelf();
             builder.Register<CurrencyModel>(Lifetime.Singleton).AsSelf();
             builder.Register<LevelModel>(Lifetime.Singleton).AsSelf();
         }
         private void ControllerBindings(IContainerBuilder builder)
         {
-            builder.DeclareSignal<ChangeLoadingScreenActivationSignal>();
+            builder.DeclareSignal<LoadSceneSignal>();
             builder.DeclareSignal<PlayAudioSignal>();
             builder.DeclareSignal<ChangeCurrencySignal>();
             builder.DeclareSignal<RefreshCurrencyVisualSignal>();
-            builder.DeclareSignal<SpawnCurrencyTrailSignal>();
             builder.DeclareSignal<ChangeUIPanelSignal>();
-            
-            builder.RegisterEntryPoint<AudioController>().AsSelf();
-            builder.RegisterEntryPoint<LoadingScreenPanelController>().AsSelf();
-            builder.RegisterEntryPoint<CurrencyTrailSpawnController>().AsSelf();
         }
         private void MediationBindings(IContainerBuilder builder)
         {
             builder.RegisterComponentInHierarchy<AudioView>();
-            builder.RegisterComponentInHierarchy<LoadingScreenPanelView>();
+            builder.RegisterComponentInHierarchy<CurrencyView>();
+            builder.RegisterComponentInHierarchy<SettingsView>();
             
             builder.RegisterEntryPoint<AudioMediator>().AsSelf();
-            builder.RegisterEntryPoint<LoadingScreenPanelMediator>().AsSelf();
+            builder.RegisterEntryPoint<CurrencyMediator>().AsSelf();
+            builder.RegisterEntryPoint<SettingsMediator>().AsSelf();
         }
+        private void HandlerBindings(IContainerBuilder builder) =>
+            builder.RegisterEntryPoint<CrossSceneHandler>().AsSelf();
         #endregion
     }
 }

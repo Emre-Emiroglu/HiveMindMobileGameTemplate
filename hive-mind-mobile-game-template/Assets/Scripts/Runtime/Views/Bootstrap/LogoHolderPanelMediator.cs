@@ -1,30 +1,47 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Bootstrap;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
 using CodeCatGames.HMModelViewController.Runtime;
+using PrimeTween;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap
 {
-    public sealed class LogoHolderPanelMediator : Mediator<BootstrapModel, BootstrapSettings, LogoHolderPanelView>, IInitializable
+    public sealed class LogoHolderPanelMediator : Mediator<BootstrapModel, BootstrapSettings, LogoHolderPanelView>,
+        IInitializable
     {
-        #region ReadonlyFields
-        private readonly LogoHolderPanelController _controller;
-        #endregion
-        
         #region Constructor
-        public LogoHolderPanelMediator(BootstrapModel model, LogoHolderPanelView view,
-            LogoHolderPanelController controller) : base(model, view) => _controller = controller;
+        public LogoHolderPanelMediator(BootstrapModel model, LogoHolderPanelView view) : base(model, view) { }
         #endregion
         
         #region Core
         void IInitializable.Initialize()
         {
             base.Initialize();
-
-            _controller.Execute();
+            
+            SetLogoImage();
+            Show();
+            PlayLogoTween();
         }
         public override void SetSubscriptions(bool isSubscribed) { }
+        #endregion
+
+        #region Executes
+        private void SetLogoImage()
+        {
+            View.LogoImage.sprite = Model.Settings.LogoSprite;
+            View.LogoImage.preserveAspect = true;
+        }
+        private void Show() => View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(true);
+        private void PlayLogoTween()
+        {
+            Transform transform = View.LogoImage.transform;
+
+            TweenSettings<float> tweenSettings = Model.Settings.LogoTweenSettings;
+
+            Tween.Scale(transform, tweenSettings);
+        }
         #endregion
     }
 }

@@ -1,7 +1,8 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
 using CodeCatGames.HMModelViewController.Runtime;
 using CodeCatGames.HMSignalBus.Runtime;
 using VContainer.Unity;
@@ -12,19 +13,11 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
-        private readonly ShopPanelChangeUIPanelController _changeUIPanelController;
-        private readonly ShopPanelHomeButtonClickedController _homeButtonClickedController;
         #endregion
         
         #region Constructor
-        public ShopPanelMediator(MainMenuModel model, ShopPanelView view, SignalBus signalBus,
-            ShopPanelChangeUIPanelController changeUIPanelController,
-            ShopPanelHomeButtonClickedController homeButtonClickedController) : base(model, view)
-        {
+        public ShopPanelMediator(MainMenuModel model, ShopPanelView view, SignalBus signalBus) : base(model, view) =>
             _signalBus = signalBus;
-            _changeUIPanelController = changeUIPanelController;
-            _homeButtonClickedController = homeButtonClickedController;
-        }
         #endregion
         
         #region Core
@@ -47,12 +40,21 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
         #endregion
         
         #region SignalReceivers
-        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) =>
-            _changeUIPanelController.Execute(signal.UIPanelType);
+        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) => ChangeUIPanel(signal.UIPanelType);
         #endregion
 
         #region ButtonReceivers
-        private void OnHomeButtonClicked() => _homeButtonClickedController.Execute();
+        private void OnHomeButtonClicked() => HomeButtonClicked();
+        #endregion
+
+        #region Executes
+        private void ChangeUIPanel(UIPanelTypes uiPanelType) =>
+            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(uiPanelType == View.UIPanelVo.UIPanelType);
+        private void HomeButtonClicked()
+        {
+            _signalBus.Fire(new ChangeUIPanelSignal(UIPanelTypes.StartPanel));
+            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
+        }
         #endregion
     }
 }

@@ -1,22 +1,15 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using UnityEngine;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene
 {
-    public readonly struct ChangeLoadingScreenActivationSignal
+    public readonly struct LoadSceneSignal
     {
         #region Properities
-        public AsyncOperation AsyncOperation { get; }
-        public bool IsActive { get; }
+        public SceneID SceneID { get; }
         #endregion
 
         #region Constructor
-        public ChangeLoadingScreenActivationSignal(AsyncOperation asyncOperation, bool isActive)
-        {
-            AsyncOperation = asyncOperation;
-            IsActive = isActive;
-        }
+        public LoadSceneSignal(SceneID sceneID) => SceneID = sceneID;
         #endregion
     }
     public readonly struct PlayAudioSignal
@@ -61,16 +54,6 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene
 
         #region Constructor
         public RefreshCurrencyVisualSignal(CurrencyTypes currencyType) => CurrencyType = currencyType;
-        #endregion
-    }
-    public readonly struct SpawnCurrencyTrailSignal
-    {
-        #region Properities
-        public CurrencyTrailData CurrencyTrailData { get; }
-        #endregion
-        
-        #region Constructor
-        public SpawnCurrencyTrailSignal(CurrencyTrailData currencyTrailData) => CurrencyTrailData = currencyTrailData;
         #endregion
     }
     public readonly struct ChangeUIPanelSignal

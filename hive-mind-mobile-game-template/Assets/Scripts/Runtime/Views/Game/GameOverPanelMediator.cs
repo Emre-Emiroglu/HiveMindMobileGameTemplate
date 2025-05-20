@@ -51,34 +51,36 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         #endregion
         
         #region SignalReceivers
-        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal)
-        {
-            bool isShow = signal.UIPanelType == View.UIPanelVo.UIPanelType;
-            
-            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
-        }
-        private void OnSetupGameOverPanelSignal(SetupGameOverPanelSignal signal)
-        {
-            foreach (KeyValuePair<bool, GameObject> item in View.GameOverPanels)
-            {
-                bool isActive = item.Key == signal.IsSuccess;
-                item.Value.SetActive(isActive);
-            }
-        }
+        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) => ChangeUIPanel(signal.UIPanelType);
+        private void OnSetupGameOverPanelSignal(SetupGameOverPanelSignal signal) =>
+            SetupGameOverPanel(signal.IsSuccess);
         #endregion
 
         #region ButtonReceivers
-        private void OnHomeButtonClicked()
+        private void OnHomeButtonClicked() => HomeButtonClicked();
+        private void OnRestartButtonClicked() => RestartButtonClicked();
+        private void OnNextButtonClicked() => NextButtonClicked();
+        #endregion
+        
+        #region Executes
+        private void ChangeUIPanel(UIPanelTypes uiPanelType) =>
+            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(uiPanelType == View.UIPanelVo.UIPanelType);
+        private void SetupGameOverPanel(bool isSuccess)
+        {
+            foreach (KeyValuePair<bool, GameObject> item in View.GameOverPanels)
+                item.Value.SetActive(item.Key == isSuccess);
+        }
+        private void HomeButtonClicked()
         {
             _signalBus.Fire(new GameExitSignal());
             _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
         }
-        private void OnRestartButtonClicked()
+        private void RestartButtonClicked()
         {
             _signalBus.Fire(new PlayGameSignal());
             _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
         }
-        private void OnNextButtonClicked()
+        private void NextButtonClicked()
         {
             _signalBus.Fire(new PlayGameSignal());
             _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
