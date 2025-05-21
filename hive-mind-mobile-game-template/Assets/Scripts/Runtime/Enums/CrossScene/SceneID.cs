@@ -1,9 +1,9 @@
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene
 {
-    public enum SceneID : int
+    public enum SceneID
     {
-        Bootstrap = 0,
-        MainMenu = 1,
-        Game = 2,
+        Bootstrap,
+        MainMenu,
+        Game
     }
 }

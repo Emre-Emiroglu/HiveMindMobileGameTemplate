@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58061f83c167a4f4a893140ad6daf070, type: 3}
   m_Name: ApplicationSettings
   m_EditorClassIdentifier: 
-  targetFrameRate: 240
-  runInBackground: 1
+  maxFrameRate: 60
+  runInBackground: 0

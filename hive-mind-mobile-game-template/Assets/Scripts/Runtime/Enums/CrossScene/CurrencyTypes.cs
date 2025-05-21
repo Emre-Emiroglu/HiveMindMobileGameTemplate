@@ -1,7 +1,7 @@
 ﻿namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene
 {
-    public enum CurrencyTypes : int
+    public enum CurrencyTypes
     {
-        Coin = 0
+        Coin
     }
 }

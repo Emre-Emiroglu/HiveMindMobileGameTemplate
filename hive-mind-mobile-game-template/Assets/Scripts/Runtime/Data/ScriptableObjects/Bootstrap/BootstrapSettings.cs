@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap
 {
-    [CreateAssetMenu(fileName = "BootstrapSettings", menuName = "CodeCatGames/HiveMindMobileGameTemplate/Bootstrap/BootstrapSettings")]
+    [CreateAssetMenu(fileName = "BootstrapSettings",
+        menuName = "HiveMindMobileGameTemplate/Bootstrap/BootstrapSettings")]
     public sealed class BootstrapSettings : ScriptableObject
     {
         #region Fields

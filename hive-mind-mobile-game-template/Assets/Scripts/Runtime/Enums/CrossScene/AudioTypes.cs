@@ -1,8 +1,8 @@
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene
 {
-    public enum AudioTypes : int
+    public enum AudioTypes
     {
-        Music = 0,
-        Sound = 1,
+        Music,
+        Sound
     }
 }

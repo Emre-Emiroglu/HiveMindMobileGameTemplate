@@ -1,13 +1,12 @@
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene
 {
-    public enum UIPanelTypes : int
+    public enum UIPanelTypes
     {
-        LogoHolderPanel = 0,
-        LoadingScreenPanel = 1,
-        StartPanel = 2,
-        InGamePanel = 3,
-        GameOverPanel = 4,
-        ShopPanel = 5,
-        TutorialPanel = 6,
+        LogoHolderPanel,
+        StartPanel,
+        InGamePanel,
+        GameOverPanel,
+        ShopPanel,
+        TutorialPanel
     }
 }

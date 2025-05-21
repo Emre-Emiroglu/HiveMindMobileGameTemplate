@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene
 {
-    [CreateAssetMenu(fileName = "Settings", menuName = "CodeCatGames/HiveMindMobileGameTemplate/CrossScene/Settings")]
+    [CreateAssetMenu(fileName = "Settings", menuName = "HiveMindMobileGameTemplate/CrossScene/Settings")]
     public sealed class Settings : ScriptableObject
     {
         #region Fields
