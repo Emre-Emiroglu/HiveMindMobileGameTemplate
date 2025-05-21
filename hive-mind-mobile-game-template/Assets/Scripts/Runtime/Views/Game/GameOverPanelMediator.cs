@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
 using CodeCatGames.HMModelViewController.Runtime;
 using CodeCatGames.HMSignalBus.Runtime;
-using UnityEngine;
 using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
@@ -18,11 +15,25 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
+        private readonly GameOverPanelActivationController _gameOverPanelActivationController;
+        private readonly SetupGameOverPanelController _setupGameOverPanelController;
+        private readonly ReturnToMainMenuButtonClickedController _returnToMainMenuButtonClickedController;
+        private readonly ReplayButtonsController _replayButtonsController;
         #endregion
 
         #region Constructor
-        public GameOverPanelMediator(GameModel model, GameOverPanelView view, SignalBus signalBus) :
-            base(model, view) => _signalBus = signalBus;
+        public GameOverPanelMediator(GameModel model, GameOverPanelView view, SignalBus signalBus,
+            GameOverPanelActivationController gameOverPanelActivationController,
+            SetupGameOverPanelController setupGameOverPanelController,
+            ReturnToMainMenuButtonClickedController returnToMainMenuButtonClickedController,
+            ReplayButtonsController replayButtonsController) : base(model, view)
+        {
+            _signalBus = signalBus;
+            _gameOverPanelActivationController = gameOverPanelActivationController;
+            _setupGameOverPanelController = setupGameOverPanelController;
+            _returnToMainMenuButtonClickedController = returnToMainMenuButtonClickedController;
+            _replayButtonsController = replayButtonsController;
+        }
         #endregion
 
         #region Core
@@ -33,8 +44,8 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
                 _signalBus.Subscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
                 _signalBus.Subscribe<SetupGameOverPanelSignal>(OnSetupGameOverPanelSignal);
 
-                View.FailHomeButton.onClick.AddListener(OnHomeButtonClicked);
-                View.SuccessHomeButton.onClick.AddListener(OnHomeButtonClicked);
+                View.FailReturnToMainMenuButton.onClick.AddListener(OnReturnToMainMenuButtonClicked);
+                View.SuccessReturnToMainMenuButton.onClick.AddListener(OnReturnToMainMenuButtonClicked);
                 View.RestartButton.onClick.AddListener(OnRestartButtonClicked);
                 View.NextButton.onClick.AddListener(OnNextButtonClicked);
             }
@@ -43,8 +54,8 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
                 _signalBus.Unsubscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
                 _signalBus.Unsubscribe<SetupGameOverPanelSignal>(OnSetupGameOverPanelSignal);
 
-                View.FailHomeButton.onClick.RemoveListener(OnHomeButtonClicked);
-                View.SuccessHomeButton.onClick.RemoveListener(OnHomeButtonClicked);
+                View.FailReturnToMainMenuButton.onClick.RemoveListener(OnReturnToMainMenuButtonClicked);
+                View.SuccessReturnToMainMenuButton.onClick.RemoveListener(OnReturnToMainMenuButtonClicked);
                 View.RestartButton.onClick.RemoveListener(OnRestartButtonClicked);
                 View.NextButton.onClick.RemoveListener(OnNextButtonClicked);
             }
@@ -52,40 +63,16 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         #endregion
         
         #region SignalReceivers
-        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) => ChangeUIPanel(signal.UIPanelType);
+        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) =>
+            _gameOverPanelActivationController.Execute(signal.UIPanelType);
         private void OnSetupGameOverPanelSignal(SetupGameOverPanelSignal signal) =>
-            SetupGameOverPanel(signal.IsSuccess);
+            _setupGameOverPanelController.Execute(signal.IsSuccess);
         #endregion
 
         #region ButtonReceivers
-        private void OnHomeButtonClicked() => HomeButtonClicked();
-        private void OnRestartButtonClicked() => RestartButtonClicked();
-        private void OnNextButtonClicked() => NextButtonClicked();
-        #endregion
-        
-        #region Executes
-        private void ChangeUIPanel(UIPanelTypes uiPanelType) =>
-            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(uiPanelType == View.UIPanelVo.UIPanelType);
-        private void SetupGameOverPanel(bool isSuccess)
-        {
-            foreach (KeyValuePair<bool, GameObject> item in View.GameOverPanels)
-                item.Value.SetActive(item.Key == isSuccess);
-        }
-        private void HomeButtonClicked()
-        {
-            _signalBus.Fire(new GameExitSignal());
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-        }
-        private void RestartButtonClicked()
-        {
-            _signalBus.Fire(new PlayGameSignal());
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-        }
-        private void NextButtonClicked()
-        {
-            _signalBus.Fire(new PlayGameSignal());
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-        }
+        private void OnReturnToMainMenuButtonClicked() => _returnToMainMenuButtonClickedController.Execute();
+        private void OnRestartButtonClicked() => _replayButtonsController.Execute();
+        private void OnNextButtonClicked() => _replayButtonsController.Execute();
         #endregion
     }
 }

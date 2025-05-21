@@ -1,4 +1,5 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
@@ -47,6 +48,9 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
             builder.DeclareSignal<ChangeCurrencySignal>();
             builder.DeclareSignal<RefreshCurrencyVisualSignal>();
             builder.DeclareSignal<ChangeUIPanelSignal>();
+            
+            builder.RegisterEntryPoint<PlayAudioController>().AsSelf();
+            builder.RegisterEntryPoint<AdjustSettingsController>().AsSelf();
         }
         private void MediationBindings(IContainerBuilder builder)
         {
@@ -54,8 +58,11 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
             
             builder.RegisterEntryPoint<AudioMediator>().AsSelf();
         }
-        private void HandlerBindings(IContainerBuilder builder) =>
-            builder.RegisterEntryPoint<CrossSceneHandler>().AsSelf();
+        private void HandlerBindings(IContainerBuilder builder)
+        {
+            builder.RegisterEntryPoint<CurrencyHandler>().AsSelf();
+            builder.RegisterEntryPoint<SceneManagementHandler>().AsSelf();
+        }
         #endregion
     }
 }

@@ -1,10 +1,8 @@
 using System;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Bootstrap;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
 using CodeCatGames.HMModelViewController.Runtime;
-using PrimeTween;
-using UnityEngine;
 using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap
@@ -12,8 +10,21 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap
     public sealed class LogoHolderPanelMediator : Mediator<BootstrapModel, BootstrapSettings, LogoHolderPanelView>,
         IInitializable, IDisposable
     {
+        #region ReadonlyFields
+        private readonly LogoImageController _logoImageController;
+        private readonly LogoPanelActivationController _logoPanelActivationController;
+        private readonly LogoTweenController _logoTweenController;
+        #endregion
+        
         #region Constructor
-        public LogoHolderPanelMediator(BootstrapModel model, LogoHolderPanelView view) : base(model, view) { }
+        public LogoHolderPanelMediator(BootstrapModel model, LogoHolderPanelView view,
+            LogoImageController logoImageController, LogoPanelActivationController logoPanelActivationController,
+            LogoTweenController logoTweenController) : base(model, view)
+        {
+            _logoImageController = logoImageController;
+            _logoPanelActivationController = logoPanelActivationController;
+            _logoTweenController = logoTweenController;
+        }
         #endregion
         
         #region Core
@@ -21,28 +32,11 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap
         {
             base.Initialize();
             
-            SetLogoImage();
-            Show();
-            PlayLogoTween();
+            _logoImageController.Execute();
+            _logoPanelActivationController.Execute();
+            _logoTweenController.Execute();
         }
         public override void SetSubscriptions(bool isSubscribed) { }
-        #endregion
-
-        #region Executes
-        private void SetLogoImage()
-        {
-            View.LogoImage.sprite = Model.Settings.LogoSprite;
-            View.LogoImage.preserveAspect = true;
-        }
-        private void Show() => View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(true);
-        private void PlayLogoTween()
-        {
-            Transform transform = View.LogoImage.transform;
-
-            TweenSettings<float> tweenSettings = Model.Settings.LogoTweenSettings;
-
-            Tween.Scale(transform, tweenSettings);
-        }
         #endregion
     }
 }

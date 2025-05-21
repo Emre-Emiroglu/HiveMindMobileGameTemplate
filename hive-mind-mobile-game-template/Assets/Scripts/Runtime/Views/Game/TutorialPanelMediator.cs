@@ -1,10 +1,8 @@
 ﻿using System;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
 using CodeCatGames.HMModelViewController.Runtime;
 using CodeCatGames.HMSignalBus.Runtime;
 using VContainer.Unity;
@@ -16,11 +14,19 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
+        private readonly TutorialPanelActivationController _tutorialPanelActivationController;
+        private readonly TutorialCloseButtonController _tutorialCloseButtonController;
         #endregion
         
         #region Constructor
-        public TutorialPanelMediator(TutorialModel model, TutorialPanelView view, SignalBus signalBus) : base(model,
-            view) => _signalBus = signalBus;
+        public TutorialPanelMediator(TutorialModel model, TutorialPanelView view, SignalBus signalBus,
+            TutorialPanelActivationController tutorialPanelActivationController,
+            TutorialCloseButtonController tutorialCloseButtonController) : base(model, view)
+        {
+            _signalBus = signalBus;
+            _tutorialPanelActivationController = tutorialPanelActivationController;
+            _tutorialCloseButtonController = tutorialCloseButtonController;
+        }
         #endregion
 
         #region Core
@@ -42,23 +48,12 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         #endregion
 
         #region SignalReceivers
-        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) => ChangeUIPanel(signal.UIPanelType);
+        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) =>
+            _tutorialPanelActivationController.Execute(signal.UIPanelType);
         #endregion
 
         #region ButtonReceivers
-        private void OnCloseButtonClicked() => CloseButtonClicked();
-        #endregion
-
-        #region Executes
-        private void ChangeUIPanel(UIPanelTypes uiPanelType) =>
-            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(uiPanelType == View.UIPanelVo.UIPanelType);
-        private void CloseButtonClicked()
-        {
-            Model.SetIsTutorialShowed(true);
-
-            _signalBus.Fire(new PlayGameSignal());
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-        }
+        private void OnCloseButtonClicked() => _tutorialCloseButtonController.Execute();
         #endregion
     }
 }

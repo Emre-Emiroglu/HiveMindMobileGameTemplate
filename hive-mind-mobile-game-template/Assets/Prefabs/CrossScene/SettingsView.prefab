@@ -152,6 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3609229442656483759}
   - component: {fileID: 6907244606455374542}
+  - component: {fileID: 2658097551781584117}
   - component: {fileID: 7767255655613592610}
   - component: {fileID: 3430510416322905785}
   - component: {fileID: 9127625662075627020}
@@ -191,6 +192,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746429581444314246}
   m_CullTransparentMesh: 1
+--- !u!114 &2658097551781584117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746429581444314246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8472943f8264d76bbc45db1cd8291d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects: []
+  settingsView: {fileID: 7767255655613592610}
 --- !u!114 &7767255655613592610
 MonoBehaviour:
   m_ObjectHideFlags: 0

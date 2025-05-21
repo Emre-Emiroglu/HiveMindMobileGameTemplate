@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Application;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game;
 using CodeCatGames.HMModelViewController.Runtime;
 using CodeCatGames.HMSignalBus.Runtime;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VContainer.Unity;
 
@@ -18,41 +16,57 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
+        private readonly ChangeVerticalGroupActivityController _changeVerticalGroupActivityController;
+        private readonly RefreshSettingsButtonVisualsController _refreshSettingsButtonVisualsController;
+        private readonly SettingsButtonClickedController _settingsButtonClickedController;
+        private readonly MainButtonClickedController _mainButtonClickedController;
+        private readonly ExitButtonClickedController _exitButtonClickedController;
         #endregion
         
-        #region Fields
-        private bool _isVerticalGroupActive;
-        #endregion
-
         #region Constructor
-        public SettingsMediator(SettingsModel model, SettingsView view, SignalBus signalBus) : base(model, view) =>
+        public SettingsMediator(SettingsModel model, SettingsView view, SignalBus signalBus,
+            ChangeVerticalGroupActivityController changeVerticalGroupActivityController,
+            RefreshSettingsButtonVisualsController refreshSettingsButtonVisualsController,
+            SettingsButtonClickedController settingsButtonClickedController,
+            MainButtonClickedController mainButtonClickedController,
+            ExitButtonClickedController exitButtonClickedController) : base(model, view)
+        {
             _signalBus = signalBus;
+            _changeVerticalGroupActivityController = changeVerticalGroupActivityController;
+            _refreshSettingsButtonVisualsController = refreshSettingsButtonVisualsController;
+            _settingsButtonClickedController = settingsButtonClickedController;
+            _mainButtonClickedController = mainButtonClickedController;
+            _exitButtonClickedController = exitButtonClickedController;
+        }
         #endregion
 
         #region Core
-
         public override void Initialize()
         {
             base.Initialize();
             
-            ChangeVerticalGroupActivation(false);
+            _changeVerticalGroupActivityController.Execute(false);
         }
         public override void SetSubscriptions(bool isSubscribed)
         {
             if (isSubscribed)
             {
+                _signalBus.Subscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
+                
                 View.Button.onClick.AddListener(OnMainButtonClicked);
                 View.ExitButton.onClick.AddListener(OnExitButtonClicked);
 
                 foreach (KeyValuePair<SettingsTypes, Button> item in View.SettingsButtons)
                 {
-                    ChangeOnOffImage(item.Key);
+                    _refreshSettingsButtonVisualsController.Execute(item.Key);
 
                     item.Value.onClick.AddListener(() => OnSettingsButtonClicked(item.Key));
                 }
             }
             else
             {
+                _signalBus.Unsubscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
+                
                 View.Button.onClick.RemoveListener(OnMainButtonClicked);
                 View.ExitButton.onClick.RemoveListener(OnExitButtonClicked);
 
@@ -62,81 +76,21 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
         }
         #endregion
 
-        #region ButtonReceivers
-        private void OnMainButtonClicked() => MainButtonClicked();
-        private void OnExitButtonClicked() => ExitButtonClicked();
-        private void OnSettingsButtonClicked(SettingsTypes settingsType) => SettingsButtonClicked(settingsType);
+        #region SignalReceivers
+        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal)
+        {
+            _changeVerticalGroupActivityController.Execute(false);
+            
+            foreach (KeyValuePair<SettingsTypes, Button> item in View.SettingsButtons)
+                _refreshSettingsButtonVisualsController.Execute(item.Key);
+        }
         #endregion
 
-        #region Executes
-        private void ChangeVerticalGroupActivation(bool isActive)
-        {
-            _isVerticalGroupActive = isActive;
-            View.VerticalGroup.SetActive(_isVerticalGroupActive);
-        }
-        private void ChangeOnOffImage(SettingsTypes settingsType)
-        {
-            bool isActive = false;
-
-            switch (settingsType)
-            {
-                case SettingsTypes.Music:
-                    isActive = !Model.SettingsPersistentData.IsMusicMuted;
-                    break;
-                case SettingsTypes.Sound:
-                    isActive = !Model.SettingsPersistentData.IsSoundMuted;
-                    break;
-                case SettingsTypes.Haptic:
-                    isActive = !Model.SettingsPersistentData.IsHapticMuted;
-                    break;
-            }
-
-            View.SettingsOnImages[settingsType].SetActive(isActive);
-            View.SettingsOffImages[settingsType].SetActive(!isActive);
-        }
-        private void SettingsButtonClicked(SettingsTypes settingsType)
-        {
-            switch (settingsType)
-            {
-                case SettingsTypes.Music:
-                    Model.SetMusic(!Model.SettingsPersistentData.IsMusicMuted);
-                    break;
-                case SettingsTypes.Sound:
-                    Model.SetSound(!Model.SettingsPersistentData.IsSoundMuted);
-                    break;
-                case SettingsTypes.Haptic:
-                    Model.SetHaptic(!Model.SettingsPersistentData.IsHapticMuted);
-                    break;
-            }
-            
-            ChangeOnOffImage(settingsType);
-
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-        }
-        private void MainButtonClicked()
-        {
-            ChangeVerticalGroupActivation(!_isVerticalGroupActive);
-
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-        }
-        private void ExitButtonClicked()
-        {
-            SceneID currentSceneID = (SceneID)SceneManager.GetActiveScene().buildIndex;
-
-            switch (currentSceneID)
-            {
-                case SceneID.Bootstrap:
-                    break;
-                case SceneID.MainMenu:
-                    _signalBus.Fire(new QuitApplicationSignal());
-                    break;
-                case SceneID.Game:
-                    _signalBus.Fire(new GameExitSignal());
-                    _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic,
-                        SoundTypes.UIClick));
-                    break;
-            }
-        }
+        #region ButtonReceivers
+        private void OnMainButtonClicked() => _mainButtonClickedController.Execute();
+        private void OnExitButtonClicked() => _exitButtonClickedController.Execute();
+        private void OnSettingsButtonClicked(SettingsTypes settingsType) =>
+            _settingsButtonClickedController.Execute(settingsType);
         #endregion
     }
 }

@@ -13,8 +13,8 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         [Header("Game Over Panel View Fields")]
         [SerializeField] private UIPanelVo uiPanelVo;
         [SerializeField] private SerializedDictionary<bool, GameObject> gameOverPanels;
-        [SerializeField] private Button failHomeButton;
-        [SerializeField] private Button successHomeButton;
+        [SerializeField] private Button failReturnToMainMenuButton;
+        [SerializeField] private Button successReturnToMainMenuButton;
         [SerializeField] private Button restartButton;
         [SerializeField] private Button nextButton;
         #endregion
@@ -22,8 +22,8 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         #region Getters
         public UIPanelVo UIPanelVo => uiPanelVo;
         public SerializedDictionary<bool, GameObject> GameOverPanels => gameOverPanels;
-        public Button FailHomeButton => failHomeButton;
-        public Button SuccessHomeButton => successHomeButton;
+        public Button FailReturnToMainMenuButton => failReturnToMainMenuButton;
+        public Button SuccessReturnToMainMenuButton => successReturnToMainMenuButton;
         public Button RestartButton => restartButton;
         public Button NextButton => nextButton;
         #endregion

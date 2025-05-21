@@ -1,9 +1,9 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu;
 using CodeCatGames.HMSignalBus.Runtime;
 using UnityEngine;
@@ -33,18 +33,22 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.MainMenu
 
             builder.Register<MainMenuModel>(Lifetime.Singleton).AsSelf();
         }
-        private void ControllerBindings(IContainerBuilder builder) => builder.DeclareSignal<InitializeMainMenuSignal>();
+        private void ControllerBindings(IContainerBuilder builder)
+        {
+            builder.DeclareSignal<InitializeMainMenuSignal>();
+            
+            builder.RegisterEntryPoint<StartPanelActivationController>().AsSelf();
+            builder.RegisterEntryPoint<PlayButtonClickedController>().AsSelf();
+            builder.RegisterEntryPoint<ShopPanelActivationController>().AsSelf();
+            builder.RegisterEntryPoint<HomeButtonClickedController>().AsSelf();
+        }
         private void MediationBindings(IContainerBuilder builder)
         {
             builder.RegisterComponentInHierarchy<StartPanelView>().AsSelf();
             builder.RegisterComponentInHierarchy<ShopPanelView>().AsSelf();
-            builder.RegisterComponentInHierarchy<CurrencyView>();
-            builder.RegisterComponentInHierarchy<SettingsView>();
             
             builder.RegisterEntryPoint<StartPanelMediator>().AsSelf();
             builder.RegisterEntryPoint<ShopPanelMediator>().AsSelf();
-            builder.RegisterEntryPoint<CurrencyMediator>().AsSelf();
-            builder.RegisterEntryPoint<SettingsMediator>().AsSelf();
         }
         private void HandlerBindings(IContainerBuilder builder) =>
             builder.RegisterEntryPoint<MainMenuHandler>().AsSelf();

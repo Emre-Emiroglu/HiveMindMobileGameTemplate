@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 using CodeCatGames.HMModelViewController.Runtime;
 using CodeCatGames.HMSignalBus.Runtime;
-using CodeCatGames.HMUtilities.Runtime;
 using VContainer.Unity;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
@@ -17,19 +16,27 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
+        private readonly RefreshCurrencyVisualController _refreshCurrencyVisualController;
+        private readonly CurrencyButtonClickedController _currencyButtonClickedController;
         #endregion
 
         #region Constructor
-        public CurrencyMediator(CurrencyModel model, CurrencyView view, SignalBus signalBus) : base(model, view) =>
+        public CurrencyMediator(CurrencyModel model, CurrencyView view, SignalBus signalBus,
+            RefreshCurrencyVisualController refreshCurrencyVisualController,
+            CurrencyButtonClickedController currencyButtonClickedController) : base(model, view)
+        {
             _signalBus = signalBus;
+            _refreshCurrencyVisualController = refreshCurrencyVisualController;
+            _currencyButtonClickedController = currencyButtonClickedController;
+        }
         #endregion
 
         #region Core
         public override void Initialize()
         {
             base.Initialize();
-            
-            RefreshAllCurrencyVisual();
+
+            _refreshCurrencyVisualController.Execute(CurrencyTypes.Coin, true);
         }
         public override void SetSubscriptions(bool isSubscribed)
         {
@@ -50,30 +57,11 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 
         #region SignalReceivers
         private void OnRefreshCurrencyVisualSignal(RefreshCurrencyVisualSignal signal) =>
-            RefreshCurrencyVisual(signal.CurrencyType);
+            _refreshCurrencyVisualController.Execute(signal.CurrencyType, false);
         #endregion
 
         #region ButtonReceivers
-        private void OnButtonClicked() => ButtonClicked();
-        #endregion
-
-        #region Executes
-        private void RefreshAllCurrencyVisual()
-        {
-            foreach (KeyValuePair<CurrencyTypes, int> modelCurrencyValue in Model.CurrencyPersistentData.CurrencyValues)
-                RefreshCurrencyVisual(modelCurrencyValue.Key);
-        }
-        private void RefreshCurrencyVisual(CurrencyTypes currencyType)
-        {
-            int value = Model.CurrencyPersistentData.CurrencyValues[currencyType];
-
-            View.CurrencyTexts[currencyType].SetText(TextFormatter.FormatNumber(value));
-        }
-        private void ButtonClicked()
-        {
-            _signalBus.Fire(new ChangeUIPanelSignal(UIPanelTypes.ShopPanel));
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-        }
+        private void OnButtonClicked() => _currencyButtonClickedController.Execute();
         #endregion
     }
 }

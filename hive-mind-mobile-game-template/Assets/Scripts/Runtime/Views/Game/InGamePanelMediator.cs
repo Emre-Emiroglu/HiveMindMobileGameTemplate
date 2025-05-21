@@ -1,11 +1,8 @@
 ﻿using System;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
 using CodeCatGames.HMModelViewController.Runtime;
 using CodeCatGames.HMSignalBus.Runtime;
 using VContainer.Unity;
@@ -17,16 +14,26 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
-        private readonly LevelModel _levelModel;
+        private readonly InGamePanelActivationController _inGamePanelActivationController;
+        private readonly WinButtonClickedController _winButtonClickedController;
+        private readonly FailButtonClickedController _failButtonClickedController;
+        private readonly AddCurrencyButtonClickedController _addCurrencyButtonClickedController;
         #endregion
 
         #region Constructor
-        public InGamePanelMediator(GameModel model, InGamePanelView view, SignalBus signalBus, LevelModel levelModel) :
-            base(model, view)
+        public InGamePanelMediator(GameModel model, InGamePanelView view, SignalBus signalBus,
+            InGamePanelActivationController inGamePanelActivationController,
+            WinButtonClickedController winButtonClickedController,
+            FailButtonClickedController failButtonClickedController,
+            AddCurrencyButtonClickedController addCurrencyButtonClickedController) : base(model, view)
         {
             _signalBus = signalBus;
-            _levelModel = levelModel;
+            _inGamePanelActivationController = inGamePanelActivationController;
+            _winButtonClickedController = winButtonClickedController;
+            _failButtonClickedController = failButtonClickedController;
+            _addCurrencyButtonClickedController = addCurrencyButtonClickedController;
         }
+
         #endregion
 
         #region Core
@@ -36,62 +43,30 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
             {
                 _signalBus.Subscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
 
-                View.WinButton.onClick.AddListener(OnWinButtonPressed);
-                View.FailButton.onClick.AddListener(OnFailButtonPressed);
-                View.AddCurrencyButton.onClick.AddListener(OnAddCurrencyButtonPressed);
+                View.WinButton.onClick.AddListener(OnWinButtonClicked);
+                View.FailButton.onClick.AddListener(OnFailButtonClicked);
+                View.AddCurrencyButton.onClick.AddListener(OnAddCurrencyButtonClicked);
             }
             else
             {
                 _signalBus.Unsubscribe<ChangeUIPanelSignal>(OnChangeUIPanelSignal);
 
-                View.WinButton.onClick.RemoveListener(OnWinButtonPressed);
-                View.FailButton.onClick.RemoveListener(OnFailButtonPressed);
-                View.AddCurrencyButton.onClick.RemoveListener(OnAddCurrencyButtonPressed);
+                View.WinButton.onClick.RemoveListener(OnWinButtonClicked);
+                View.FailButton.onClick.RemoveListener(OnFailButtonClicked);
+                View.AddCurrencyButton.onClick.RemoveListener(OnAddCurrencyButtonClicked);
             }
         }
         #endregion
         
         #region SignalReceivers
-        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) => ChangeUIPanel(signal.UIPanelType);
+        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) =>
+            _inGamePanelActivationController.Execute(signal.UIPanelType);
         #endregion
 
         #region ButtonReceivers
-        private void OnWinButtonPressed() => WinButtonPressed();
-        private void OnFailButtonPressed() => FailButtonPressed();
-        private void OnAddCurrencyButtonPressed() => AddCurrencyButtonPressed();
-        #endregion
-        
-        #region Executes
-        private void ChangeUIPanel(UIPanelTypes uiPanelType)
-        {
-            bool isShow = uiPanelType == View.UIPanelVo.UIPanelType;
-            
-            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
-            
-            if (isShow)
-                SetLevelText();
-        }
-        private void SetLevelText()
-        {
-            int levelNumber = _levelModel.LevelPersistentData.CurrentLevelIndex + 1;
-            
-            View.LevelText.SetText($"Level {levelNumber}");
-        }
-        private void WinButtonPressed()
-        {
-            _signalBus.Fire(new GameOverSignal(true));
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-        }
-        private void FailButtonPressed()
-        {
-            _signalBus.Fire(new GameOverSignal(false));
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-        }
-        private void AddCurrencyButtonPressed()
-        {
-            _signalBus.Fire(new ChangeCurrencySignal(CurrencyTypes.Coin,1,false));
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-        }
+        private void OnWinButtonClicked() => _winButtonClickedController.Execute();
+        private void OnFailButtonClicked() => _failButtonClickedController.Execute();
+        private void OnAddCurrencyButtonClicked() => _addCurrencyButtonClickedController.Execute();
         #endregion
     }
 }

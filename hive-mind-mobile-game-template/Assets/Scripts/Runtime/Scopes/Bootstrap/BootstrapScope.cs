@@ -1,4 +1,5 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
+﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Bootstrap;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.Bootstrap;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Bootstrap;
@@ -32,8 +33,14 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Bootstrap
 
             builder.Register<BootstrapModel>(Lifetime.Singleton).AsSelf();
         }
-        private void ControllerBindings(IContainerBuilder builder) =>
+        private void ControllerBindings(IContainerBuilder builder)
+        {
             builder.DeclareSignal<InitializeBootstrapSignal>();
+            
+            builder.RegisterEntryPoint<LogoImageController>().AsSelf();
+            builder.RegisterEntryPoint<LogoPanelActivationController>().AsSelf();
+            builder.RegisterEntryPoint<LogoTweenController>().AsSelf();
+        }
         private void MediationBindings(IContainerBuilder builder)
         {
             builder.RegisterComponentInHierarchy<LogoHolderPanelView>().AsSelf();

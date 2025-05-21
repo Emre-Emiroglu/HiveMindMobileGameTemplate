@@ -1,10 +1,8 @@
 ﻿using System;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
 using CodeCatGames.HMModelViewController.Runtime;
 using CodeCatGames.HMSignalBus.Runtime;
 using VContainer.Unity;
@@ -16,15 +14,18 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
-        private readonly LevelModel _levelModel;
+        private readonly StartPanelActivationController _startPanelActivationController;
+        private readonly PlayButtonClickedController _playButtonClickedController;
         #endregion
 
         #region Constructor
-        public StartPanelMediator(MainMenuModel model, StartPanelView view, SignalBus signalBus, LevelModel levelModel)
-            : base(model, view)
+        public StartPanelMediator(MainMenuModel model, StartPanelView view, SignalBus signalBus,
+            StartPanelActivationController startPanelActivationController,
+            PlayButtonClickedController playButtonClickedController) : base(model, view)
         {
             _signalBus = signalBus;
-            _levelModel = levelModel;
+            _startPanelActivationController = startPanelActivationController;
+            _playButtonClickedController = playButtonClickedController;
         }
         #endregion
 
@@ -47,35 +48,12 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
         #endregion
 
         #region SignalReceivers
-        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) => ChangeUIPanel(signal.UIPanelType);
+        private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal) =>
+            _startPanelActivationController.Execute(signal.UIPanelType);
         #endregion
         
         #region ButtonReceivers
-        private void OnPlayButtonClicked() => PlayButtonClicked();
-        #endregion
-
-        #region Executes
-        private void ChangeUIPanel(UIPanelTypes uiPanelType)
-        {
-            bool isShow = uiPanelType == View.UIPanelVo.UIPanelType;
-
-            View.UIPanelVo.CanvasGroup.ChangeUIPanelCanvasGroupActivation(isShow);
-            
-            if (isShow)
-                SetLevelText();
-        }
-        private void SetLevelText()
-        {
-            int levelNumber = _levelModel.LevelPersistentData.CurrentLevelIndex + 1;
-            
-            View.LevelText.SetText($"Level {levelNumber}");
-        }
-        private void PlayButtonClicked()
-        {
-            _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
-            
-            _signalBus.Fire(new LoadSceneSignal(SceneID.Game));
-        }
+        private void OnPlayButtonClicked() => _playButtonClickedController.Execute();
         #endregion
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
+using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
 using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 using CodeCatGames.HMModelViewController.Runtime;
@@ -13,11 +13,19 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
+        private readonly PlayAudioController _playAudioController;
+        private readonly AdjustSettingsController _adjustSettingsController;
         #endregion
         
         #region Constructor
-        public AudioMediator(SettingsModel model, AudioView view, SignalBus signalBus) : base(model, view) =>
+        public AudioMediator(SettingsModel model, AudioView view, SignalBus signalBus,
+            PlayAudioController playAudioController, AdjustSettingsController adjustSettingsController) : base(model,
+            view)
+        {
             _signalBus = signalBus;
+            _playAudioController = playAudioController;
+            _adjustSettingsController = adjustSettingsController;
+        }
         #endregion
 
         #region Core
@@ -40,33 +48,11 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 
         #region SignalReceivers
         private void OnPlayAudioSignal(PlayAudioSignal signal) =>
-            PlayAudio(signal.AudioType, signal.MusicType, signal.SoundType);
+            _playAudioController.Execute(signal.AudioType, signal.MusicType, signal.SoundType);
         #endregion
 
         #region ViewReceivers
-        private void OnStartAction()
-        {
-            Model.SetMusic(Model.SettingsPersistentData.IsMusicMuted);
-            Model.SetSound(Model.SettingsPersistentData.IsSoundMuted);
-            Model.SetHaptic(Model.SettingsPersistentData.IsHapticMuted);
-        }
-        #endregion
-
-        #region Executes
-        private void PlayAudio(AudioTypes audioType, MusicTypes musicType, SoundTypes soundType)
-        {
-            switch (audioType)
-            {
-                case AudioTypes.Music:
-                    View.AudioSources[audioType].clip = Model.Settings.Musics[musicType];
-                    View.AudioSources[audioType].loop = true;
-                    View.AudioSources[audioType].Play();
-                    break;
-                case AudioTypes.Sound:
-                    View.AudioSources[audioType].PlayOneShot(Model.Settings.Sounds[soundType]);
-                    break;
-            }
-        }
+        private void OnStartAction() => _adjustSettingsController.Execute();
         #endregion
     }
 }
