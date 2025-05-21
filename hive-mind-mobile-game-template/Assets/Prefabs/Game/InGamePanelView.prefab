@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiPanelVo:
-    uiPanelType: 3
+    uiPanelType: 4
     canvasGroup: {fileID: 9140768639114825480}
   levelText: {fileID: 3835131755345868487}
   currencyTrailStartTransform: {fileID: 8701332873007090533}

@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiPanelVo:
-    uiPanelType: 5
+    uiPanelType: 2
     canvasGroup: {fileID: 6682637539731219171}
   homeButton: {fileID: 5019419280356225949}
 --- !u!225 &6682637539731219171

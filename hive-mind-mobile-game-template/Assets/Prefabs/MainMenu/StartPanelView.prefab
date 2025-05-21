@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiPanelVo:
-    uiPanelType: 2
+    uiPanelType: 1
     canvasGroup: {fileID: 300178609816954313}
   levelText: {fileID: 9166439100753601517}
   playButton: {fileID: 703704972609886656}

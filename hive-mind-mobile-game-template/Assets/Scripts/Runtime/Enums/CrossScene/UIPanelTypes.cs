@@ -4,9 +4,9 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene
     {
         LogoHolderPanel,
         StartPanel,
-        InGamePanel,
-        GameOverPanel,
         ShopPanel,
-        TutorialPanel
+        TutorialPanel,
+        InGamePanel,
+        GameOverPanel
     }
 }

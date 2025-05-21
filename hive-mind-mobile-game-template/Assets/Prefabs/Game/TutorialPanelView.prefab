@@ -1813,7 +1813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiPanelVo:
-    uiPanelType: 6
+    uiPanelType: 3
     canvasGroup: {fileID: 7532042550793679808}
   closeButton: {fileID: 1421486478703719022}
 --- !u!1 &7136898449658795723

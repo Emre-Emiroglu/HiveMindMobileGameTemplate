@@ -960,7 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiPanelVo:
-    uiPanelType: 4
+    uiPanelType: 5
     canvasGroup: {fileID: 9045156321306376166}
   gameOverPanels:
     _serializedList:
