@@ -39,33 +39,31 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
             }
             catch (Exception)
             {
-                SetMusic(_settingsPersistentData.IsMusicMuted);
-                SetSound(_settingsPersistentData.IsSoundMuted);
-                SetHaptic(_settingsPersistentData.IsHapticMuted);
+                SaveData();
             }
         }
         #endregion
 
         #region Executes
-        public void SetMusic(bool isActive)
+        public void SetMusic(bool isMuted)
         {
-            _settingsPersistentData.IsMusicMuted = isActive;
+            _settingsPersistentData.IsMusicMuted = isMuted;
             
             _audioMixer.SetFloat(MusicParam, _settingsPersistentData.IsMusicMuted ? -80 : -20);
 
             SaveData();
         }
-        public void SetSound(bool isActive)
+        public void SetSound(bool isMuted)
         {
-            _settingsPersistentData.IsSoundMuted = isActive;
+            _settingsPersistentData.IsSoundMuted = isMuted;
             
             _audioMixer.SetFloat(SoundParam, _settingsPersistentData.IsSoundMuted ? -80 : -10);
 
             SaveData();
         }
-        public void SetHaptic(bool isActive)
+        public void SetHaptic(bool isMuted)
         {
-            _settingsPersistentData.IsHapticMuted = isActive;
+            _settingsPersistentData.IsHapticMuted = isMuted;
 
             SaveData();
         }

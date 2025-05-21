@@ -24,15 +24,32 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
         public override void SetSubscriptions(bool isSubscribed)
         {
             if (isSubscribed)
+            {
                 _signalBus.Subscribe<PlayAudioSignal>(OnPlayAudioSignal);
+
+                View.StartAction += OnStartAction;
+            }
             else
+            {
                 _signalBus.Unsubscribe<PlayAudioSignal>(OnPlayAudioSignal);
+                
+                View.StartAction -= OnStartAction;
+            }
         }
         #endregion
 
         #region SignalReceivers
         private void OnPlayAudioSignal(PlayAudioSignal signal) =>
             PlayAudio(signal.AudioType, signal.MusicType, signal.SoundType);
+        #endregion
+
+        #region ViewReceivers
+        private void OnStartAction()
+        {
+            Model.SetMusic(Model.SettingsPersistentData.IsMusicMuted);
+            Model.SetSound(Model.SettingsPersistentData.IsSoundMuted);
+            Model.SetHaptic(Model.SettingsPersistentData.IsHapticMuted);
+        }
         #endregion
 
         #region Executes

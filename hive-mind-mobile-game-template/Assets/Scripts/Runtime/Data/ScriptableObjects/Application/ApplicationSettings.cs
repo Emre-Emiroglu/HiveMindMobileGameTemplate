@@ -7,12 +7,12 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects
     {
         #region Fields
         [Header("Application Settings Fields")]
-        [Range(30, 240)][SerializeField] private int targetFrameRate;
+        [Range(30, 240)][SerializeField] private int maxFrameRate;
         [SerializeField] private bool runInBackground;
         #endregion
 
         #region Getters
-        public int TargetFrameRate => targetFrameRate;
+        public int MaxFrameRate => maxFrameRate;
         public bool RunInBackground => runInBackground;
         #endregion
     }

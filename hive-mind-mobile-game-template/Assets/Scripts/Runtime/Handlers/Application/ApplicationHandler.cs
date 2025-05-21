@@ -42,7 +42,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.Application
         #region Executes
         private void InitializeApplication()
         {
-            UnityEngine.Application.targetFrameRate = _applicationModel.Settings.TargetFrameRate;
+            UnityEngine.Application.targetFrameRate = _applicationModel.Settings.MaxFrameRate;
             UnityEngine.Application.runInBackground = _applicationModel.Settings.RunInBackground;
 
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
