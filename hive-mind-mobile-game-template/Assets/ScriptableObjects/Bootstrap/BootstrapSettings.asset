@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d873dc279f9260e4fb57386780f9e6d6, type: 3}
   m_Name: BootstrapSettings
   m_EditorClassIdentifier: 
-  logoSprite: {fileID: 21300000, guid: 54115b3ee6c0ef54fb685045079cfff9, type: 3}
+  logoSprite: {fileID: 21300000, guid: f1f13c2065eac59449dea3a5f82d2f2a, type: 3}
   sceneActivationDuration: 1
   logoTweenSettings:
     startFromCurrent: 0
