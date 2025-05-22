@@ -11,14 +11,14 @@ using UnityEngine.SceneManagement;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
 {
-    public sealed class ExitButtonClickedController : Controller<SettingsModel, Settings, SettingsView>
+    public sealed class ExitButtonController : Controller<SettingsModel, Settings, SettingsView>
     {
         #region ReadonylFields
         private readonly SignalBus _signalBus;
         #endregion
         
         #region Constructor
-        public ExitButtonClickedController(SettingsModel model, SettingsView view, SignalBus signalBus) : base(model,
+        public ExitButtonController(SettingsModel model, SettingsView view, SignalBus signalBus) : base(model,
             view) => _signalBus = signalBus;
         #endregion
 

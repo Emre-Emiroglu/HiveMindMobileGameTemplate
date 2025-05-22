@@ -8,10 +8,10 @@ using CodeCatGames.HMUtilities.Runtime;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
 {
-    public sealed class RefreshCurrencyVisualController : Controller<CurrencyModel, CurrencySettings, CurrencyView>
+    public sealed class CurrencyDisplayController : Controller<CurrencyModel, CurrencySettings, CurrencyView>
     {
         #region Constructor
-        public RefreshCurrencyVisualController(CurrencyModel model, CurrencyView view) : base(model, view) { }
+        public CurrencyDisplayController(CurrencyModel model, CurrencyView view) : base(model, view) { }
         #endregion
 
         #region Executes
@@ -21,7 +21,8 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
             bool all = (bool) parameters[1];
 
             if (all)
-                foreach (KeyValuePair<CurrencyTypes, int> modelCurrencyValue in Model.CurrencyPersistentData.CurrencyValues)
+                foreach (KeyValuePair<CurrencyTypes, int> modelCurrencyValue in Model.CurrencyPersistentData
+                             .CurrencyValues)
                     RefreshCurrencyVisual(modelCurrencyValue.Key);
             else
                 RefreshCurrencyVisual(currencyType);

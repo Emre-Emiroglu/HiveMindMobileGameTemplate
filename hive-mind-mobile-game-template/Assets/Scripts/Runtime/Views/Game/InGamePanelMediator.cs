@@ -15,23 +15,23 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
         private readonly InGamePanelActivationController _inGamePanelActivationController;
-        private readonly WinButtonClickedController _winButtonClickedController;
-        private readonly FailButtonClickedController _failButtonClickedController;
-        private readonly AddCurrencyButtonClickedController _addCurrencyButtonClickedController;
+        private readonly WinButtonController _winButtonController;
+        private readonly FailButtonController _failButtonController;
+        private readonly AddCurrencyButtonController _addCurrencyButtonController;
         #endregion
 
         #region Constructor
         public InGamePanelMediator(GameModel model, InGamePanelView view, SignalBus signalBus,
             InGamePanelActivationController inGamePanelActivationController,
-            WinButtonClickedController winButtonClickedController,
-            FailButtonClickedController failButtonClickedController,
-            AddCurrencyButtonClickedController addCurrencyButtonClickedController) : base(model, view)
+            WinButtonController winButtonController,
+            FailButtonController failButtonController,
+            AddCurrencyButtonController addCurrencyButtonController) : base(model, view)
         {
             _signalBus = signalBus;
             _inGamePanelActivationController = inGamePanelActivationController;
-            _winButtonClickedController = winButtonClickedController;
-            _failButtonClickedController = failButtonClickedController;
-            _addCurrencyButtonClickedController = addCurrencyButtonClickedController;
+            _winButtonController = winButtonController;
+            _failButtonController = failButtonController;
+            _addCurrencyButtonController = addCurrencyButtonController;
         }
 
         #endregion
@@ -64,9 +64,9 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         #endregion
 
         #region ButtonReceivers
-        private void OnWinButtonClicked() => _winButtonClickedController.Execute();
-        private void OnFailButtonClicked() => _failButtonClickedController.Execute();
-        private void OnAddCurrencyButtonClicked() => _addCurrencyButtonClickedController.Execute();
+        private void OnWinButtonClicked() => _winButtonController.Execute();
+        private void OnFailButtonClicked() => _failButtonController.Execute();
+        private void OnAddCurrencyButtonClicked() => _addCurrencyButtonController.Execute();
         #endregion
     }
 }

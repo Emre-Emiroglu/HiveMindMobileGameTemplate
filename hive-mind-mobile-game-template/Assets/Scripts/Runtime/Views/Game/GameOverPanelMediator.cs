@@ -17,7 +17,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         private readonly SignalBus _signalBus;
         private readonly GameOverPanelActivationController _gameOverPanelActivationController;
         private readonly SetupGameOverPanelController _setupGameOverPanelController;
-        private readonly ReturnToMainMenuButtonClickedController _returnToMainMenuButtonClickedController;
+        private readonly ReturnToMainMenuButtonController _returnToMainMenuButtonController;
         private readonly ReplayButtonsController _replayButtonsController;
         #endregion
 
@@ -25,13 +25,13 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         public GameOverPanelMediator(GameModel model, GameOverPanelView view, SignalBus signalBus,
             GameOverPanelActivationController gameOverPanelActivationController,
             SetupGameOverPanelController setupGameOverPanelController,
-            ReturnToMainMenuButtonClickedController returnToMainMenuButtonClickedController,
+            ReturnToMainMenuButtonController returnToMainMenuButtonController,
             ReplayButtonsController replayButtonsController) : base(model, view)
         {
             _signalBus = signalBus;
             _gameOverPanelActivationController = gameOverPanelActivationController;
             _setupGameOverPanelController = setupGameOverPanelController;
-            _returnToMainMenuButtonClickedController = returnToMainMenuButtonClickedController;
+            _returnToMainMenuButtonController = returnToMainMenuButtonController;
             _replayButtonsController = replayButtonsController;
         }
         #endregion
@@ -70,7 +70,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
         #endregion
 
         #region ButtonReceivers
-        private void OnReturnToMainMenuButtonClicked() => _returnToMainMenuButtonClickedController.Execute();
+        private void OnReturnToMainMenuButtonClicked() => _returnToMainMenuButtonController.Execute();
         private void OnRestartButtonClicked() => _replayButtonsController.Execute();
         private void OnNextButtonClicked() => _replayButtonsController.Execute();
         #endregion

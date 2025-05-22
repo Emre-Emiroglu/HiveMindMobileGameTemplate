@@ -15,17 +15,17 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
         private readonly ShopPanelActivationController _shopPanelActivationController;
-        private readonly HomeButtonClickedController _homeButtonClickedController;
+        private readonly HomeButtonController _homeButtonController;
         #endregion
         
         #region Constructor
         public ShopPanelMediator(MainMenuModel model, ShopPanelView view, SignalBus signalBus,
             ShopPanelActivationController shopPanelActivationController,
-            HomeButtonClickedController homeButtonClickedController) : base(model, view)
+            HomeButtonController homeButtonController) : base(model, view)
         {
             _signalBus = signalBus;
             _shopPanelActivationController = shopPanelActivationController;
-            _homeButtonClickedController = homeButtonClickedController;
+            _homeButtonController = homeButtonController;
         }
         #endregion
         
@@ -53,7 +53,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
         #endregion
 
         #region ButtonReceivers
-        private void OnHomeButtonClicked() => _homeButtonClickedController.Execute();
+        private void OnHomeButtonClicked() => _homeButtonController.Execute();
         #endregion
     }
 }

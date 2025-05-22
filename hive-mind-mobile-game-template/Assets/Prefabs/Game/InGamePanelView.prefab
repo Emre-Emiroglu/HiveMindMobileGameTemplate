@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 6838186746243775556}
   - component: {fileID: 3835131755345868487}
   m_Layer: 5
-  m_Name: Level Text
+  m_Name: LevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -867,7 +867,7 @@ GameObject:
   - component: {fileID: 8837224918382851184}
   - component: {fileID: 1364719688059043298}
   m_Layer: 5
-  m_Name: LevelHolder
+  m_Name: LevelTextHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1341,7 +1341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5358146378314522284, guid: 26bee0315e89ab94388e5ebbcadfb717, type: 3}
       propertyPath: parentReference.TypeName
-      value: 
+      value: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Game.GameScope
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1399,7 +1399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2658097551781584117, guid: 9e60abc0ac0044547bc0512d636c5d2b, type: 3}
       propertyPath: parentReference.TypeName
-      value: 
+      value: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Game.GameScope
       objectReference: {fileID: 0}
     - target: {fileID: 3609229442656483759, guid: 9e60abc0ac0044547bc0512d636c5d2b, type: 3}
       propertyPath: m_Pivot.x

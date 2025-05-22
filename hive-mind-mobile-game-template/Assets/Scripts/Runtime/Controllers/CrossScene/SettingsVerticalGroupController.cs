@@ -5,14 +5,14 @@ using CodeCatGames.HMModelViewController.Runtime;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
 {
-    public sealed class ChangeVerticalGroupActivityController : Controller<SettingsModel, Settings, SettingsView>
+    public sealed class SettingsVerticalGroupController : Controller<SettingsModel, Settings, SettingsView>
     {
         #region Properities
         public bool IsVerticalGroupActive { get; private set; }
         #endregion
         
         #region Constructor
-        public ChangeVerticalGroupActivityController(SettingsModel model, SettingsView view) : base(model, view) { }
+        public SettingsVerticalGroupController(SettingsModel model, SettingsView view) : base(model, view) { }
         #endregion
 
         #region Executes

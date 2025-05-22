@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 namespace CodeCatGames.HiveMindMobileGameTemplate.Editor
 {
     [InitializeOnLoad]
-    public class StartupSceneLoader
+    public sealed class StartupSceneLoader
     {
         #region Constants
         private const string PreviousSceneKey = "PreviousScene";
         private const string ShouldLoadStartupSceneKey = "LoadStartupScene";
-        private const string LoadStartupSceneOnPlay = "HiveMindMobileGameTemplate/Load Startup Scene On Play";
-        private const string DontLoadStartupSceneOnPlay = "HiveMindMobileGameTemplate/Don't Load Startup Scene On Play";
+        private const string LoadStartupSceneOnPlay =
+            "HiveMindMobileGameTemplate/StartupSceneLoader/Load Startup Scene On Play";
+        private const string DontLoadStartupSceneOnPlay =
+            "HiveMindMobileGameTemplate/StartupSceneLoader/Don't Load Startup Scene On Play";
         #endregion
 
         #region Fields
@@ -64,7 +66,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Editor
             if (!ShouldLoadStartupScene)
                 return;
 
-            if (_restartingToSwitchedScene) //error check as multiple starts and stops happening
+            if (_restartingToSwitchedScene)
             {
                 if (playModeStateChange == PlayModeStateChange.EnteredPlayMode)
                     _restartingToSwitchedScene = false;
@@ -72,44 +74,43 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Editor
                 return;
             }
 
-            if (playModeStateChange == PlayModeStateChange.ExitingEditMode)
+            switch (playModeStateChange)
             {
-                // cache previous scene to return to it after play session ends
-                PreviousScene = SceneManager.GetActiveScene().path;
-
-                if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+                case PlayModeStateChange.ExitingEditMode:
                 {
-                    // user either hit "Save" or "Don't Save"; open bootstrap scene
+                    PreviousScene = SceneManager.GetActiveScene().path;
 
-                    if (!string.IsNullOrEmpty(StartupScene) && System.Array.Exists(EditorBuildSettings.scenes, scene => scene.path == StartupScene))
+                    if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
                     {
-                        Scene activeScene = SceneManager.GetActiveScene();
-
-                        _restartingToSwitchedScene = activeScene.path == string.Empty || !StartupScene.Contains(activeScene.path);
-
-                        // only switch if editor is in an empty scene or active scene is not startup scene
-                        if (_restartingToSwitchedScene)
+                        if (!string.IsNullOrEmpty(StartupScene) && System.Array.Exists(EditorBuildSettings.scenes,
+                                scene => scene.path == StartupScene)) 
                         {
-                            EditorApplication.isPlaying = false;
+                            Scene activeScene = SceneManager.GetActiveScene();
 
-                            // scene is included in build settings; open it
-                            EditorSceneManager.OpenScene(StartupScene);
+                            _restartingToSwitchedScene = activeScene.path == string.Empty ||
+                                                         !StartupScene.Contains(activeScene.path);
 
-                            EditorApplication.isPlaying = true;
+                            if (_restartingToSwitchedScene)
+                            {
+                                EditorApplication.isPlaying = false;
+
+                                EditorSceneManager.OpenScene(StartupScene);
+
+                                EditorApplication.isPlaying = true;
+                            }
                         }
                     }
+                    else
+                        EditorApplication.isPlaying = false;
+
+                    break;
                 }
-                else
+                case PlayModeStateChange.EnteredEditMode:
                 {
-                    // user either hit "Cancel" or exited window; don't open startup scene & return to editor
-                    EditorApplication.isPlaying = false;
+                    if (!string.IsNullOrEmpty(PreviousScene))
+                        EditorSceneManager.OpenScene(PreviousScene);
+                    break;
                 }
-            }
-            //return to last open scene
-            else if (playModeStateChange == PlayModeStateChange.EnteredEditMode)
-            {
-                if (!string.IsNullOrEmpty(PreviousScene))
-                    EditorSceneManager.OpenScene(PreviousScene);
             }
         }
         #endregion

@@ -21,11 +21,11 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
         }
         private void ControllerBindings(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<ChangeVerticalGroupActivityController>().AsSelf();
-            builder.RegisterEntryPoint<RefreshSettingsButtonVisualsController>().AsSelf();
-            builder.RegisterEntryPoint<SettingsButtonClickedController>().AsSelf();
-            builder.RegisterEntryPoint<MainButtonClickedController>().AsSelf();
-            builder.RegisterEntryPoint<ExitButtonClickedController>().AsSelf();
+            builder.RegisterEntryPoint<SettingsVerticalGroupController>().AsSelf();
+            builder.RegisterEntryPoint<SettingsButtonVisualController>().AsSelf();
+            builder.RegisterEntryPoint<SettingsButtonController>().AsSelf();
+            builder.RegisterEntryPoint<MainButtonController>().AsSelf();
+            builder.RegisterEntryPoint<ExitButtonController>().AsSelf();
         }
         private void MediationBindings(IContainerBuilder builder)
         {

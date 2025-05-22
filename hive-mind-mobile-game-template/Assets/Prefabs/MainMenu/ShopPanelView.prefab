@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4665251276336038925}
   - component: {fileID: 3125906953233206926}
   m_Layer: 5
-  m_Name: ShopLabelText
+  m_Name: ShopText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 7276817478010195001}
   - component: {fileID: 912021391382660523}
   m_Layer: 5
-  m_Name: ShopLabelTextHolder
+  m_Name: ShopTextHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -775,7 +775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2658097551781584117, guid: 9e60abc0ac0044547bc0512d636c5d2b, type: 3}
       propertyPath: parentReference.TypeName
-      value: 
+      value: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.MainMenu.MainMenuScope
       objectReference: {fileID: 0}
     - target: {fileID: 3609229442656483759, guid: 9e60abc0ac0044547bc0512d636c5d2b, type: 3}
       propertyPath: m_Pivot.x
@@ -997,7 +997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5358146378314522284, guid: 26bee0315e89ab94388e5ebbcadfb717, type: 3}
       propertyPath: parentReference.TypeName
-      value: 
+      value: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.MainMenu.MainMenuScope
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

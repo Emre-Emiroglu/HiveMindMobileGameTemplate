@@ -21,8 +21,8 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
         }
         private void ControllerBindings(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<RefreshCurrencyVisualController>().AsSelf();
-            builder.RegisterEntryPoint<CurrencyButtonClickedController>().AsSelf();
+            builder.RegisterEntryPoint<CurrencyDisplayController>().AsSelf();
+            builder.RegisterEntryPoint<CurrencyButtonController>().AsSelf();
         }
         private void MediationBindings(IContainerBuilder builder)
         {

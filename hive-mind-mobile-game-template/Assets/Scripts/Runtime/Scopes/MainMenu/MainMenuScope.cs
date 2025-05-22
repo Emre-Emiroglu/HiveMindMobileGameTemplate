@@ -38,9 +38,9 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.MainMenu
             builder.DeclareSignal<InitializeMainMenuSignal>();
             
             builder.RegisterEntryPoint<StartPanelActivationController>().AsSelf();
-            builder.RegisterEntryPoint<PlayButtonClickedController>().AsSelf();
+            builder.RegisterEntryPoint<PlayButtonController>().AsSelf();
             builder.RegisterEntryPoint<ShopPanelActivationController>().AsSelf();
-            builder.RegisterEntryPoint<HomeButtonClickedController>().AsSelf();
+            builder.RegisterEntryPoint<HomeButtonController>().AsSelf();
         }
         private void MediationBindings(IContainerBuilder builder)
         {

@@ -6,10 +6,10 @@ using CodeCatGames.HMModelViewController.Runtime;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
 {
-    public sealed class RefreshSettingsButtonVisualsController : Controller<SettingsModel, Settings, SettingsView>
+    public sealed class SettingsButtonVisualController : Controller<SettingsModel, Settings, SettingsView>
     {
         #region Constructor
-        public RefreshSettingsButtonVisualsController(SettingsModel model, SettingsView view) : base(model, view) { }
+        public SettingsButtonVisualController(SettingsModel model, SettingsView view) : base(model, view) { }
         #endregion
 
         #region Executes

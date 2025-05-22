@@ -8,22 +8,23 @@ using CodeCatGames.HMSignalBus.Runtime;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu
 {
-    public sealed class HomeButtonClickedController : Controller<MainMenuModel, MainMenuSettings, ShopPanelView>
+    public sealed class PlayButtonController : Controller<MainMenuModel, MainMenuSettings, StartPanelView>
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
         #endregion
         
         #region Constructor
-        public HomeButtonClickedController(MainMenuModel model, ShopPanelView view, SignalBus signalBus) : base(model,
-            view) => _signalBus = signalBus;
+        public PlayButtonController(MainMenuModel model, StartPanelView view, SignalBus signalBus) :
+            base(model, view) => _signalBus = signalBus;
         #endregion
         
         #region Executes
         public override void Execute(params object[] parameters)
         {
-            _signalBus.Fire(new ChangeUIPanelSignal(UIPanelTypes.StartPanel));
             _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
+            
+            _signalBus.Fire(new LoadSceneSignal(SceneID.Game));
         }
         #endregion
     }

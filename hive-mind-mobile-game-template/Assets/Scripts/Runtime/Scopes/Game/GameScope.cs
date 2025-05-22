@@ -55,12 +55,12 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Game
             builder.DeclareSignal<SetupGameOverPanelSignal>();
             
             builder.RegisterEntryPoint<InGamePanelActivationController>().AsSelf();
-            builder.RegisterEntryPoint<WinButtonClickedController>().AsSelf();
-            builder.RegisterEntryPoint<FailButtonClickedController>().AsSelf();
-            builder.RegisterEntryPoint<AddCurrencyButtonClickedController>().AsSelf();
+            builder.RegisterEntryPoint<WinButtonController>().AsSelf();
+            builder.RegisterEntryPoint<FailButtonController>().AsSelf();
+            builder.RegisterEntryPoint<AddCurrencyButtonController>().AsSelf();
             builder.RegisterEntryPoint<GameOverPanelActivationController>().AsSelf();
             builder.RegisterEntryPoint<SetupGameOverPanelController>().AsSelf();
-            builder.RegisterEntryPoint<ReturnToMainMenuButtonClickedController>().AsSelf();
+            builder.RegisterEntryPoint<ReturnToMainMenuButtonController>().AsSelf();
             builder.RegisterEntryPoint<ReplayButtonsController>().AsSelf();
             builder.RegisterEntryPoint<TutorialPanelActivationController>().AsSelf();
             builder.RegisterEntryPoint<TutorialCloseButtonController>().AsSelf();

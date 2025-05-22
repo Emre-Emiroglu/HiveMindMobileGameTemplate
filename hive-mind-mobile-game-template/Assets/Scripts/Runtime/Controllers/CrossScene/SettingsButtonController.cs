@@ -8,19 +8,19 @@ using CodeCatGames.HMSignalBus.Runtime;
 
 namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
 {
-    public sealed class SettingsButtonClickedController : Controller<SettingsModel, Settings, SettingsView>
+    public sealed class SettingsButtonController : Controller<SettingsModel, Settings, SettingsView>
     {
         #region ReadonylFields
         private readonly SignalBus _signalBus;
-        private readonly RefreshSettingsButtonVisualsController _refreshSettingsButtonVisualsController;
+        private readonly SettingsButtonVisualController _settingsButtonVisualController;
         #endregion
         
         #region Constructor
-        public SettingsButtonClickedController(SettingsModel model, SettingsView view, SignalBus signalBus,
-            RefreshSettingsButtonVisualsController refreshSettingsButtonVisualsController) : base(model, view)
+        public SettingsButtonController(SettingsModel model, SettingsView view, SignalBus signalBus,
+            SettingsButtonVisualController settingsButtonVisualController) : base(model, view)
         {
             _signalBus = signalBus;
-            _refreshSettingsButtonVisualsController = refreshSettingsButtonVisualsController;
+            _settingsButtonVisualController = settingsButtonVisualController;
         }
         #endregion
 
@@ -42,7 +42,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
                     break;
             }
             
-            _refreshSettingsButtonVisualsController.Execute(settingsType);
+            _settingsButtonVisualController.Execute(settingsType);
 
             _signalBus.Fire(new PlayAudioSignal(AudioTypes.Sound, MusicTypes.BackgroundMusic, SoundTypes.UIClick));
         }

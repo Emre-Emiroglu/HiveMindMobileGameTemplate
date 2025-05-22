@@ -16,27 +16,27 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
     {
         #region ReadonlyFields
         private readonly SignalBus _signalBus;
-        private readonly ChangeVerticalGroupActivityController _changeVerticalGroupActivityController;
-        private readonly RefreshSettingsButtonVisualsController _refreshSettingsButtonVisualsController;
-        private readonly SettingsButtonClickedController _settingsButtonClickedController;
-        private readonly MainButtonClickedController _mainButtonClickedController;
-        private readonly ExitButtonClickedController _exitButtonClickedController;
+        private readonly SettingsVerticalGroupController _settingsVerticalGroupController;
+        private readonly SettingsButtonVisualController _settingsButtonVisualController;
+        private readonly SettingsButtonController _settingsButtonController;
+        private readonly MainButtonController _mainButtonController;
+        private readonly ExitButtonController _exitButtonController;
         #endregion
         
         #region Constructor
         public SettingsMediator(SettingsModel model, SettingsView view, SignalBus signalBus,
-            ChangeVerticalGroupActivityController changeVerticalGroupActivityController,
-            RefreshSettingsButtonVisualsController refreshSettingsButtonVisualsController,
-            SettingsButtonClickedController settingsButtonClickedController,
-            MainButtonClickedController mainButtonClickedController,
-            ExitButtonClickedController exitButtonClickedController) : base(model, view)
+            SettingsVerticalGroupController settingsVerticalGroupController,
+            SettingsButtonVisualController settingsButtonVisualController,
+            SettingsButtonController settingsButtonController,
+            MainButtonController mainButtonController,
+            ExitButtonController exitButtonController) : base(model, view)
         {
             _signalBus = signalBus;
-            _changeVerticalGroupActivityController = changeVerticalGroupActivityController;
-            _refreshSettingsButtonVisualsController = refreshSettingsButtonVisualsController;
-            _settingsButtonClickedController = settingsButtonClickedController;
-            _mainButtonClickedController = mainButtonClickedController;
-            _exitButtonClickedController = exitButtonClickedController;
+            _settingsVerticalGroupController = settingsVerticalGroupController;
+            _settingsButtonVisualController = settingsButtonVisualController;
+            _settingsButtonController = settingsButtonController;
+            _mainButtonController = mainButtonController;
+            _exitButtonController = exitButtonController;
         }
         #endregion
 
@@ -45,7 +45,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
         {
             base.Initialize();
             
-            _changeVerticalGroupActivityController.Execute(false);
+            _settingsVerticalGroupController.Execute(false);
         }
         public override void SetSubscriptions(bool isSubscribed)
         {
@@ -58,7 +58,7 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 
                 foreach (KeyValuePair<SettingsTypes, Button> item in View.SettingsButtons)
                 {
-                    _refreshSettingsButtonVisualsController.Execute(item.Key);
+                    _settingsButtonVisualController.Execute(item.Key);
 
                     item.Value.onClick.AddListener(() => OnSettingsButtonClicked(item.Key));
                 }
@@ -79,18 +79,18 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
         #region SignalReceivers
         private void OnChangeUIPanelSignal(ChangeUIPanelSignal signal)
         {
-            _changeVerticalGroupActivityController.Execute(false);
+            _settingsVerticalGroupController.Execute(false);
             
             foreach (KeyValuePair<SettingsTypes, Button> item in View.SettingsButtons)
-                _refreshSettingsButtonVisualsController.Execute(item.Key);
+                _settingsButtonVisualController.Execute(item.Key);
         }
         #endregion
 
         #region ButtonReceivers
-        private void OnMainButtonClicked() => _mainButtonClickedController.Execute();
-        private void OnExitButtonClicked() => _exitButtonClickedController.Execute();
+        private void OnMainButtonClicked() => _mainButtonController.Execute();
+        private void OnExitButtonClicked() => _exitButtonController.Execute();
         private void OnSettingsButtonClicked(SettingsTypes settingsType) =>
-            _settingsButtonClickedController.Execute(settingsType);
+            _settingsButtonController.Execute(settingsType);
         #endregion
     }
 }
