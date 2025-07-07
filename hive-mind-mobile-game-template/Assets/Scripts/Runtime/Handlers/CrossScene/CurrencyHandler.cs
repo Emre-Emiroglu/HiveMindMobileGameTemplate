@@ -1,10 +1,10 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Temp;
-using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Temp;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Handlers.CrossScene
 {
     public sealed class CurrencyHandler : SignalListener
     {

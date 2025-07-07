@@ -1,12 +1,12 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Temp;
-using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMSignalBus.Runtime;
 using Cysharp.Threading.Tasks;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
+using HiveMindMobileGameTemplate.Runtime.Signals.Bootstrap;
+using HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Temp;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.Bootstrap
+namespace HiveMindMobileGameTemplate.Runtime.Handlers.Bootstrap
 {
     public sealed class BootstrapHandler : SignalListener
     {

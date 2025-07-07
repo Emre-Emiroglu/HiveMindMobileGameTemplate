@@ -1,9 +1,9 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
-using CodeCatGames.HMModelViewController.Runtime;
+﻿using HMModelViewController.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
+namespace HiveMindMobileGameTemplate.Runtime.Views.MainMenu
 {
     [RequireComponent(typeof(CanvasGroup))]
     public sealed class ShopPanelView : View

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HMModelViewController.Runtime;
-using CodeCatGames.HMPersistentData.Runtime;
+using HMModelViewController.Runtime;
+using HMPersistentData.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Models.CrossScene
 {
     public sealed class CurrencyModel : Model<CurrencySettings>
     {

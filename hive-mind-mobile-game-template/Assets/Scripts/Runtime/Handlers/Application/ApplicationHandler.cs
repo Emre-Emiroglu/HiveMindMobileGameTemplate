@@ -1,11 +1,11 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Application;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Application;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Temp;
-using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Models.Application;
+using HiveMindMobileGameTemplate.Runtime.Signals.Application;
+using HiveMindMobileGameTemplate.Runtime.Temp;
 using UnityEditor;
 using UnityEngine;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.Application
+namespace HiveMindMobileGameTemplate.Runtime.Handlers.Application
 {
     public sealed class ApplicationHandler : SignalListener
     {

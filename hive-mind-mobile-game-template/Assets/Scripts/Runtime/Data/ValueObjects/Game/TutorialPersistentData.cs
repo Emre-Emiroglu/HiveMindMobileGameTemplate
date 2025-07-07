@@ -1,4 +1,4 @@
-﻿namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.Game
+﻿namespace HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.Game
 {
     public struct TutorialPersistentData
     {

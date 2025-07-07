@@ -1,7 +1,7 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
-using CodeCatGames.HMModelViewController.Runtime;
+﻿using HMModelViewController.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game
+namespace HiveMindMobileGameTemplate.Runtime.Models.Game
 {
     public sealed class GameModel : Model<GameSettings>
     {

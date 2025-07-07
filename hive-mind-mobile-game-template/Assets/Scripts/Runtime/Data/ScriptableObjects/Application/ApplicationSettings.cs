@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Application
+namespace HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Application
 {
     [CreateAssetMenu(fileName = "ApplicationSettings",
         menuName = "HiveMindMobileGameTemplate/Application/ApplicationSettings")]

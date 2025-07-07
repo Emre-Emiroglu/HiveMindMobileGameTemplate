@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene
 {
     public struct CurrencyPersistentData
     {

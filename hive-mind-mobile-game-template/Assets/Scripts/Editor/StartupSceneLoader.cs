@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Editor
+namespace HiveMindMobileGameTemplate.Editor
 {
     [InitializeOnLoad]
     public sealed class StartupSceneLoader
@@ -11,9 +11,9 @@ namespace CodeCatGames.HiveMindMobileGameTemplate.Editor
         private const string PreviousSceneKey = "PreviousScene";
         private const string ShouldLoadStartupSceneKey = "LoadStartupScene";
         private const string LoadStartupSceneOnPlay =
-            "HiveMindMobileGameTemplate/StartupSceneLoader/Load Startup Scene On Play";
+            "Tools/HiveMindMobileGameTemplate/StartupSceneLoader/Load Startup Scene On Play";
         private const string DontLoadStartupSceneOnPlay =
-            "HiveMindMobileGameTemplate/StartupSceneLoader/Don't Load Startup Scene On Play";
+            "Tools/HiveMindMobileGameTemplate/StartupSceneLoader/Don't Load Startup Scene On Play";
         #endregion
 
         #region Fields

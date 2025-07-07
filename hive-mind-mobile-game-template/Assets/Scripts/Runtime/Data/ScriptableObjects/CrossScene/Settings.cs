@@ -1,9 +1,9 @@
 using AYellowpaper.SerializedCollections;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene
 {
     [CreateAssetMenu(fileName = "Settings", menuName = "HiveMindMobileGameTemplate/CrossScene/Settings")]
     public sealed class Settings : ScriptableObject

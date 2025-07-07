@@ -1,6 +1,6 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Signals.CrossScene
 {
     public readonly struct LoadSceneSignal
     {

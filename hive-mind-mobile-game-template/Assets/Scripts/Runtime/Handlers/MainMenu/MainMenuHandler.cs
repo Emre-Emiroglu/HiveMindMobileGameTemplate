@@ -1,10 +1,10 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.MainMenu;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Temp;
-using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Signals.MainMenu;
+using HiveMindMobileGameTemplate.Runtime.Temp;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.MainMenu
+namespace HiveMindMobileGameTemplate.Runtime.Handlers.MainMenu
 {
     public sealed class MainMenuHandler : SignalListener
     {

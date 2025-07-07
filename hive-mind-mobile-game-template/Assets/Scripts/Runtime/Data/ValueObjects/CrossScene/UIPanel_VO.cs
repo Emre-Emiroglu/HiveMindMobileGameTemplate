@@ -1,8 +1,8 @@
 using System;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using UnityEngine;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene
 {
     [Serializable]
     public struct UIPanelVo

@@ -1,7 +1,7 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
-using CodeCatGames.HMModelViewController.Runtime;
+using HMModelViewController.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap
+namespace HiveMindMobileGameTemplate.Runtime.Models.Bootstrap
 {
     public sealed class BootstrapModel : Model<BootstrapSettings>
     {

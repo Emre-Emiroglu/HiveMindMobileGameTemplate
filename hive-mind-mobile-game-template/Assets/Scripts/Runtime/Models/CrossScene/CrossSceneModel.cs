@@ -1,7 +1,7 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
-using CodeCatGames.HMModelViewController.Runtime;
+﻿using HMModelViewController.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Models.CrossScene
 {
     public sealed class CrossSceneModel : Model<CrossSceneSettings>
     {

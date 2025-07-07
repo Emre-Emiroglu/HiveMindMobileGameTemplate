@@ -1,6 +1,6 @@
 {
-    "name": "CodeCatGames.HiveMindMobileGameTemplate.Runtime",
-    "rootNamespace": "CodeCatGames.HiveMindMobileGameTemplate.Runtime",
+    "name": "HiveMindMobileGameTemplate.Runtime",
+    "rootNamespace": "HiveMindMobileGameTemplate.Runtime",
     "references": [
         "GUID:cc89ab7c7fcc40d4893c84b0b1136dce",
         "GUID:15bff83618aabf84295cbe327916f6a6",

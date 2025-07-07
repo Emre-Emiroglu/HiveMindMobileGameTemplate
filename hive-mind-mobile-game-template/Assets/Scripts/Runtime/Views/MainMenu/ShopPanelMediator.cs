@@ -1,13 +1,13 @@
 ﻿using System;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HMModelViewController.Runtime;
-using CodeCatGames.HMSignalBus.Runtime;
+using HMModelViewController.Runtime;
+using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
+using HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
+using HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 using VContainer.Unity;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu
+namespace HiveMindMobileGameTemplate.Runtime.Views.MainMenu
 {
     public sealed class ShopPanelMediator : Mediator<MainMenuModel, MainMenuSettings, ShopPanelView>, IInitializable,
         IDisposable

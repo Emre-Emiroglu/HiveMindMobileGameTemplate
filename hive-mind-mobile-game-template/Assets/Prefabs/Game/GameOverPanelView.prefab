@@ -1778,7 +1778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2658097551781584117, guid: 9e60abc0ac0044547bc0512d636c5d2b, type: 3}
       propertyPath: parentReference.TypeName
-      value: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Game.GameScope
+      value: HiveMindMobileGameTemplate.Runtime.Scopes.Game.GameScope
       objectReference: {fileID: 0}
     - target: {fileID: 3609229442656483759, guid: 9e60abc0ac0044547bc0512d636c5d2b, type: 3}
       propertyPath: m_Pivot.x
@@ -2000,7 +2000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5358146378314522284, guid: 26bee0315e89ab94388e5ebbcadfb717, type: 3}
       propertyPath: parentReference.TypeName
-      value: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Game.GameScope
+      value: HiveMindMobileGameTemplate.Runtime.Scopes.Game.GameScope
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2110,7 +2110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5358146378314522284, guid: 26bee0315e89ab94388e5ebbcadfb717, type: 3}
       propertyPath: parentReference.TypeName
-      value: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Game.GameScope
+      value: HiveMindMobileGameTemplate.Runtime.Scopes.Game.GameScope
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2168,7 +2168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2658097551781584117, guid: 9e60abc0ac0044547bc0512d636c5d2b, type: 3}
       propertyPath: parentReference.TypeName
-      value: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Game.GameScope
+      value: HiveMindMobileGameTemplate.Runtime.Scopes.Game.GameScope
       objectReference: {fileID: 0}
     - target: {fileID: 3609229442656483759, guid: 9e60abc0ac0044547bc0512d636c5d2b, type: 3}
       propertyPath: m_Pivot.x

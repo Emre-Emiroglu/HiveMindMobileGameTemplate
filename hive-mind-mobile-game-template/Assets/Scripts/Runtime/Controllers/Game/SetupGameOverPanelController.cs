@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game;
-using CodeCatGames.HMModelViewController.Runtime;
+using HMModelViewController.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
+using HiveMindMobileGameTemplate.Runtime.Models.Game;
+using HiveMindMobileGameTemplate.Runtime.Views.Game;
 using UnityEngine;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Game
+namespace HiveMindMobileGameTemplate.Runtime.Controllers.Game
 {
     public sealed class SetupGameOverPanelController : Controller<GameModel, GameSettings, GameOverPanelView>
     {

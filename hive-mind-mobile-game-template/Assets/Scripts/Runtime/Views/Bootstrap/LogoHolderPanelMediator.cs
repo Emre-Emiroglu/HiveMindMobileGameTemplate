@@ -1,11 +1,11 @@
 using System;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
-using CodeCatGames.HMModelViewController.Runtime;
+using HMModelViewController.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Controllers.Bootstrap;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
+using HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
 using VContainer.Unity;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap
+namespace HiveMindMobileGameTemplate.Runtime.Views.Bootstrap
 {
     public sealed class LogoHolderPanelMediator : Mediator<BootstrapModel, BootstrapSettings, LogoHolderPanelView>,
         IInitializable, IDisposable

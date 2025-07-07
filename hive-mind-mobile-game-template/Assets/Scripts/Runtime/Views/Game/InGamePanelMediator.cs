@@ -1,13 +1,13 @@
 ﻿using System;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HMModelViewController.Runtime;
-using CodeCatGames.HMSignalBus.Runtime;
+using HMModelViewController.Runtime;
+using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Controllers.Game;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
+using HiveMindMobileGameTemplate.Runtime.Models.Game;
+using HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 using VContainer.Unity;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
+namespace HiveMindMobileGameTemplate.Runtime.Views.Game
 {
     public sealed class InGamePanelMediator : Mediator<GameModel, GameSettings, InGamePanelView>, IInitializable,
         IDisposable

@@ -1,12 +1,12 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.MainMenu;
-using CodeCatGames.HMModelViewController.Runtime;
-using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMModelViewController.Runtime;
+using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Models.MainMenu;
+using HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Views.MainMenu;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu
+namespace HiveMindMobileGameTemplate.Runtime.Controllers.MainMenu
 {
     public sealed class HomeButtonController : Controller<MainMenuModel, MainMenuSettings, ShopPanelView>
     {

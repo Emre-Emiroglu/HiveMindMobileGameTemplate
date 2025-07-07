@@ -1,11 +1,11 @@
 ﻿using AYellowpaper.SerializedCollections;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HMModelViewController.Runtime;
+using HMModelViewController.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
     public sealed class CurrencyView : View
     {

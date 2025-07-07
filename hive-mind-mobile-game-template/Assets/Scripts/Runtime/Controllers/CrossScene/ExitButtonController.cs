@@ -1,15 +1,15 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Application;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene;
-using CodeCatGames.HMModelViewController.Runtime;
-using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMModelViewController.Runtime;
+using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Signals.Application;
+using HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Signals.Game;
+using HiveMindMobileGameTemplate.Runtime.Views.CrossScene;
 using UnityEngine.SceneManagement;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene
 {
     public sealed class ExitButtonController : Controller<SettingsModel, Settings, SettingsView>
     {

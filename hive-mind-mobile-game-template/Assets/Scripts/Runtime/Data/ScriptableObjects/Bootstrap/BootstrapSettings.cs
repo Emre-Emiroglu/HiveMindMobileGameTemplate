@@ -1,7 +1,7 @@
 using PrimeTween;
 using UnityEngine;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap
+namespace HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap
 {
     [CreateAssetMenu(fileName = "BootstrapSettings",
         menuName = "HiveMindMobileGameTemplate/Bootstrap/BootstrapSettings")]

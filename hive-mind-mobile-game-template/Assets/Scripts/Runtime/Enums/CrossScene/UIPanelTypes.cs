@@ -1,4 +1,4 @@
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Enums.CrossScene
 {
     public enum UIPanelTypes
     {

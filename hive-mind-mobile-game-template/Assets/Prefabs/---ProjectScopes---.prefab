@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
-    TypeName: CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.ApplicationScope.ApplicationScope
+    TypeName: HiveMindMobileGameTemplate.Runtime.Scopes.ApplicationScope.ApplicationScope
   autoRun: 1
   autoInjectGameObjects: []
   crossSceneSettings: {fileID: 11400000, guid: e46b21adc8bcc134d9ccd8a4b7dc4e07, type: 2}

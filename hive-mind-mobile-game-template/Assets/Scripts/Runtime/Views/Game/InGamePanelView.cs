@@ -1,10 +1,10 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
-using CodeCatGames.HMModelViewController.Runtime;
+﻿using HMModelViewController.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game
+namespace HiveMindMobileGameTemplate.Runtime.Views.Game
 {
     [RequireComponent(typeof(CanvasGroup))]
     public sealed class InGamePanelView : View

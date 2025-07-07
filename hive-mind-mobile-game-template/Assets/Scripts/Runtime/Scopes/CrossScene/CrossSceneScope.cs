@@ -1,15 +1,15 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene;
+﻿using HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Handlers.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
+using HiveMindMobileGameTemplate.Runtime.Views.CrossScene;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
 {
     public sealed class CrossSceneScope : LifetimeScope
     {

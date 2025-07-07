@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HMModelViewController.Runtime;
-using CodeCatGames.HMSignalBus.Runtime;
+using HMModelViewController.Runtime;
+using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Models.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
 using UnityEngine.UI;
 using VContainer.Unity;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Views.CrossScene
 {
     public sealed class SettingsMediator : Mediator<SettingsModel, Settings, SettingsView>, IInitializable, IDisposable
     {

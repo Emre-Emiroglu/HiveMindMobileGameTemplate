@@ -1,10 +1,10 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.CrossScene;
+﻿using HiveMindMobileGameTemplate.Runtime.Controllers.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Views.CrossScene;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Scopes.CrossScene
 {
     public sealed class CurrencyScope : LifetimeScope
     {

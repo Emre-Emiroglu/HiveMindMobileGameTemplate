@@ -1,7 +1,7 @@
-﻿using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMSignalBus.Runtime;
 using VContainer;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions
+namespace HiveMindMobileGameTemplate.Runtime.Utilities.Extensions
 {
     public static class SignalBusContainerBuilderExtension
     {

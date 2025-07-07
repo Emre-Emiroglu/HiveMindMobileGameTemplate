@@ -1,10 +1,10 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Temp;
-using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Signals.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Temp;
 using UnityEngine.SceneManagement;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Handlers.CrossScene
 {
     public sealed class SceneManagementHandler : SignalListener
     {

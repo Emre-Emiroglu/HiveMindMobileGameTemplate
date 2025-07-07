@@ -1,7 +1,7 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
-using CodeCatGames.HMModelViewController.Runtime;
+﻿using HMModelViewController.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.MainMenu;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.MainMenu
+namespace HiveMindMobileGameTemplate.Runtime.Models.MainMenu
 {
     public sealed class MainMenuModel : Model<MainMenuSettings>
     {

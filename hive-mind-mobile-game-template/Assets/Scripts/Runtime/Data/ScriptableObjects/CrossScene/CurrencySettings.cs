@@ -1,8 +1,8 @@
 using AYellowpaper.SerializedCollections;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
+using HiveMindMobileGameTemplate.Runtime.Enums.CrossScene;
 using UnityEngine;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.CrossScene
 {
     [CreateAssetMenu(fileName = "CurrencySettings",
         menuName = "HiveMindMobileGameTemplate/CrossScene/CurrencySettings")]

@@ -1,7 +1,7 @@
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Application;
-using CodeCatGames.HMModelViewController.Runtime;
+using HMModelViewController.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Application;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Application
+namespace HiveMindMobileGameTemplate.Runtime.Models.Application
 {
     public sealed class ApplicationModel : Model<ApplicationSettings>
     {

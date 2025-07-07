@@ -1,6 +1,6 @@
 {
-    "name": "CodeCatGames.HiveMindMobileGameTemplate.Editor",
-    "rootNamespace": "CodeCatGames.HiveMindMobileGameTemplate.Editor",
+    "name": "HiveMindMobileGameTemplate.Editor",
+    "rootNamespace": "HiveMindMobileGameTemplate.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"

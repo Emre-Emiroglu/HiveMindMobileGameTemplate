@@ -1,16 +1,16 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Game;
-using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Controllers.Game;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
+using HiveMindMobileGameTemplate.Runtime.Handlers.Game;
+using HiveMindMobileGameTemplate.Runtime.Models.Game;
+using HiveMindMobileGameTemplate.Runtime.Signals.Game;
+using HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
+using HiveMindMobileGameTemplate.Runtime.Views.Game;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Game
+namespace HiveMindMobileGameTemplate.Runtime.Scopes.Game
 {
     public sealed class GameScope : LifetimeScope
     {

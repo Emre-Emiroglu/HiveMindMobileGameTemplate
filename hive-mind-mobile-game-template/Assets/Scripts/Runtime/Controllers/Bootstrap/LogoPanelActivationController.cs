@@ -1,10 +1,10 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap;
-using CodeCatGames.HMModelViewController.Runtime;
+﻿using HMModelViewController.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
+using HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
+using HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
+using HiveMindMobileGameTemplate.Runtime.Views.Bootstrap;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Bootstrap
+namespace HiveMindMobileGameTemplate.Runtime.Controllers.Bootstrap
 {
     public sealed class LogoPanelActivationController :
         Controller<BootstrapModel, BootstrapSettings, LogoHolderPanelView>

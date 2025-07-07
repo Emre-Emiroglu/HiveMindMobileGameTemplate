@@ -1,4 +1,4 @@
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene
+namespace HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.CrossScene
 {
     public struct LevelPersistentData
     {

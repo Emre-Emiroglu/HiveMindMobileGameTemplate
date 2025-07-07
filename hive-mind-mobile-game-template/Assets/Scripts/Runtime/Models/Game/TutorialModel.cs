@@ -1,10 +1,10 @@
 ﻿using System;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.Game;
-using CodeCatGames.HMModelViewController.Runtime;
-using CodeCatGames.HMPersistentData.Runtime;
+using HMModelViewController.Runtime;
+using HMPersistentData.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Game;
+using HiveMindMobileGameTemplate.Runtime.Data.ValueObjects.Game;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Game
+namespace HiveMindMobileGameTemplate.Runtime.Models.Game
 {
     public sealed class TutorialModel : Model<TutorialSettings>
     {

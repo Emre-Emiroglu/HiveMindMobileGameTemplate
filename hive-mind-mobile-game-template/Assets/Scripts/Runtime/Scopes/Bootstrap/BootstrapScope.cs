@@ -1,16 +1,16 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Controllers.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Bootstrap;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Views.Bootstrap;
-using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Controllers.Bootstrap;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Bootstrap;
+using HiveMindMobileGameTemplate.Runtime.Handlers.Bootstrap;
+using HiveMindMobileGameTemplate.Runtime.Models.Bootstrap;
+using HiveMindMobileGameTemplate.Runtime.Signals.Bootstrap;
+using HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
+using HiveMindMobileGameTemplate.Runtime.Views.Bootstrap;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.Bootstrap
+namespace HiveMindMobileGameTemplate.Runtime.Scopes.Bootstrap
 {
     public sealed class BootstrapScope : LifetimeScope
     {

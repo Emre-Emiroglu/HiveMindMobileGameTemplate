@@ -1,16 +1,16 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Application;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Handlers.Application;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Models.Application;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Signals.Application;
-using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
-using CodeCatGames.HMPersistentData.Runtime;
-using CodeCatGames.HMPool.Runtime;
-using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMPersistentData.Runtime;
+using HMPool.Runtime;
+using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Data.ScriptableObjects.Application;
+using HiveMindMobileGameTemplate.Runtime.Handlers.Application;
+using HiveMindMobileGameTemplate.Runtime.Models.Application;
+using HiveMindMobileGameTemplate.Runtime.Signals.Application;
+using HiveMindMobileGameTemplate.Runtime.Utilities.Extensions;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Scopes.ApplicationScope
+namespace HiveMindMobileGameTemplate.Runtime.Scopes.ApplicationScope
 {
     public sealed class ApplicationScope : LifetimeScope
     {

@@ -1,62 +1,62 @@
 {
   "dependencies": {
-    "com.codecatgames.hmhelpers": {
-      "version": "https://github.com/Emre-Emiroglu/HMHelpers.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "d84de92dfe81923102d4b170ac11ea35a3bd5dce"
-    },
-    "com.codecatgames.hmmodelviewcontroller": {
-      "version": "https://github.com/Emre-Emiroglu/HMModelViewController.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "5497260d7a11f8d267ae3820ee4366d2756a872b"
-    },
-    "com.codecatgames.hmpool": {
-      "version": "https://github.com/Emre-Emiroglu/HMPool.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "546948112961a594c20a2149c317fce0a6fda887"
-    },
-    "com.codecatgames.hmprodebug": {
-      "version": "https://github.com/Emre-Emiroglu/HMProDebug.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "976d02b88327198104fe13a8648edeb2497fc55c"
-    },
-    "com.codecatgames.hmsignalbus": {
-      "version": "https://github.com/Emre-Emiroglu/HMSignalBus.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "30b48432becf907572ead43ec477f5fbd0f35ec2"
-    },
-    "com.codecatgames.hmspersistentdata": {
-      "version": "https://github.com/Emre-Emiroglu/HMPersistentData.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.2.1"
-      },
-      "hash": "65550f954cfe0a8d0e17685ca404285e571539da"
-    },
-    "com.codecatgames.hmutilities": {
-      "version": "https://github.com/Emre-Emiroglu/HMUtilities.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "7bfd2a7a62197cc894faaa566551de43b7f6f40c"
-    },
     "com.cysharp.unitask": {
       "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "06067cd4c83e372310d6f79d1c625f6870ff7a2a"
+    },
+    "com.emreemiroglu.hmhelpers": {
+      "version": "https://github.com/Emre-Emiroglu/HMHelpers.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "e5807af1fa0334ec2ea97241ef365c7ad6cb40b1"
+    },
+    "com.emreemiroglu.hmmodelviewcontroller": {
+      "version": "https://github.com/Emre-Emiroglu/HMModelViewController.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d2c399ef9acd7616f7a2cdee5397ce15ba557987"
+    },
+    "com.emreemiroglu.hmpool": {
+      "version": "https://github.com/Emre-Emiroglu/HMPool.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "b7e8a0a5d47f5cdec709ba4ae6c173e2a589b32b"
+    },
+    "com.emreemiroglu.hmprodebug": {
+      "version": "https://github.com/Emre-Emiroglu/HMProDebug.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "93db8901e313fb95580825b71e5fcd08baec56fc"
+    },
+    "com.emreemiroglu.hmsignalbus": {
+      "version": "https://github.com/Emre-Emiroglu/HMSignalBus.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c6ac686b06697824bbf5ceb2930cc948931dd589"
+    },
+    "com.emreemiroglu.hmspersistentdata": {
+      "version": "https://github.com/Emre-Emiroglu/HMPersistentData.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "b7b3b51c5c84cc333dce635646f30efc4a81e71a"
+    },
+    "com.emreemiroglu.hmutilities": {
+      "version": "https://github.com/Emre-Emiroglu/HMUtilities.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "49aae9c3eea1bc140c20e2f8a600b8157933cdab"
     },
     "com.kyrylokuzyk.primetween": {
       "version": "file:../Assets/Plugins/PrimeTween/internal/com.kyrylokuzyk.primetween.tgz",

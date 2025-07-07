@@ -1,7 +1,7 @@
-﻿using CodeCatGames.HMPool.Runtime;
+﻿using HMPool.Runtime;
 using VContainer;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions
+namespace HiveMindMobileGameTemplate.Runtime.Utilities.Extensions
 {
     public static class PoolServiceContainerBuilderExtension
     {

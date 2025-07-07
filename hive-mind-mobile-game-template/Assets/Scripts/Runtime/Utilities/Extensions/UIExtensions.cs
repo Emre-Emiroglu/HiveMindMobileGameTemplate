@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Utilities.Extensions
+namespace HiveMindMobileGameTemplate.Runtime.Utilities.Extensions
 {
     public static class UIExtensions
     {

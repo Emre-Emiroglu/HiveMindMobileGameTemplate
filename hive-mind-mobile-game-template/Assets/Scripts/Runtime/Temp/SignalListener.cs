@@ -1,7 +1,7 @@
-﻿using CodeCatGames.HiveMindMobileGameTemplate.Runtime.Interfaces;
-using CodeCatGames.HMSignalBus.Runtime;
+﻿using HMSignalBus.Runtime;
+using HiveMindMobileGameTemplate.Runtime.Interfaces;
 
-namespace CodeCatGames.HiveMindMobileGameTemplate.Runtime.Temp
+namespace HiveMindMobileGameTemplate.Runtime.Temp
 {
     public abstract class SignalListener : ISignalListenable
     {
